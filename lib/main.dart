@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = myTheme.dark;
+    final theme = myTheme.dark;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rental Car ',

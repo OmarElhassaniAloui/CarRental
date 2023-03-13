@@ -2,7 +2,8 @@ import 'package:carrental/view/screens/onboardingScreen.dart';
 import 'package:carrental/widgets/textFormFields.dart';
 import 'package:flutter/material.dart';
 
-import '../../langage.dart';
+import '../confirmationpage.dart';
+import '../langage.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -287,7 +288,7 @@ class _PaymentPageState extends State<PaymentPage> {
               child: OutlinedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return Langages();
+                    return ConfiramtionPage();
                   }));
                 },
                 child: Text(

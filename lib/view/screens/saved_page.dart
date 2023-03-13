@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyBookingPage extends StatelessWidget {
-  const MyBookingPage({super.key});
+class SavedPage extends StatelessWidget {
+  const SavedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Booking '),
+        title: const Text('Saved'),
         centerTitle: true,
       ),
       body: Container(),

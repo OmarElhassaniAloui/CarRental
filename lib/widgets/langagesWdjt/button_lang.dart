@@ -10,8 +10,7 @@ class CostumButtonLang extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100),
       width: double.infinity,
-      child: MaterialButton( 
-        
+      child: MaterialButton(       
         onPressed: onPressed,
         color: Colors.redAccent,
         textColor: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../widgets/langagesWdjt/button_lang.dart';
+import '../../widgets/langagesWdjt/button_lang.dart';
 
 class Langages extends StatelessWidget {
   const Langages({super.key});
@@ -13,17 +14,26 @@ class Langages extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("1".tr,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.redAccent,
+                )),
+            const SizedBox(
+              height: 20,
+            ),
             CostumButtonLang(
               txtButton: 'Ar',
-              onPressed: () {}, 
+              onPressed: () {},
             ),
             CostumButtonLang(
               txtButton: 'Fr',
-              onPressed: () {}, 
+              onPressed: () {},
             ),
             CostumButtonLang(
               txtButton: 'Eng',
-              onPressed: () {}, 
+              onPressed: () {},
             ),
           ],
         ),

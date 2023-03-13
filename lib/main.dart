@@ -1,25 +1,17 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'core/localization/Change_langue.dart';
+import 'core/localization/translation.dart';
 import 'view/screens/home_screen.dart';
-import 'view/screens/login.dart';
 import './core/constants/them.dart';
 import 'view/screens/onboardingScreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
-SharedPreferences? shardPref; 
 bool? isLogin = false;
-
 void main() {
   //todo : ila l utilisateur deja dar login ddih l'home page
-
-  // async and awit required
   // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  // var user = FirebaseAuth.instance.currentUser;
-  // if (user == null) {
-  //   isLogin = false;
-  // } else {
-  //   isLogin = true;
-  // }
+  // await initialServices();
   runApp(MyApp());
 }
 
@@ -28,10 +20,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ChangeLangController controller = Get.put(ChangeLangController());
+
     final theme = myTheme.dark;
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rental Car ',
+      // locale: controller.langInitial,
+      translations: Translation(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

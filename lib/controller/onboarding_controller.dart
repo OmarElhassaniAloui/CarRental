@@ -23,6 +23,7 @@ class OnboardingControllerImp extends OnboardngController {
     currentPage = index;
     update();
   }
+  
 
   @override
   skip() {}

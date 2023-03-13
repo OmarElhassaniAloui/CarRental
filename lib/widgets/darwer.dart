@@ -1,6 +1,13 @@
 import 'dart:ui';
 
-import './alertdialog.dart'; 
+import '../view/screens/Terms_and_conditions_page.dart';
+import '../view/screens/faq_page.dart';
+import '../view/screens/langage.dart';
+import '../view/screens/my_booking.dart';
+import '../view/screens/notification_Page.dart';
+import '../view/screens/saved_page.dart';
+import '../view/screens/support_page.dart';
+import './alertdialog.dart';
 
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -65,7 +72,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text(' My Profile'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return ProfileScreen();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -81,7 +93,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('My Booking'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return MyBookingPage();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -97,7 +114,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('Notification'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return NotificationsPage();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -115,7 +137,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('Saved'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return SavedPage();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -131,7 +158,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('Support'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return SupportPage();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -147,7 +179,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   size: 20,
                   color: Colors.black,
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return TermsAndConditions();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -163,7 +200,12 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('FAQs'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (builder) {
+                    return FAQsPage();
+                  }));
+                },
               ),
             ),
             SizedBox(
@@ -188,6 +230,27 @@ class _MyDrawerState extends State<MyDrawer> {
                       return LoginScreen();
                     }),
                   );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: ListTile(
+                leading: Icon(Icons.language),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: 20,
+                  color: Colors.black,
+                ),
+                title: Text('Choose language'),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Langages();
+                  }));
                 },
               ),
             ),

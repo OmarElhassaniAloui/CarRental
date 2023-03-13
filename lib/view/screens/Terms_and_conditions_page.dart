@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyBookingPage extends StatelessWidget {
-  const MyBookingPage({super.key});
+class TermsAndConditions extends StatelessWidget {
+  const TermsAndConditions({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Booking '),
-        centerTitle: true,
+        title: const Text('Terms and conditions'),
       ),
       body: Container(),
     );

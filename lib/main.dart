@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ChangeLangController controller = Get.put(ChangeLangController());
-
     final theme = myTheme.dark;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: isLogin == false ? OnBoardingPage() : Home(),
-      routes: {},
+     
     );
   }
 }

@@ -10,7 +10,24 @@ class SavedPage extends StatelessWidget {
         title: const Text('Saved'),
         centerTitle: true,
       ),
-      body: Container(),
+      body: Center(
+          child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Icon(
+                Icons.favorite_border,
+                size: 50,
+                color: Colors.grey,
+              ),
+            ),
+            Container(
+              child: Text("Your saved list is empty"),
+            )
+          ],
+        ),
+      )),
     );
   }
 }

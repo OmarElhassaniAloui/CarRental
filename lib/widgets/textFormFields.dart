@@ -48,17 +48,17 @@ class _PayementFormsState extends State<PayementForms> {
 //         autofocus: false,
 //         controller: emailEditingController,
 //         keyboardType: TextInputType.emailAddress,
-//         validator: (value) {
-//           if (value!.isEmpty) {
-//             return ("Please Enter Your Email");
-//           }
-//           // reg expression for email validation
-//           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-//               .hasMatch(value)) {
-//             return ("Please Enter a valid email");
-//           }
-//           return null;
-//         },
+        // validator: (value) {
+        //   if (value!.isEmpty) {
+        //     return ("Please Enter Your Email");
+        //   }
+        //   // reg expression for email validation
+        //   if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+        //       .hasMatch(value)) {
+        //     return ("Please Enter a valid email");
+        //   }
+        //   return null;
+        // },
 //         onSaved: (value) {
 //           firstNameEditingController.text = value!;
 //         },

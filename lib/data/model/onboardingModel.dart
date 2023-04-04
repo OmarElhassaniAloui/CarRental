@@ -5,5 +5,5 @@ class OnBoarding {
   final String? desctriptionText;
   OnBoarding({this.img , this.title , this.desctriptionText}); 
    
-
+   
 }

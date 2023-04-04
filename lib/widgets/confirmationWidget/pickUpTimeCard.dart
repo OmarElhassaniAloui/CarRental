@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ConfirmationCardTree extends StatelessWidget {
-  const ConfirmationCardTree({super.key});
+class PickUpTimeCard extends StatelessWidget {
+  const PickUpTimeCard({super.key});
 
   @override
   Widget build(BuildContext context) {

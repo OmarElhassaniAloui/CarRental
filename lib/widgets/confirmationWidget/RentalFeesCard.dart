@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ConfirmationCardFour extends StatelessWidget {
-  const ConfirmationCardFour({super.key});
+class RentalFeesCard extends StatelessWidget {
+  double? elevation;
+  RentalFeesCard({super.key, this.elevation});
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: elevation,
       child: Container(
         padding: EdgeInsets.all(15),
         child: Column(
@@ -28,8 +30,9 @@ class ConfirmationCardFour extends StatelessWidget {
                     flex: 7,
                     child: Container(
                       //todo  hna khas dir variable ela hssab chhal mn nhar kra
-                      child: Text("One Day rent",
-                          ),
+                      child: Text(
+                        "One Day rent",
+                      ),
                     ),
                   ),
                   Expanded(
@@ -52,13 +55,13 @@ class ConfirmationCardFour extends StatelessWidget {
                     flex: 7,
                     child: Container(
                       //todo  hna khas dir variable ela hssab chhal mn nhar kra
-                      child: Text("One Day rent"),
+                      child: Text("Total of 3 days "),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Container(
-                      child: Text("\$200"),
+                      child: Text("\$600"),
                     ),
                   ),
                 ],
@@ -77,12 +80,24 @@ class ConfirmationCardFour extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Text("Toral Fees"),
-                  flex: 4,
+                  child: Text(
+                    "Toral Fees",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                  flex: 3,
                 ),
                 Expanded(
                   //todo calculer le total ?
-                  child: Text("\$600.00"),
+                  child: Text(
+                    "\$600.00",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
                   flex: 1,
                 ),
               ],

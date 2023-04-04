@@ -1,8 +1,8 @@
 import 'package:carrental/view/screens/success_page.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/confirmationWidget/confirmationCard1.dart';
-import '../../widgets/confirmationWidget/confirmationCardFour.dart';
-import '../../widgets/confirmationWidget/confirmationCardtree.dart';
+import '../../widgets/confirmationWidget/RentalFeesCard.dart';
+import '../../widgets/confirmationWidget/PickUpTimeCard.dart';
 import '../../widgets/confirmationWidget/confirmwdgtOne.dart';
 
 class ConfiramtionPage extends StatelessWidget {
@@ -34,12 +34,10 @@ class ConfiramtionPage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-
               ConfirmationCard1(),
               ConfirmationCardOne(),
-              ConfirmationCardTree(),
-              ConfirmationCardFour(),
-              
+              PickUpTimeCard(),
+              RentalFeesCard(),
               Container(
                 // padding:  EdgeInsets.symmetric(horizontal: 15),
                 width: double.infinity,

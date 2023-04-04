@@ -3,7 +3,6 @@ import '../../core/constants/constants.dart';
 import '../../widgets/cards/cars_grid.dart';
 import '../../widgets/darwer.dart';
 
-
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
@@ -20,7 +19,7 @@ class _HomeState extends State<Home> {
       key: scaffoldkey,
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        elevation: 0.0,
+      
         title: Text(
           "Car Rental ",
           style: SubHeading,

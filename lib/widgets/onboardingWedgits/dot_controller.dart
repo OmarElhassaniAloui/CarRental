@@ -2,7 +2,7 @@ import 'package:carrental/controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../data/datasrc/static/static.dart';
-import '../../view/screens/login.dart';
+import '../../view/screens/authScreens/login.dart';
 
 class CostumDotController extends GetView<OnboardingControllerImp> {
   const CostumDotController({super.key});

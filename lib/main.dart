@@ -1,5 +1,6 @@
 import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'binding/initalbinding.dart';
 import 'core/localization/Change_langue.dart';
 import 'core/localization/translation.dart';
 import 'view/screens/home_screen.dart';
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ChangeLangController controller = Get.put(ChangeLangController());
-    final theme = myTheme.dark;
+    final theme = MyTheme.dark;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rental Car ',
       // locale: controller.langInitial,
-      translations: Translation(),
+      translations: Translation(), 
+      initialBinding: InitialBinding(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

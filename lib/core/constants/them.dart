@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class myTheme {
+class MyTheme {
   // light text them
   static TextTheme lightTheme = TextTheme(
     bodyText1: GoogleFonts.roboto(
@@ -29,6 +29,16 @@ class myTheme {
       color: Colors.black,
     ),
     headline3: GoogleFonts.roboto(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    headline4: GoogleFonts.roboto(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    headline5: GoogleFonts.roboto(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
@@ -57,6 +67,16 @@ class myTheme {
       color: Colors.white,
     ),
     headline3: GoogleFonts.roboto(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    headline4: GoogleFonts.roboto(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    headline5: GoogleFonts.roboto(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
       color: Colors.white,

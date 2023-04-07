@@ -4,7 +4,7 @@ import '../../widgets/cards/cars_grid.dart';
 import '../../widgets/darwer.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();

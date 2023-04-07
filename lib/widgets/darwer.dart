@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:unicons/unicons.dart';
+
 import '../view/screens/Terms_and_conditions_page.dart';
 import '../view/screens/faq_page.dart';
 import '../view/screens/langage.dart';
@@ -8,10 +10,9 @@ import '../view/screens/notification_Page.dart';
 import '../view/screens/saved_page.dart';
 import '../view/screens/support_page.dart';
 import './alertdialog.dart';
-
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
-import '../view/screens/login.dart';
+import '../view/screens/authScreens/login.dart';
 import '../view/screens/my_prfile.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -22,6 +23,7 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  bool switchVal = false;
   // getUser() {
   //   var user = FirebaseAuth.instance.currentUser;
   //   if (user != null) {
@@ -246,6 +248,32 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.black,
                 ),
                 title: Text('Choose language'),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Langages();
+                  }));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: ListTile(
+                leading: Icon(
+                  UniconsLine.moon,
+                ),
+                trailing: Switch(
+                  value: switchVal,
+                  onChanged: (value) {
+                    setState(() {
+                      switchVal = value;
+                    });
+                  },
+                ),
+                title: Text('Change Theme'),
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {

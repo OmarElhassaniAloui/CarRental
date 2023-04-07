@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../widgets/drop_down_menu.dart';
+import '../../../widgets/drop_down_menu.dart';
 
-import 'home_screen.dart';
+import '../home_screen.dart';
 // import 'package:car/models/userModel.dart';
 
 import 'dart:io';
@@ -22,9 +22,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   //! string for displaying the error Message
   String? errorMessage;
   //! chosing Role  ;
-  var valueChoose = 'client';
-  List roleItems = ['Client ', 'Admin'];
-  var role = 'client ';
+  // var valueChoose = 'client';
+  // List roleItems = ['Client ', 'Admin'];
+  // var role = 'client ';
 
   //! our form key
   final _formKey = GlobalKey<FormState>();
@@ -205,6 +205,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
+            final isValidForm = _formKey.currentState!.validate();
+            if (isValidForm) {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return Home();
+              }));
+            }
+            
             // signUp(
             //   emailEditingController.text,
             //   passwordEditingController.text,
@@ -264,8 +271,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     SizedBox(height: 20),
                     emailField,
                     SizedBox(height: 20),
-                    chosingRole,
-                    SizedBox(height: 20),
+                    // chosingRole,
+                    // SizedBox(height: 20),
                     passwordField,
                     SizedBox(height: 20),
                     confirmPasswordField,
@@ -330,7 +337,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   //   User? user = _auth.currentUser;
-  //   //! user model object  
+  //   //! user model object
   //   UserModel userModel = UserModel();
 
   //   //! writing all the values

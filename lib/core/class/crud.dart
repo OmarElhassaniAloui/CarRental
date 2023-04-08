@@ -24,4 +24,7 @@ class Crud {
     return Left(StatusRequest.serverFailure);
   }
 }
+
+
+
 }

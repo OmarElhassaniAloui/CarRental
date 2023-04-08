@@ -21,8 +21,8 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController confirm_password;
 
   StatusRequest statusRequest = StatusRequest.none;
-
   SignupData signupData = SignupData(Get.find());
+
 
   List data = [];
 
@@ -33,6 +33,7 @@ class SignUpControllerImp extends SignUpController {
       update();
       var response = await signupData.postdata(
           firstName.text, lastName.text, email.text, password.text ,confirm_password.text );
+          print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == ["success"]) {

@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-
-
-
-
-
-
-
-
 class MyTheme {
   // light text them
   static TextTheme lightTheme = TextTheme(
@@ -97,16 +87,16 @@ class MyTheme {
     colorScheme: ColorScheme.light(),
     scaffoldBackgroundColor: Color(0xFFF5F3F5),
     brightness: Brightness.light,
-    // checkboxTheme: CheckboxThemeData(
-    //   fillColor: MaterialStateProperty.resolveWith((states) => Colors.black),
-    // ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.resolveWith((states) => Colors.black),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
     ),
-    // floatingActionButtonTheme: FloatingActionButtonThemeData(
-    // backgroundColor: Colors.white, foregroundColor: Colors.redAccent),
-    // bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Colors.white, foregroundColor: Colors.redAccent),
+    bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
     textTheme: lightTheme,
     backgroundColor: Colors.white,
     cardColor: Color(0xFFFDFBFD),
@@ -115,9 +105,9 @@ class MyTheme {
   static ThemeData dark = ThemeData( 
     colorScheme: ColorScheme.dark(),
     brightness: Brightness.dark,
-    // checkboxTheme: CheckboxThemeData(
-    //   fillColor: MaterialStateProperty.resolveWith((states) => Colors.white),
-    // ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.resolveWith((states) => Colors.white),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.black,
       foregroundColor: Colors.grey[900],
@@ -126,7 +116,7 @@ class MyTheme {
       backgroundColor: Colors.white,
       foregroundColor: Colors.redAccent,
     ),
-    // bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
+    bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
     textTheme: darkTheme,
     scaffoldBackgroundColor: Color(0xFF111111), 
   );

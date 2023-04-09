@@ -94,17 +94,13 @@ class _LoginScreenState extends State<LoginScreen> {
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () { 
-
+        onPressed: () {
           // final isValidForm = _formKey.currentState!.validate();
           //   if (isValidForm) {
           //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           //       return Home();
           //     }));
           //   }
-          
-
-
 
           // signIn(
           //   emailController.text,
@@ -118,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20,
-            color: Colors.white,
+            // color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -126,11 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            // color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -180,26 +176,18 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  } 
+  }
 
-  void login(String email , String password) async { 
-    if(_formKey.currentState!.validate()){
+  void login(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
       try {
-         /* 
+        /* 
          shwoDialog(context) 
          todo :  khassni ndir wahd l fonction lli katjib lin a data (email ou password ) mn  base de donne ou ndir eliha wa7d check ila rj3at li data khasni ndkhel ila marj3atch lia data khas ndir wa7d les error lli kaynin lte7t 
           */
-      } catch (e) {
-        
-      }
+      } catch (e) {}
     }
   }
-
-
-
-
-
-
 
 // login function
   // void signIn(String email, String password) async {

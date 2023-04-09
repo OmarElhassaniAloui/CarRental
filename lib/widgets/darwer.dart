@@ -71,7 +71,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text(' My Profile'),
                 onTap: () {
@@ -92,7 +92,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('My Booking'),
                 onTap: () {
@@ -113,7 +113,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Notification'),
                 onTap: () {
@@ -136,7 +136,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Saved'),
                 onTap: () {
@@ -157,7 +157,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Support'),
                 onTap: () {
@@ -179,7 +179,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 onTap: () {
                   Navigator.of(context)
@@ -199,7 +199,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('FAQs'),
                 onTap: () {
@@ -220,7 +220,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Log Out '),
                 onTap: () async {
@@ -245,7 +245,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Choose language'),
                 onTap: () {

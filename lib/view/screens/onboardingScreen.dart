@@ -13,7 +13,7 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(OnboardingControllerImp());
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      // backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Column(
           children: [

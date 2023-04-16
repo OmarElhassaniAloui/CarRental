@@ -25,7 +25,7 @@ class SignUpControllerImp extends SignUpController {
 
   List data = [];
 
-  // @override
+  @override
   signUp() async {
     if (formstate.currentState!.validate()) {
       statusRequest = StatusRequest.loading;

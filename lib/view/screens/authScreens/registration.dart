@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import '../../../widgets/drop_down_menu.dart';
 
 import '../home_screen.dart';
-// import 'package:car/models/userModel.dart';
 
 import 'dart:io';
 import 'login.dart';
@@ -30,7 +27,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   // var role = 'client ';
 
   //! our form key
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   //! editing Controller
   // final firstNameEditingController = TextEditingController();
   // final secondNameEditingController = TextEditingController();
@@ -218,12 +215,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
             minWidth: MediaQuery.of(context).size.width,
             onPressed: () {
-              // final isValidForm = _formKey.currentState!.validate();
-              // if (isValidForm) {
-              //   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              //     return Home();
-              //   }));
-              // }
               controller.signUp();
             },
             child: Text(
@@ -265,8 +256,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: GetBuilder<SignUpControllerImp>(
-                // init: MyController(),
-                // initState: (_) {},
                 builder: (controller) {
                   return Form(
                     key: controller.formstate,

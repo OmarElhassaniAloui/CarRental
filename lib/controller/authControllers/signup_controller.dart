@@ -1,4 +1,5 @@
 import 'package:carrental/core/class/statusrequest.dart';
+import 'package:carrental/view/screens/authScreens/login.dart';
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -36,25 +37,27 @@ class SignUpControllerImp extends SignUpController {
           print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
-        if (response['status'] == ["success"]) {
+        if (response['status'] == "success") {
           Get.to(Home(), arguments: {
             "email": email.text,
           });
-        } else {
+        }
+        else {
           Get.defaultDialog(
               title: "ُWarning",
               middleText: "Phone Number Or Email Already Exists");
           statusRequest = StatusRequest.failure;
         }
-        update();  
+        update();   
       }
     }
-
     update();
   }
 
   @override
-  goToSignIn() {} 
+  goToSignIn() {
+    Get.off(LoginScreen());
+  }
    @override
   void onInit() {
     firstName = TextEditingController();

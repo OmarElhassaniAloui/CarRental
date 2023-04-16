@@ -224,7 +224,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               //     return Home();
               //   }));
               // }
-              controller.signUp(); 
+              controller.signUp();
             },
             child: Text(
               "SignUp",
@@ -264,32 +264,38 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/logo/logo.jpg",
-                        )),
-                    SizedBox(height: 45),
-                    firstNameField,
-                    SizedBox(height: 20),
-                    secondNameField,
-                    SizedBox(height: 20),
-                    emailField,
-                    SizedBox(height: 20),
-                    passwordField,
-                    SizedBox(height: 20),
-                    confirmPasswordField,
-                    SizedBox(height: 20),
-                    signUpButton,
-                    SizedBox(height: 15),
-                  ],
-                ),
+              child: GetBuilder<SignUpControllerImp>(
+                // init: MyController(),
+                // initState: (_) {},
+                builder: (controller) {
+                  return Form(
+                    key: controller.formstate,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                            height: 200,
+                            child: Image.asset(
+                              "assets/logo/logo.jpg",
+                            )),
+                        SizedBox(height: 45),
+                        firstNameField,
+                        SizedBox(height: 20),
+                        secondNameField,
+                        SizedBox(height: 20),
+                        emailField,
+                        SizedBox(height: 20),
+                        passwordField,
+                        SizedBox(height: 20),
+                        confirmPasswordField,
+                        SizedBox(height: 20),
+                        signUpButton,
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ),

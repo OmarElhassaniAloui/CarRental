@@ -11,7 +11,7 @@ class ConfiramtionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade300,
+        // backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
           title: const Text('Confiramtion'),
           centerTitle: true,

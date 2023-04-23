@@ -17,9 +17,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldkey,
-      backgroundColor: kBackgroundColor,
+      // backgroundColor: kBackgroundColor,
       appBar: AppBar(
-      
         title: Text(
           "Car Rental ",
           style: SubHeading,

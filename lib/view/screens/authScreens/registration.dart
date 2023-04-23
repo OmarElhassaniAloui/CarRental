@@ -222,12 +222,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontWeight: FontWeight.bold),
             )),
       ),
     );
 //! chosing role dropdown menu
+
     // final chosingRole = Container(
     //   decoration: BoxDecoration(
     //     border: Border.all(color: Colors.grey, width: 1),
@@ -237,7 +238,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     // );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -252,7 +253,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            // color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: GetBuilder<SignUpControllerImp>(

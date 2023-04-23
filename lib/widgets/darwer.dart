@@ -1,7 +1,8 @@
 import 'dart:ui';
 
+import 'package:carrental/controller/changeThemController.dart';
 import 'package:unicons/unicons.dart';
-
+import 'package:get/get.dart';
 import '../view/screens/Terms_and_conditions_page.dart';
 import '../view/screens/faq_page.dart';
 import '../view/screens/langage.dart';
@@ -24,6 +25,7 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   bool switchVal = false;
+  var themeController = Get.put(ThemController());
   // getUser() {
   //   var user = FirebaseAuth.instance.currentUser;
   //   if (user != null) {
@@ -71,7 +73,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text(' My Profile'),
                 onTap: () {
@@ -92,7 +94,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('My Booking'),
                 onTap: () {
@@ -113,7 +115,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Notification'),
                 onTap: () {
@@ -136,7 +138,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Saved'),
                 onTap: () {
@@ -157,7 +159,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Support'),
                 onTap: () {
@@ -179,7 +181,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 onTap: () {
                   Navigator.of(context)
@@ -199,7 +201,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('FAQs'),
                 onTap: () {
@@ -220,7 +222,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Log Out '),
                 onTap: () async {
@@ -245,7 +247,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 20,
-                  color: Colors.black,
+                  // color: Colors.black,
                 ),
                 title: Text('Choose language'),
                 onTap: () {
@@ -262,24 +264,16 @@ class _MyDrawerState extends State<MyDrawer> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: ListTile(
-                leading: Icon(
-                  UniconsLine.moon,
-                ),
+                leading: themeController.switchVal.value == true
+                    ? Icon(Icons.wb_sunny)
+                    : Icon(Icons.nightlight_round),
                 trailing: Switch(
-                  value: switchVal,
+                  value: themeController.switchVal.value,
                   onChanged: (value) {
-                    setState(() {
-                      switchVal = value;
-                    });
+                    themeController.changeThem(value);
                   },
                 ),
                 title: Text('Change Theme'),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Langages();
-                  }));
-                },
               ),
             ),
           ],

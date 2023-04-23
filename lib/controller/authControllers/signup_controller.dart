@@ -24,7 +24,6 @@ class SignUpControllerImp extends SignUpController {
   StatusRequest statusRequest = StatusRequest.none;
   SignupData signupData = SignupData(Get.find());
 
-
   List data = [];
 
   @override
@@ -32,9 +31,9 @@ class SignUpControllerImp extends SignUpController {
     if (formstate.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      var response = await signupData.postdata(
-          firstName.text, lastName.text, email.text, password.text ,confirm_password.text );
-          print("=============================== Controller $response ");
+      var response = await signupData.postdata(firstName.text, lastName.text,
+          password.text, email.text, confirm_password.text);
+      print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
@@ -48,16 +47,15 @@ class SignUpControllerImp extends SignUpController {
               middleText: "Phone Number Or Email Already Exists");
           statusRequest = StatusRequest.failure;
         }
-        update();   
+        update();  
       }
     }
+
     update();
   }
 
   @override
-  goToSignIn() {
-    Get.off(LoginScreen());
-  }
+  goToSignIn() {} 
    @override
   void onInit() {
     firstName = TextEditingController();
@@ -67,7 +65,8 @@ class SignUpControllerImp extends SignUpController {
     confirm_password = TextEditingController();
     super.onInit();
   }
-   @override
+
+  @override
   void dispose() {
     firstName.dispose();
     lastName.dispose();

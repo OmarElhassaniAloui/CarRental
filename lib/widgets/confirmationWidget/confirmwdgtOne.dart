@@ -10,7 +10,7 @@ class ConfirmationCardOne extends StatelessWidget {
         padding: EdgeInsets.all(15),
         height: 300,
         width: double.infinity,
-        color: Colors.white,
+        // color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

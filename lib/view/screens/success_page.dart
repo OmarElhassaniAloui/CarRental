@@ -10,7 +10,7 @@ class SuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 235, 233, 233),
+      // backgroundColor: Color.fromARGB(255, 235, 233, 233),
       appBar: AppBar(
         title: const Text('Success '),
         centerTitle: true,

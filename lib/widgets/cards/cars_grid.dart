@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../core/constants/constants.dart';
 import '../../data/model/carsModel.dart';
@@ -36,7 +35,7 @@ class CarsGridView extends StatelessWidget {
               margin: EdgeInsets.only(
                   top: i.isEven ? 0 : 20, bottom: i.isEven ? 20 : 0),
               decoration: BoxDecoration(
-                color: Colors.white,
+                // color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                       color: Colors.black26, blurRadius: 5, spreadRadius: 1),

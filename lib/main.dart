@@ -1,3 +1,4 @@
+import 'package:carrental/core/constants/appThem.dart';
 import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'binding/initalbinding.dart';
@@ -27,13 +28,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rental Car ',
       // locale: controller.langInitial,
-      translations: Translation(), 
+      translations: Translation(),
       initialBinding: InitialBinding(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.darkTheme,
       home: isLogin == false ? OnBoardingPage() : Home(),
-     
     );
   }
 }

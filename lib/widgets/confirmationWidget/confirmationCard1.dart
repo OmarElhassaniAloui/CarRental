@@ -6,7 +6,7 @@ class ConfirmationCard1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      // color: Colors.white,
       child: Container(
         height: 80,
         width: double.infinity,

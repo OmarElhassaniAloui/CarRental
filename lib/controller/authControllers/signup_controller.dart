@@ -32,7 +32,7 @@ class SignUpControllerImp extends SignUpController {
       statusRequest = StatusRequest.loading;
       update();
       var response = await signupData.postdata(firstName.text, lastName.text,
-          password.text, email.text, confirm_password.text);
+          email.text, password.text, confirm_password.text);
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
@@ -40,14 +40,13 @@ class SignUpControllerImp extends SignUpController {
           Get.to(Home(), arguments: {
             "email": email.text,
           });
-        }
-        else {
+        } else {
           Get.defaultDialog(
               title: "ُWarning",
               middleText: "Phone Number Or Email Already Exists");
           statusRequest = StatusRequest.failure;
         }
-        update();  
+        update();
       }
     }
 
@@ -55,8 +54,8 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  goToSignIn() {} 
-   @override
+  goToSignIn() {}
+  @override
   void onInit() {
     firstName = TextEditingController();
     lastName = TextEditingController();

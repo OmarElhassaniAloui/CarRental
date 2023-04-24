@@ -1,5 +1,5 @@
-import '../../../../core/class/crud.dart';
-import '../../../../core/constants/link_api.dart';
+import 'package:carrental/core/class/crud.dart';
+import 'package:carrental/core/constants/link_api.dart';
 
 class LoginData {
   Crud crud;

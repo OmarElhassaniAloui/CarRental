@@ -218,31 +218,6 @@ class _MyDrawerState extends State<MyDrawer> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: ListTile(
-                leading: Icon(Icons.logout_outlined),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20,
-                  // color: Colors.black,
-                ),
-                title: Text('Log Out '),
-                onTap: () async {
-                  // showLoading(context);
-                  // await FirebaseAuth.instance.signOut();
-
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) {
-                      return LoginScreen();
-                    }),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: 2,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ListTile(
                 leading: Icon(Icons.language),
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
@@ -274,6 +249,44 @@ class _MyDrawerState extends State<MyDrawer> {
                   },
                 ),
                 title: Text('Change Theme'),
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: ListTile(
+                leading: Icon(Icons.logout_outlined),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: 20,
+                  // color: Colors.black,
+                ),
+                title: Text('Log Out '),
+                onTap: () {
+                   
+
+                  // await showLoading(
+                  //   context,
+                  //   Text("are you sure you want to logout?"),
+
+                  //   Container(
+                  //     height: 80,
+                  //     width: 80,
+                  //     child: Center(
+                  //       child: CircularProgressIndicator(),
+                  //     ),
+                  //   ),
+
+                  // );
+                  
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) {
+                      return LoginScreen();
+                    }),
+                  );
+                },
               ),
             ),
           ],

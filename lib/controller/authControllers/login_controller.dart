@@ -1,102 +1,88 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+import 'package:carrental/view/screens/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-// import '../../core/class/statusrequest.dart';
-// import '../../core/functions/handlingData.dart';
-// import '../../core/services/services.dart';
-// import '../../data/datasrc/remot/authData/login_data.dart';
+import '../../core/class/statusrequest.dart';
+import '../../core/functions/handlingData.dart';
+import '../../core/services/services.dart';
+import '../../data/datasrc/remot/authData/login_data.dart';
 
-// abstract class LoginController extends GetxController {
-//   login();
-//   goToSignUp();
-//   goToForgetPassword();
-// }
+abstract class LoginController extends GetxController {
+  login();
+  goToSignUp();
+  goToForgetPassword();
+}
 
-// class LoginControllerImp extends LoginController {
-//   LoginData loginData = LoginData(Get.find());
+class LoginControllerImp extends LoginController {
+  LoginData loginData = LoginData(Get.find());
 
-//   GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-//   late TextEditingController email;
-//   late TextEditingController password;
+  late TextEditingController email;
+  late TextEditingController password;
 
-//   bool isshowpassword = true;
+  bool showpassword = true;
+  showPassword(){
+    showpassword = showpassword==true ? false:true;
+    update();
+  }
+  
+  
 
-//   MyServices myServices = Get.find();
+  StatusRequest statusRequest = StatusRequest.none;
 
-//   StatusRequest statusRequest = StatusRequest.none;
+  
+  @override
+  login() async {
+    try{
 
-//   showPassword() {
-//     isshowpassword = isshowpassword == true ? false : true;
-//     update();
-//   }
+    if (formstate.currentState!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await loginData.postdata(email.text, password.text);
+      print("=============================== Controller $response ");
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
+          Get.to(Home());
+        } else {
+          Get.defaultDialog(
+              title: "ُWarning", middleText: "Email Or Password Not Correct");
+          statusRequest = StatusRequest.failure;
+        }
+      }
+      update();
+    } else {}
+    }catch(e){
+      print(e);
+    }
+  }
 
-//   @override
-//   login() async {
-//     if (formstate.currentState!.validate()) {
-//       statusRequest = StatusRequest.loading;
-//       update();
-//       var response = await loginData.postdata(email.text, password.text);
-//       print("=============================== Controller $response ");
-//       statusRequest = handlingData(response);
-//       if (StatusRequest.success == statusRequest) {
-//         if (response['status'] == "success") {
-//           // data.addAll(response['data']);
-//           if (response['data']['users_approve'] == "1") {
-//             myServices.shared_Preferences
-//                 .setString("id", response['data']['users_id']);
-//             String userid = myServices.shared_Preferences.getString("id")!;
-//             myServices.shared_Preferences
-//                 .setString("username", response['data']['users_name']);
-//             myServices.shared_Preferences
-//                 .setString("email", response['data']['users_email']);
-//             myServices.shared_Preferences
-//                 .setString("phone", response['data']['users_phone']);
-//             myServices.shared_Preferences.setString("step", "2");
+  @override
+  goToSignUp() {
+    // Get.offNamed(AppRoute.signUp);
+  }
 
-//             FirebaseMessaging.instance.subscribeToTopic("users");
-//             FirebaseMessaging.instance.subscribeToTopic("users${userid}");
-            
-//             Get.offNamed(AppRoute.homepage);
-//           } else {
-//             Get.toNamed(AppRoute.verfiyCodeSignUp,
-//                 arguments: {"email": email.text});
-//           }
-//         } else {
-//           Get.defaultDialog(
-//               title: "ُWarning", middleText: "Email Or Password Not Correct");
-//           statusRequest = StatusRequest.failure;
-//         }
-//       }
-//       update();
-//     } else {}
-//   }
+  @override
+  void onInit() {
+    // FirebaseMessaging.instance.getToken().then((value) {
+    //   print(value);
+    //   String? token = value;
+    // });
+    email = TextEditingController();
+    password = TextEditingController();
+    super.onInit();
+  }
 
-//   @override
-//   goToSignUp() {
-//     Get.offNamed(AppRoute.signUp);
-//   }
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
-//   @override
-//   void onInit() {
-//     FirebaseMessaging.instance.getToken().then((value) {
-//       print(value);
-//       String? token = value;
-//     });
-//     email = TextEditingController();
-//     password = TextEditingController();
-//     super.onInit();
-//   }
-
-//   @override
-//   void dispose() {
-//     email.dispose();
-//     password.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   goToForgetPassword() {
-//     Get.toNamed(AppRoute.forgetPassword);
-//   }
-// }
+  @override
+  goToForgetPassword() {
+    // Get.toNamed(AppRoute.forgetPassword);
+  }
+}

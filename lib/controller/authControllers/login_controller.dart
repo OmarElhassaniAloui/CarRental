@@ -26,7 +26,7 @@ class LoginControllerImp extends LoginController {
     showpassword = showpassword==true ? false:true;
     update();
   }
-  
+
   
 
   StatusRequest statusRequest = StatusRequest.none;
@@ -35,7 +35,6 @@ class LoginControllerImp extends LoginController {
   @override
   login() async {
     try{
-
     if (formstate.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
@@ -53,9 +52,11 @@ class LoginControllerImp extends LoginController {
       }
       update();
     } else {}
+
     }catch(e){
       print(e);
     }
+
   }
 
   @override

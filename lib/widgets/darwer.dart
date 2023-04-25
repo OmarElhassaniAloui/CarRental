@@ -265,27 +265,34 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
                 title: Text('Log Out '),
                 onTap: () {
-                   
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text('Are you sure you want to log out?'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('No')),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(builder: (_) {
+                                        return LoginScreen();
+                                      }),
+                                    );
+                                  },
+                                  child: Text('Yes')),
+                            ],
+                          ));
 
-                  // await showLoading(
-                  //   context,
-                  //   Text("are you sure you want to logout?"),
-
-                  //   Container(
-                  //     height: 80,
-                  //     width: 80,
-                  //     child: Center(
-                  //       child: CircularProgressIndicator(),
-                  //     ),
-                  //   ),
-
+                  // Navigator.of(context).pushReplacement(
+                  //   MaterialPageRoute(builder: (_) {
+                  //     return LoginScreen();
+                  //   }),
                   // );
-                  
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) {
-                      return LoginScreen();
-                    }),
-                  );
                 },
               ),
             ),

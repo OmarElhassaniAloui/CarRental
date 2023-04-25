@@ -4,8 +4,8 @@ class AppLink {
   static const String signUpLink = "$serverLink/auth/signup.php";  
   static const String loginLink = "$serverLink/auth/login.php";   
   
-  // static const String test = "$serverLink/test.php";  
-  
+ // favorit api links 
+  static const String favoritlink = "$serverLink/favorit.php";
 
 
 

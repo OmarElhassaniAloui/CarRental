@@ -12,8 +12,7 @@ class FavoritData {
         "car_id":itemId ,  
        }
        );  
-       return dataResponse.fold((l) => l, (r) => r); 
-
+       return dataResponse.fold((l) => l, (r) => r);
   } 
 
 }

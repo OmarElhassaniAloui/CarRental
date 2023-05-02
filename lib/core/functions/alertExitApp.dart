@@ -17,8 +17,6 @@ Future<bool> alertExit() {
       TextButton(
         onPressed: () {
           exit(0);
-          // Get.back();
-          // Get.back();
         },
         child: Text("Yes"),
       ),

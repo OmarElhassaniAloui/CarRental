@@ -19,7 +19,7 @@ class CarItems {
     @required this.gearbox,
     @required this.title,
   });
-
+  // static data 
   static CarsList allCars = new CarsList(cars: [
     CarItems(
       title: 'Honda Civic 2018',
@@ -75,8 +75,38 @@ class CarItems {
       brand: 'Honda',
       path: 'assets/car_images/car6.jpg',
     ),
-  ]);
-}
+  ]); 
+  // get data from json
+  CarItems.fromJson(Map<String, dynamic> json) {
+    carid = json['caid'];
+    title = json['title'];
+    price = json['price'];
+    path = json['path'];
+    color = json['color'];
+    gearbox = json['gearbox'];
+    fuel = json['fuel'];
+    brand = json['brand'];
+  } 
+  // convert data to json 
+  CarItems.toJson() {
+    final Map<String, dynamic > data = new Map<String, dynamic>();
+    data['carid'] = this.carid;
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['path'] = this.path;
+    data['color'] = this.color;
+    data['gearbox'] = this.gearbox;
+    data['fuel'] = this.fuel;
+    data['brand'] = this.brand;
+  }
+
+} 
+
+
+
+
+
+
 
 class CarsList {
   List<CarItems>? cars;

@@ -1,5 +1,6 @@
 import 'package:carrental/core/constants/appThem.dart';
 import 'package:carrental/core/services/services.dart';
+import 'package:carrental/routes.dart';
 import 'package:flutter/material.dart';
 import 'binding/initalbinding.dart';
 import 'core/localization/Change_langue.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBinding(),
       theme: AppTheme.darkTheme,
       home: isLogin == false ? OnBoardingPage() : Home(),
+      // getPages: routs ,
     );
   }
 }

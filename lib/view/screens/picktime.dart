@@ -56,7 +56,6 @@ class _dateAndTimePickerState extends State<dateAndTimePicker> {
                   },
                   onChanged: (val) => print(val),
                   validator: (val) {
-                    // departTripTime.text = val.toString();
                     print(val);
                     return null;
                   },
@@ -127,7 +126,7 @@ class _dateAndTimePickerState extends State<dateAndTimePicker> {
             OutlinedButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => Identification(),
+                  builder: (context) => PersonalInfo(),
                 ));
               },
               child: Text(

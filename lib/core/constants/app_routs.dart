@@ -18,6 +18,4 @@ class AppRout {
   static const String successPage = "/successPage"; 
   static const String supportPage = "/supportPage"; 
   static const String termsAndConditionsPage = "/termsAndConditionsPage";  
-  
- 
 }

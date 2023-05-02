@@ -1,5 +1,6 @@
 // import 'package:car/screens/home_screen.dart';
 import 'package:carrental/controller/authControllers/login_controller.dart';
+import 'package:carrental/core/functions/alertExitApp.dart';
 import 'package:carrental/view/screens/authScreens/reset_password.dart';
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -125,76 +126,81 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
         // backgroundColor: Colors.white,
-        body: Center(
-      child: SingleChildScrollView(
-        child: Container(
-          // color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: GetBuilder<LoginControllerImp>(
-              builder: (controller) => Form(
-                key: controller.formstate,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 200,
-                      child: Image.asset('assets/logo/logo.jpg'),
-                    ),
-                    SizedBox(height: 45),
-                    emailField,
-                    SizedBox(height: 25),
-                    passwordField,
-                    SizedBox(height: 35),
-                    loginButton,
-                    SizedBox(height: 15),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Don't have an account? "),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                   builder: (context) => Home(),
-                                  // builder: (context) => RegistrationScreen(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "SignUp",
-                              style: TextStyle(
-                                color: Colors.redAccent,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          )
-                        ]),
-                    SizedBox(height: 8),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResetPassword()),
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Forgot Password?",
-                            style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                decoration: TextDecoration.underline),
-                          ),
-                        ],
+        body: WillPopScope(
+      onWillPop: () async {
+        return await alertExit();
+      },
+      child: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            // color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(36.0),
+              child: GetBuilder<LoginControllerImp>(
+                builder: (controller) => Form(
+                  key: controller.formstate,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 200,
+                        child: Image.asset('assets/logo/logo.jpg'),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 45),
+                      emailField,
+                      SizedBox(height: 25),
+                      passwordField,
+                      SizedBox(height: 35),
+                      loginButton,
+                      SizedBox(height: 15),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Don't have an account? "),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Home(),
+                                    // builder: (context) => RegistrationScreen(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "SignUp",
+                                style: TextStyle(
+                                  color: Colors.redAccent,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            )
+                          ]),
+                      SizedBox(height: 8),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResetPassword()),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Forgot Password?",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                  decoration: TextDecoration.underline),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

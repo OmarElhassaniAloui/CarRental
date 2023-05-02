@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class CarItems {
+  int? carid;
   String? title;
   double? price;
   String? path;

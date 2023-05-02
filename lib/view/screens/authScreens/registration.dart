@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-
-
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
@@ -33,7 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SignUpControllerImp());
+    Get.lazyPut(() => SignUpControllerImp());
     //! first name field
     final firstNameField = GetBuilder<SignUpControllerImp>(
         init: SignUpControllerImp(),
@@ -264,7 +262,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             height: 200,
                             child: Image.asset(
                               "assets/logo/logo.jpg",
-                        )),
+                            )),
                         SizedBox(height: 45),
                         firstNameField,
                         SizedBox(height: 20),

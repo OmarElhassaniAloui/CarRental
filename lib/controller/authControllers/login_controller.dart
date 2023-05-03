@@ -17,21 +17,23 @@ class LoginControllerImp extends LoginController {
   LoginData loginData = LoginData(Get.find());
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
-
+  // form controllers 
   late TextEditingController email;
   late TextEditingController password;
 
-  bool showpassword = true;
+  bool showpassword = true; 
+  // show and hide password
   showPassword(){
     showpassword = showpassword==true ? false:true;
     update();
   }
-
+  //shared preferences
+  MyServices myServices = Get.find();
   
-
+  // status request
   StatusRequest statusRequest = StatusRequest.none;
 
-  
+  // login function
   @override
   login() async {
     try{
@@ -42,7 +44,12 @@ class LoginControllerImp extends LoginController {
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
-        if (response['status'] == "success") {
+        if (response['status'] == "success") {  
+          myServices.shared_Preferences.setString("id",response['data']['id'] ) ; 
+          myServices.shared_Preferences.setString("firstName",response['data']['firstName'] ) ; 
+          myServices.shared_Preferences.setString("lastName",response['data']['lastName'] ) ; 
+          myServices.shared_Preferences.setString("email", response['data']['email']) ; 
+          myServices.shared_Preferences.setString("step",'2') ; 
           Get.to(Home());
         } else {
           Get.defaultDialog(

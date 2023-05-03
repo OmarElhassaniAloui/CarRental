@@ -1,5 +1,5 @@
 class ClientModel {
-  String? uid;
+  String? id_client;
   String? email;
   String? fullName;
   String? phoneNumber;
@@ -12,7 +12,7 @@ class ClientModel {
   String? localisation;
 //! constructor 
   ClientModel({
-    this.uid,
+    this.id_client,
     this.email,
     this.fullName,
     this.phoneNumber,
@@ -28,7 +28,7 @@ class ClientModel {
   //! receiving data from server
   factory ClientModel.fromMap(map) {
     return ClientModel(
-      uid: map['uid'],
+      id_client: map['uid'],
       email: map['email'],
       fullName: map['fullName'],
       phoneNumber: map['phoneNumber'],
@@ -44,7 +44,7 @@ class ClientModel {
   //! sending data to our server
   Map<String, dynamic> toMap() {
     return {
-      'uid': uid,
+      'uid': id_client,
       'email': email,
       'fullName': fullName,
       'phoneNumber': phoneNumber,

@@ -112,9 +112,9 @@ class _LoginScreenState extends State<LoginScreen> {
             onPressed: () {
               controller.login();
             },
-            child: Text(
+            child:  Text(
               "Login",
-              textAlign: TextAlign.center,
+              textAlign:  TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
                 // color: Colors.white,

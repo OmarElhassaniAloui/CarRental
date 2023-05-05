@@ -3,8 +3,9 @@ import 'package:carrental/core/constants/link_api.dart';
 
 class FavoritData {
   Crud? crud;
-  FavoritData(this.crud);
-  addFavorit(String userId, String itemId) async {
+  FavoritData(this.crud); 
+  // add facorit
+  addFavorite(String userId, String itemId) async {
     var dataResponse = await crud!.postData(
       AppLink.favoritlink,
        {
@@ -13,6 +14,19 @@ class FavoritData {
        }
        );  
        return dataResponse.fold((l) => l, (r) => r);
-  } 
+  }  
+  //remove favorit 
+  removeFavorite(String usersid ,String itemsid)async {
+
+    var response = await crud!.postData(
+        AppLink.favoritlink,
+         {
+          "usersid": usersid,
+          "itemsid": itemsid
+          }
+        );
+    return response.fold((l) => l, (r) => r);
+
+  }
 
 }

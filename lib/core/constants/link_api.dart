@@ -12,5 +12,4 @@ class AppLink {
   // home urls 
   static const String carsLink = "$serverLink/carCart/car_cart.php";
 
-
 }

@@ -9,7 +9,7 @@ class FavoritData {
       AppLink.favoritlink,
        {
         "id":userId ,  
-        "car_id":itemId ,  
+        "favorit_car_id":itemId ,  
        }
        );  
        return dataResponse.fold((l) => l, (r) => r);

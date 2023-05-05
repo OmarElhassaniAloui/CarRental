@@ -1,10 +1,8 @@
 import 'package:carrental/core/class/statusrequest.dart';
-import 'package:carrental/core/constants/app_routs.dart';
-import 'package:carrental/view/screens/authScreens/login.dart';
+
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/functions/handlingData.dart';
 import '../../data/datasrc/remot/authData/signup_data.dart';
 

@@ -8,7 +8,8 @@ class AppLink {
   // static const String test = "$serverLink/test.php";  
   static const String favoritlink = "$serverLink/favorit.php";
   
-
+  // home urls 
+  static const String carsLink = "$serverLink/cars_list.php";
 
 
 }

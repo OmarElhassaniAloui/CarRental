@@ -39,7 +39,9 @@ class CarDetails extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //todo :  favorite function
+            },
             icon: Icon(
               Icons.favorite,
               size: 25,
@@ -47,7 +49,9 @@ class CarDetails extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //todo :  share function
+            },
             icon: Icon(Icons.share, size: 25),
           ),
         ],
@@ -105,7 +109,9 @@ class CarDetails extends StatelessWidget {
             ],
           ),
           SizedBox(height: 10),
-          ElevatedButton(
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: ElevatedButton(
               onPressed: () async {
                 // bool? onUserLogin;
                 Navigator.of(context).push(
@@ -114,14 +120,17 @@ class CarDetails extends StatelessWidget {
                   }),
                 );
               },
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20))),
-              ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black,
+                minimumSize: Size(double.infinity, 50),
+                
+              ),           
               child: Text(
                 "Book Now ",
                 style: TextStyle(fontSize: 20, color: Colors.white),
-              ))
+              ),
+            ),
+          ),
         ],
       ),
     );

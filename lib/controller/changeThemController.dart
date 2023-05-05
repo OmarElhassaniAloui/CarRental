@@ -1,7 +1,5 @@
-import 'dart:math';
 
 import 'package:carrental/core/constants/appThem.dart';
-import 'package:flutter/material.dart';
 
 // import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -2,13 +2,12 @@ import 'package:carrental/core/class/statusrequest.dart';
 import 'package:carrental/core/functions/handlingData.dart';
 import 'package:carrental/core/services/services.dart';
 import 'package:carrental/data/datasrc/remot/favorit_data.dart';
-import'package:flutter/material.dart';   
-import 'package:get/get.dart'; 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FavoritControllerImp extends GetxController {
-  //Todo khasni njib data mn el Model ... 
-  FavoritData? favoritData = FavoritData(Get.find()); 
-
+  //Todo khasni njib data mn el Model ...
+  FavoritData? favoritData = FavoritData(Get.find());
 
   List data = [];
 
@@ -29,10 +28,9 @@ class FavoritControllerImp extends GetxController {
   addFavorite(String itemsid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await favoritData!.addFavorite(
+    var response = await favoritData!
+        .addFavorite(myServices.sharedPreferences.getString("id")!, itemsid);
 
-        myServices.shared_Preferences.getString("id")!, itemsid); 
-        
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -52,8 +50,8 @@ class FavoritControllerImp extends GetxController {
   removeFavorite(String itemsid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await favoritData!.removeFavorite(
-        myServices.shared_Preferences.getString("id")!, itemsid);
+    var response = await favoritData!
+        .removeFavorite(myServices.sharedPreferences.getString("id")!, itemsid);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -69,8 +67,4 @@ class FavoritControllerImp extends GetxController {
       // End
     }
   }
-  
-  
-
-  
 }

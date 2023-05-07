@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBinding(),
       theme: AppTheme.darkTheme,
       home: isLogin == false ? OnBoardingPage() : Home(),
-      // getPages: routs ,
+      getPages: routs ,
     );
   }
 }

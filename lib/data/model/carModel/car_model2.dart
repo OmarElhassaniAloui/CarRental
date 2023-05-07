@@ -13,6 +13,9 @@ class CarModel2 {
   String? photo2;
   String? photo3;
   String? photo4;
+  String? auto;
+  int? rate;
+
 
   CarModel2(
       {this.carId,
@@ -28,7 +31,10 @@ class CarModel2 {
       this.photo1,
       this.photo2,
       this.photo3,
-      this.photo4});
+      this.photo4, 
+      this.auto,
+      this.rate
+      });
 
   CarModel2.fromJson(Map<String, dynamic> json) {
     carId = json['car_id'];
@@ -45,6 +51,8 @@ class CarModel2 {
     photo2 = json['photo2'];
     photo3 = json['photo3'];
     photo4 = json['photo4'];
+    auto = json['auto'];
+    rate = json['rate'];
   }
 
   Map<String, dynamic> toJson() {
@@ -63,6 +71,8 @@ class CarModel2 {
     data['photo2'] = this.photo2;
     data['photo3'] = this.photo3;
     data['photo4'] = this.photo4;
+    data['auto'] = this.auto;
+    data['rate'] = this.rate;
     return data;
   }
 }

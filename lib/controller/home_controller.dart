@@ -1,3 +1,4 @@
+import 'package:carrental/core/class/crud.dart';
 import 'package:carrental/core/class/statusrequest.dart';
 import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/functions/handlingData.dart';
@@ -11,53 +12,53 @@ abstract class HomeController extends GetxController {
   goToBookingPage(int selectedCar);
 }
 
-class HomeControllerImp extends HomeController { 
-  
-  // MyServices myServices = Get.find(); 
+class HomeControllerImp extends HomeController {
+  // MyServices myServices = Get.find();
 
-  HomeData homeData = HomeData(Get.find());   
+  HomeData homeData = HomeData(Get.find());
 
   String? username;
   String? id;
-  String? lang; 
+  String? lang;
 
-  List cars = []; 
+  List cars = [];
 
-@override
-  initData() {  
+  @override
+  initData() {
     // username = myServices.shared_Preferences.getString("username");
     // id = myServices.shared_Preferences.getString("id");
-    // lang = myServices.shared_Preferences.getString("lang"); 
+    // lang = myServices.shared_Preferences.getString("lang");
     // update();
-
-    
   }
- @override
-  getData()async {
+  @override
+  getData() async {
+    cars.clear();
     var statusRequest = StatusRequest.loading;
     var response = await homeData.getAllCars();
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        cars.addAll(response['car']['data']);
+        //! hna kayn l'mochkil..👇
+        cars.addAll(response['data']);
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
     update();
-    
   }
+
   @override
   void onInit() {
-    getData() ; 
+    getData();
     super.onInit();
   }
- @override
-  goToBookingPage(selectedCar){ 
+
+  @override
+  goToBookingPage(selectedCar) {
     Get.toNamed(
       AppRout.bookingNowPage,
       arguments: selectedCar,
-    ) ;  
+    );
   }
 }

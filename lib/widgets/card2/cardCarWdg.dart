@@ -1,37 +1,17 @@
+import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:carrental/view/screens/card_details.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/iconic_icons.dart';
 import 'package:fluttericon/maki_icons.dart';
+import 'package:carrental/core/constants/link_api.dart';
 
 class CarCard extends StatelessWidget {
-  int? id;
-  String? title;
-  double? pricePerHour;
-  double? pricePerDay;
-  double? pricePerMonth;
-  String? ImagePath;
-  String? color;
-  String? Seats;
-  String? fuel;
-  String? brand;
-  int? rate;
-  String? auto;
+  final CarModel2 carModel;
 
   CarCard({
     super.key,
-    @required this.id,
-    @required this.title,
-    @required this.pricePerHour,
-    @required this.pricePerDay,
-    @required this.pricePerMonth,
-    @required this.ImagePath,
-    @required this.color,
-    @required this.Seats,
-    @required this.fuel,
-    @required this.brand,
-    @required this.rate,
-    @required this.auto,
+    required this.carModel,
   });
 
   @override
@@ -69,9 +49,11 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                '${Seats}',
+                                '${carModel.seats}',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
                               ),
                             ],
                           ),
@@ -89,9 +71,9 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                '${auto}',
+                                '${carModel.auto}',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
+                                    color: Colors.white, fontSize: 15,),
                               ),
                             ],
                           ),
@@ -109,7 +91,7 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                "${fuel}",
+                                "${carModel.carburant}",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15),
                               ),
@@ -129,7 +111,7 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                "${rate}",
+                                "${carModel.rate}",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15),
                               ),
@@ -146,7 +128,9 @@ class CarCard extends StatelessWidget {
                       height: 150,
                       width: 150,
                       decoration: BoxDecoration(),
-                      child: Image.asset('${ImagePath}', fit: BoxFit.contain),
+                      child: Image.network(
+                          '${AppLink.imageLink}/${carModel.photo1}',
+                          fit: BoxFit.contain),
                     ),
                   ),
                 ],
@@ -159,7 +143,7 @@ class CarCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'MARUTI',
+                      '${carModel.brand}',
                       style: TextStyle(
                         fontSize: 25,
                       ),
@@ -168,7 +152,7 @@ class CarCard extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'Vittara Brezza',
+                      '${carModel.model}',
                       style: TextStyle(
                         fontSize: 25,
                       ),
@@ -182,7 +166,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${pricePerHour}",
+                              "\Dh ${carModel.pricePerDay}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -201,7 +185,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${pricePerDay}",
+                              "\$${carModel.pricePerDay}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -220,7 +204,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$ ${pricePerMonth}",
+                              "\$${carModel.pricePerDay}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),

@@ -22,7 +22,8 @@ import 'view/screens/authScreens/login.dart';
 
 
 List<GetPage<dynamic>> routs =[ 
-  GetPage(name: AppRout.homepage, page:()=> const Home()) , 
+  GetPage(name: "/", page: ()=> OnBoardingPage()),
+  GetPage(name: AppRout.homepage, page:()=>  Home()) , 
   GetPage(name: AppRout.login, page:()=>  LoginScreen()) , 
   GetPage(name: AppRout.bookingNowPage, page:()=>  BookingNowPage()) , 
   GetPage(name: AppRout.carDetails, page:()=>  CarDetails()) , 

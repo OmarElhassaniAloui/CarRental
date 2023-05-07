@@ -1,4 +1,7 @@
+import 'package:carrental/controller/car_details_controller.dart';
+import 'package:carrental/controller/home_controller.dart';
 import 'package:carrental/core/constants/app_routs.dart';
+import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:carrental/view/screens/personal_info_pages/personal_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -6,14 +9,22 @@ import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
 
-class CardDetails extends StatelessWidget {
-  const CardDetails({super.key});
+class CardDetails extends GetView<CarDetailsControllerImp> {
+  // final CarModel2 carModel;
+  //! la valeur de selectedCar doit etre recuperer depuis la page home
+  int? selectedCar;
+  CardDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CarDetailsControllerImp());
+    selectedCar = 0;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: Text(
+          // 'Details',
+          controller.initData().toString(),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.all(15),
@@ -99,32 +110,82 @@ class CardDetails extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text("Mercedes"),
-                      Spacer(),
-                      Text("\$ 100/day"),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          controller.cars[selectedCar!]["brand"],
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "\$ ${controller.cars[selectedCar!]["price_per_day"]}/day",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Text("Benz w176"),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          controller.cars[selectedCar!]["model"],
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Text("5.0"),
-                      Icon(Icons.star, color: Colors.yellow, size: 15),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          controller.cars[selectedCar!]["rate"].toString(),
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          FontAwesome5.star,
+                          // Icons.star,
+                          color: Colors.yellow,
+                          size: 20,
+                        ),
+                      ],
+                    ),
                   ),
-                  Text("data"),
-                  Text("data"),
+
                   Divider(
                     thickness: 1.5,
                     height: 30,
                   ),
                   Container(
-                    child: Text("car spercification"),
+                    child: Text(
+                      "car spercification",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20),
                   Row(children: [
@@ -280,11 +341,24 @@ class CardDetails extends StatelessWidget {
                   ),
                   // car description
                   Container(
-                    child: Text("car description"),
+                    child: Text(
+                      "car description",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20),
                   Container(
-                    child: Text("car description data ..."),
+                    child: Text(
+                      controller.cars[selectedCar!]["description"],
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               ),

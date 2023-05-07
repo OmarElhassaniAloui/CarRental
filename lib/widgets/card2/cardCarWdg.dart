@@ -1,5 +1,6 @@
 import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:carrental/view/screens/card_details.dart';
+import 'package:carrental/widgets/details_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/iconic_icons.dart';
@@ -7,11 +8,13 @@ import 'package:fluttericon/maki_icons.dart';
 import 'package:carrental/core/constants/link_api.dart';
 
 class CarCard extends StatelessWidget {
+  int index ; 
   final CarModel2 carModel;
 
   CarCard({
     super.key,
     required this.carModel,
+    required this.index,
   });
 
   @override
@@ -219,21 +222,24 @@ class CarCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (builder) => CardDetails()));
-                      },
-                      child: Text(
-                        'Details',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 252, 252, 252)),
-                      ),
-                      style: TextButton.styleFrom(
-                        fixedSize: Size(190, 10),
-                        backgroundColor: Colors.green,
-                      ),
+                    DetailButton(
+                      index: index,
                     ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     Navigator.of(context).push(MaterialPageRoute(
+                    //         builder: (builder) => CardDetails()));
+                    //   },
+                    //   child: Text(
+                    //     'Details',
+                    //     style: TextStyle(
+                    //         color: Color.fromARGB(255, 252, 252, 252)),
+                    //   ),
+                    //   style: TextButton.styleFrom(
+                    //     fixedSize: Size(190, 10),
+                    //     backgroundColor: Colors.green,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

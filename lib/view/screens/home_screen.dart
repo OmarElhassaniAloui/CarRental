@@ -45,6 +45,7 @@ class Home extends GetView<HomeControllerImp> {
           itemBuilder: (Context, i) {
             // print(controller.cars.length); 
             return CarCard(
+              index: i,
               carModel: CarModel2.fromJson(controller.cars[i]),
             );
           },

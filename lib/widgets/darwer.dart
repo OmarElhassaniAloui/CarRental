@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import 'package:carrental/controller/changeThemController.dart';
-import 'package:unicons/unicons.dart';
 import 'package:get/get.dart';
 import '../view/screens/Terms_and_conditions_page.dart';
 import '../view/screens/faq_page.dart';
@@ -10,7 +8,6 @@ import '../view/screens/my_booking.dart';
 import '../view/screens/notification_Page.dart';
 import '../view/screens/saved_page.dart';
 import '../view/screens/support_page.dart';
-import './alertdialog.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import '../view/screens/authScreens/login.dart';

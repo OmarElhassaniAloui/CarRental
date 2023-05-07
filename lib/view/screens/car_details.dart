@@ -123,8 +123,7 @@ class CarDetails extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 primary: Colors.black,
                 minimumSize: Size(double.infinity, 50),
-                
-              ),           
+              ),
               child: Text(
                 "Book Now ",
                 style: TextStyle(fontSize: 20, color: Colors.white),

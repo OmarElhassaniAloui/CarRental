@@ -3,7 +3,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
 
-import '../../../widgets/card2/carList.dart';
 import 'payementPage.dart';
 
 class DrivingLicensecPage extends StatefulWidget {

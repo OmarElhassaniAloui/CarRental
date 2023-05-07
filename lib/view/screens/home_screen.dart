@@ -1,3 +1,5 @@
+import 'package:carrental/data/model/carModel/car_model.dart';
+import 'package:carrental/widgets/card2/cardCarWdg.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/constants.dart';
 import '../../widgets/cards/cars_grid.dart';
@@ -32,7 +34,33 @@ class _HomeState extends State<Home> {
           ),
         ),
         drawer: MyDrawer(),
-        body:
+        body:Container(
+        child:ListView.builder( 
+          physics: ScrollPhysics(),
+          itemCount: CarModel.allCars.cars!.length,
+          itemBuilder: (Context, i) {
+            return CarCard(
+              title: CarModel.allCars.cars![i].title,
+              Seats: CarModel.allCars.cars![i].Seats,
+              ImagePath: CarModel.allCars.cars![i].ImagePath,
+              fuel: CarModel.allCars.cars![i].fuel,
+              pricePerDay: CarModel.allCars.cars![i].pricePerDay,
+              pricePerHour: CarModel.allCars.cars![i].pricePerHour,
+              pricePerMonth: CarModel.allCars.cars![i].pricePerMonth,
+              rate: CarModel.allCars.cars![i].rate,
+              brand: CarModel.allCars.cars![i].brand,
+              color: CarModel.allCars.cars![i].color,
+              auto: CarModel.allCars.cars![i].auto,
+            );
+          },
+
+        ),  
+      ),
+
+
+
+
+
             // ListView(
             //   children: [
             // Padding(
@@ -42,10 +70,10 @@ class _HomeState extends State<Home> {
             //     style: MainHeading,
             //   ),
             // ),
-            Padding(
-          padding: const EdgeInsets.all(2),
-          child: CarsGridView(),
-        )
+            // Padding(
+            //    padding: const EdgeInsets.all(2),
+            //   child: CarsGridView(),
+            //  )
         //   ],
         // ),
         );

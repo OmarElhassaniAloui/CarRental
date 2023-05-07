@@ -1,12 +1,11 @@
-import 'package:carrental/data/model/carModel/car_model.dart';
-import 'package:carrental/view/screens/car_details.dart';
+import 'package:carrental/view/screens/card_details.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/iconic_icons.dart';
 import 'package:fluttericon/maki_icons.dart';
 
 class CarCard extends StatelessWidget {
-  int? index; 
+  int? id;
   String? title;
   double? pricePerHour;
   double? pricePerDay;
@@ -18,9 +17,10 @@ class CarCard extends StatelessWidget {
   String? brand;
   int? rate;
   String? auto;
+
   CarCard({
     super.key,
-    @required this.index, 
+    @required this.id,
     @required this.title,
     @required this.pricePerHour,
     @required this.pricePerDay,
@@ -237,16 +237,8 @@ class CarCard extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) {
-                        //     return CarDetails(
-                        //       title: CarModel.allCars.cars![i].title,
-                        //       color: color,
-                        //       fuel: fuel,
-                        //       brand: brand,
-                        //     );
-                        //   },
-                        // ));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (builder) => CardDetails()));
                       },
                       child: Text(
                         'Details',

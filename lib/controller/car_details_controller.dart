@@ -10,6 +10,7 @@ abstract class CarDetailsController extends GetxController {
 }
 
 class CarDetailsControllerImp extends CarDetailsController {
+
   CarDetailsData carDetailsData = CarDetailsData(Get.find());
 
   int? selectedCar;
@@ -31,7 +32,19 @@ class CarDetailsControllerImp extends CarDetailsController {
       }
     }
     update();
-  }
+  }  
+
+  // getCarId()async{ 
+  //   var response = await carDetailsData.getCarDetails();
+  //   print("=============================== Controller $response ");
+  //   if (response['status'] == "success") {
+  //     //! hna kayn l'mochkil..👇
+  //     selectedCar = response['data']['car_id'];
+  //   } else {
+  //     selectedCar = 0;
+  //   }
+  //   update();
+  // }
 
   @override
   void onInit() {

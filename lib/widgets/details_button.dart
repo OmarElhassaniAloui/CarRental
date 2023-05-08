@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DetailButton extends GetView<HomeControllerImp> {
-   int index ; 
-   DetailButton({super.key , required this.index});
+  int index;
+  DetailButton({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

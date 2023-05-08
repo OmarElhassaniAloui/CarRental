@@ -21,7 +21,6 @@ class Home extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     Get.put(HomeControllerImp());
     Get.put(Crud());
-
     return Scaffold(
       key: scaffoldkey,
       appBar: AppBar(
@@ -43,7 +42,6 @@ class Home extends GetView<HomeControllerImp> {
           physics: ScrollPhysics(),
           itemCount: controller.cars.length,
           itemBuilder: (Context, i) {
-            // print(controller.cars.length); 
             return CarCard(
               index: i,
               carModel: CarModel2.fromJson(controller.cars[i]),

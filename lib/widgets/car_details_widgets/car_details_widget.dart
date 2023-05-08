@@ -1,20 +1,19 @@
 import 'package:carrental/controller/car_details_controller.dart';
+import 'package:carrental/core/constants/link_api.dart';
 import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:carrental/view/screens/personal_info_pages/personal_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
-import 'package:get/get.dart';
 
-class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
+class CarDetailsWidget extends StatelessWidget {
   final CarModel2 carModel;
-                     
-  const CarDetailsWidget(this.carModel, {super.key});
+
+  CarDetailsWidget({super.key, required this.carModel});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CarDetailsControllerImp());
     return Container(
       margin: EdgeInsets.all(15),
       width: double.infinity,
@@ -37,7 +36,8 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                 Container(
                   height: 200,
                   width: 200,
-                  child: Image.asset("assets/car_images/car1.jpg"),
+                  child:
+                      Image.network('${AppLink.imageLink}/${carModel.photo1}'),
                 ),
                 Spacer(),
                 Container(
@@ -52,7 +52,8 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                             width: 1,
                           ),
                         ),
-                        child: Image.asset("assets/car_images/car1.jpg"),
+                        child: Image.network(
+                            '${AppLink.imageLink}/${carModel.photo1}'),
                       ),
                       SizedBox(height: 5),
                       Container(
@@ -64,7 +65,8 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                             width: 1,
                           ),
                         ),
-                        child: Image.asset("assets/car_images/car1.jpg"),
+                        child: Image.network(
+                            '${AppLink.imageLink}/${carModel.photo1}'),
                       ),
                       SizedBox(height: 5),
                       Container(
@@ -76,7 +78,8 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                             width: 1,
                           ),
                         ),
-                        child: Image.asset("assets/car_images/car1.jpg"),
+                        child: Image.network(
+                            '${AppLink.imageLink}/${carModel.photo1}'),
                       ),
                     ],
                   ),
@@ -84,7 +87,7 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           // car spercification
           Container(
             padding: EdgeInsets.all(10),
@@ -129,7 +132,7 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                   child: Row(
                     children: [
                       Text(
-                        "",
+                        "${carModel.model}",
                         // controller.cars[selectedCar!]["model"],
                         style: TextStyle(
                           fontSize: 25,
@@ -145,7 +148,7 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                   child: Row(
                     children: [
                       Text(
-                        "",
+                        "${carModel.rate}",
                         // controller.cars[selectedCar!]["rate"].toString(),
                         style: TextStyle(
                           fontSize: 25,
@@ -343,10 +346,10 @@ class CarDetailsWidget extends GetView<CarDetailsControllerImp> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Container(
                   child: Text(
-                    "data",
+                    "${carModel.description}",
                     // controller.cars[selectedCar!]["description"],
                     style: TextStyle(
                       fontSize: 20,

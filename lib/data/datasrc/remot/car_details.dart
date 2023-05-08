@@ -12,5 +12,5 @@ class CarDetailsData {
     );
     return dataResponse.fold((l) => l, (r) => r);
   }
-
+  
 } 

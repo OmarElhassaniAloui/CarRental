@@ -8,7 +8,7 @@ import 'package:fluttericon/maki_icons.dart';
 import 'package:carrental/core/constants/link_api.dart';
 
 class CarCard extends StatelessWidget {
-  int index ; 
+  int index;
   final CarModel2 carModel;
 
   CarCard({
@@ -76,7 +76,9 @@ class CarCard extends StatelessWidget {
                               Text(
                                 '${carModel.auto}',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 15,),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
                               ),
                             ],
                           ),
@@ -225,21 +227,6 @@ class CarCard extends StatelessWidget {
                     DetailButton(
                       index: index,
                     ),
-                    // TextButton(
-                    //   onPressed: () {
-                    //     Navigator.of(context).push(MaterialPageRoute(
-                    //         builder: (builder) => CardDetails()));
-                    //   },
-                    //   child: Text(
-                    //     'Details',
-                    //     style: TextStyle(
-                    //         color: Color.fromARGB(255, 252, 252, 252)),
-                    //   ),
-                    //   style: TextButton.styleFrom(
-                    //     fixedSize: Size(190, 10),
-                    //     backgroundColor: Colors.green,
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

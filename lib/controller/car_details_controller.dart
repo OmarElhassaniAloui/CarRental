@@ -41,12 +41,15 @@ class CarDetailsControllerImp extends CarDetailsController {
   }
 
   @override
-  initData(){
+  initData() {
     selectedCar = Get.arguments['selectedCar'];
     update();
   }
+  changeValue(value){ 
+    selectedCar = value;
+    update();  
+  }
 
   @override
-  goToBookingPage(int selectedCar) {} 
-
+  goToBookingPage(int selectedCar) {}
 }

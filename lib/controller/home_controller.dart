@@ -56,7 +56,9 @@ class HomeControllerImp extends HomeController {
   goToCarDetails(selectedCar) {
     Get.toNamed(
       AppRout.carDetails,
-      arguments: {'selectedCar': selectedCar},
+      arguments: {
+        'selectedCar': selectedCar,
+        },
     );
   } 
   

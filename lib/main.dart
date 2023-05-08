@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ChangeLangController controller = Get.put(ChangeLangController());
-    final theme = MyTheme.dark;
+    // final theme = MyTheme.dark;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rental Car ',

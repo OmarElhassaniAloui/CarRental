@@ -12,19 +12,38 @@ import 'package:get/get.dart';
 class CardDetails extends GetView<CarDetailsControllerImp> {
   // final CarModel2 carModel;
   //! la valeur de selectedCar doit etre recuperer depuis la page home
-  int? selectedCar;
+  int? selectedCar = 0;
   CardDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     Get.put(CarDetailsControllerImp());
-    selectedCar = 0;
+    // selectedCar = selectedCar! + 1;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          // 'Details',
-          controller.initData().toString(),
+          'Details',
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              //todo :  favorite function
+            },
+            icon: Icon(
+              Icons.favorite_border,
+              size: 25,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              //todo :  share function
+            },
+            icon: Icon(Icons.share, size: 25),
+          ),
+        ],
       ),
       body: Container(
         margin: EdgeInsets.all(15),

@@ -13,6 +13,7 @@ class MiddelWare extends GetMiddleware {
     if (myServices.shared_Preferences.getBool("isLogin") == true) {
       return RouteSettings(name: "/home");
     }
+    
     return null;
   }
 }

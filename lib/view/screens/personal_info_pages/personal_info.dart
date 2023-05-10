@@ -32,7 +32,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
   Widget build(BuildContext context) {
     final nextButton = OutlinedButton(
       onPressed: () {
-        postPeresonalInfToFireStor();
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return Identification();
         }));
@@ -92,8 +91,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   child: TextFormField(
                     autofocus: false,
                     keyboardType: TextInputType.name,
-                    controller: _fullNameController, 
-
+                    controller: _fullNameController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return ('please Enter your Full Name');
@@ -154,39 +152,71 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   height: 10,
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //! phone number field
-                    child: InternationalPhoneNumberInput(
-                      onInputChanged: (PhoneNumber number) {
-                        print(number.phoneNumber);
-                      },
-                      onInputValidated: (bool value) {
-                        print(value);
-                      },
-                      selectorConfig: SelectorConfig(
-                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                      ),
-                      ignoreBlank: false,
-                      autoValidateMode: AutovalidateMode.disabled,
-                      selectorTextStyle: TextStyle(color: Colors.black),
-                      initialValue: number,
-                      textFieldController: _mobilePhonController,
-                      formatInput: false,
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return ('please enter youre phone Number');
-                        }
-                      },
-                      keyboardType: TextInputType.numberWithOptions(
-                          signed: true, decimal: true),
-                      inputBorder: OutlineInputBorder(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //! email field
+                  child: TextFormField(
+                    autofocus: false,
+                    controller: _mobilePhonController,
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return ("Please Enter Your Number");
+                      }
+                      //! reg expression for email validation
+                      if (!RegExp("^0[67][0-9]{8}]").hasMatch(value)) {
+                        return ("Please Enter a valid Number");
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _mobilePhonController.text = value!;
+                    },
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone),
+                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: "Phone Number",
+                      border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      onSaved: (PhoneNumber number) {
-                        _mobilePhonController.text = number as String;
-                        print('On Saved: $number');
-                      },
-                    )),
+                    ),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                //   //! phone number field
+                //   child: InternationalPhoneNumberInput(
+                //     onInputChanged: (PhoneNumber number) {
+                //       print(number.phoneNumber);
+                //     },
+                //     onInputValidated: (bool value) {
+                //       print(value);
+                //     },
+                //     selectorConfig: SelectorConfig(
+                //       selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                //     ),
+                //     ignoreBlank: false,
+                //     autoValidateMode: AutovalidateMode.disabled,
+                //     selectorTextStyle: TextStyle(color: Colors.black),
+                //     initialValue: number,
+                //     textFieldController: _mobilePhonController,
+                //     formatInput: false,
+                //     validator: (val) {
+                //       if (val!.isEmpty) {
+                //         return ('please enter youre phone Number');
+                //       }
+                //     },
+                //     keyboardType: TextInputType.numberWithOptions(
+                //         signed: true, decimal: true),
+                //     inputBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(10),
+                //     ),
+                //     onSaved: (PhoneNumber number) {
+                //       _mobilePhonController.text = number as String;
+                //       print('On Saved: $number');
+                //     },
+                //   ),
+                // ),
                 SizedBox(
                   height: 10,
                 ),
@@ -231,26 +261,5 @@ class _PersonalInfoState extends State<PersonalInfo> {
     return;
   }
 
-  postPeresonalInfToFireStor() async {
-    //todo: 1 n3ayto 3la fireStor
-    //todo: 2 n3yto 3la l user model
-    //todo: 3 nsifto les valeur
-    // FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    // CollectionReference client =
-    //     FirebaseFirestore.instance.collection('client');
-    // User? _user = _auth.currentUser;
-    //! hada user model
-    ClientModel clientModel = ClientModel();
-
-    //! hna njibo les valeur li jayin mn les TextformFields
-    clientModel.fullName = _fullNameController.text;
-    clientModel.email = _emailController.text;
-    clientModel.phoneNumber = _mobilePhonController.text;
-    clientModel.localisation = _adressController.text;
-    // await client.add(clientModel.toMap());
-
-    // await firebaseFirestore.collection("client").doc(_user.uid).set(
-    //       clientModel.toMap(),
-    //     );
-  }
+  
 }

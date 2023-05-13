@@ -23,7 +23,7 @@ class CarCard extends StatelessWidget {
       borderOnForeground: true,
       shadowColor: Colors.grey,
       elevation: 4,
-      color: Color.fromARGB(255, 240, 241, 241),
+      // color: Color.fromARGB(255, 240, 241, 241),
       child: Container(
         height: 220,
         width: double.infinity,

@@ -1,4 +1,5 @@
 import 'package:carrental/controller/car_details_controller.dart';
+import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/constants/link_api.dart';
 import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:carrental/view/screens/personal_info_pages/personal_info.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
+import 'package:get/get.dart';
 
 class CarDetailsWidget extends StatelessWidget {
   final CarModel2 carModel;
@@ -370,10 +372,7 @@ class CarDetailsWidget extends StatelessWidget {
           Container(
             child: TextButton(
               onPressed: () {
-                // Get.toNamed(AppRout.personalInfPage);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return PersonalInfo();
-                }));
+                Get.toNamed(AppRout.pickTimePage); 
               },
               child: Text("Book Now"),
               style: TextButton.styleFrom(

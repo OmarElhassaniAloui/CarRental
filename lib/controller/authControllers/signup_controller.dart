@@ -42,8 +42,8 @@ class SignUpControllerImp extends SignUpController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          data.addAll(response['data']);
-          Get.toNamed(AppRout.homepage, arguments: {
+          // data.addAll(response['data']);
+          Get.offNamed(AppRout.homepage, arguments: {
             "email": email.text,
           });
         } else {

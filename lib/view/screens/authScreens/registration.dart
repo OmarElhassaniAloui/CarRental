@@ -3,31 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class RegistrationScreen extends StatefulWidget {
+class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
-
-  @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
-}
-
-class _RegistrationScreenState extends State<RegistrationScreen> {
-  // final _auth = FirebaseAuth.instance;
-
-  //! string for displaying the error Message
-  String? errorMessage;
-  //! chosing Role  ;
-  // var valueChoose = 'client';
-  // List roleItems = ['Client ', 'Admin'];
-  // var role = 'client ';
-
-  //! our form key
-  // final _formKey = GlobalKey<FormState>();
-  //! editing Controller
-  // final firstNameEditingController = TextEditingController();
-  // final secondNameEditingController = TextEditingController();
-  // final emailEditingController = TextEditingController();
-  // final passwordEditingController = TextEditingController();
-  // final confirmPasswordEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -86,34 +63,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
             )));
-
-    // cin field
-    // final cinField = TextFormField(
-    //   autofocus: false,
-    //   controller: cinControler,
-    //   keyboardType: TextInputType.text,
-    //   validator: (text) {
-    //     if (text!.isEmpty) {
-    //       return ('please Enter your Cin');
-    //     }
-    //     if (!RegExp("^()").hasMatch(text)) {
-    //       return ('please Enter your real CIN ');
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (text) {
-    //     cinControler.text = text!;
-    //   },
-    //   textInputAction: TextInputAction.next,
-    //   decoration: InputDecoration(
-    //     prefixIcon: Icon(Icons.perm_identity),
-    //     contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "CIN",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
 
     //!email field
     final emailField = GetBuilder<SignUpControllerImp>(
@@ -222,14 +171,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
 //! chosing role dropdown menu
-
-    // final chosingRole = Container(
-    //   decoration: BoxDecoration(
-    //     border: Border.all(color: Colors.grey, width: 1),
-    //     borderRadius: BorderRadius.circular(10),
-    //   ),
-    //   child: DropDownMenu(),
-    // );
 
     return Scaffold(
       // backgroundColor: Colors.white,

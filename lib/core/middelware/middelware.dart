@@ -14,8 +14,8 @@ class MiddelWare extends GetMiddleware{
     if (myServices.sharedPreferences.getString("step") == '2') {
       return RouteSettings(name: AppRout.homepage);
     }
-     
-    if (myServices.sharedPreferences.getString("onboarding") =='1') {
+    //onboarding middleware
+    if (myServices.sharedPreferences.getString("step") =='1') {
       return RouteSettings(name: AppRout.login);
     }
     

@@ -5,31 +5,23 @@ import 'package:carrental/core/functions/checkInternet.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-class Crud { 
-  
-
-  
-
+class Crud {
   Future<Either<StatusRequest, Map>> postData(String linkurl, Map data) async {
+    if (await checkInternet()) {
+      var response = await http.post(Uri.parse(linkurl), body: data);
+      print(response.statusCode);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Map responsebody = jsonDecode(response.body);
+        print(responsebody);
 
-      if (await checkInternet()) {
-        var response = await http.post(Uri.parse(linkurl), body: data);
-          print(response.statusCode) ;
-
-        if (response.statusCode == 200 || response.statusCode == 201) {
-          Map responsebody = jsonDecode(response.body);
-          print(responsebody) ;
-
-          return Right(responsebody);
-        } else {
-          return const Left(StatusRequest.serverFailure);
-        }
+        return Right(responsebody);
       } else {
-        return const Left(StatusRequest.offlineFailure);
+        return const Left(StatusRequest.serverFailure);
       }
-
-  } 
-  
+    } else {
+      return const Left(StatusRequest.offlineFailure);
+    }
+  }
 }
 
 // had lfunction katsift data (post)

@@ -1,3 +1,4 @@
+import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/services/services.dart';
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class LoginControllerImp extends LoginController {
     update();
   }
 
+  List data = [];
   //shared preferences
   MyServices myServices = Get.find();
 
@@ -37,41 +39,36 @@ class LoginControllerImp extends LoginController {
   // login function
   @override
   login() async {
-    try {
-      if (formstate.currentState!.validate()) {
-        statusRequest = StatusRequest.loading;
-        update();
-        var response = await loginData.postdata(email.text, password.text);
-        print("=============================== Controller $response ");
-        statusRequest = handlingData(response);
-        if (StatusRequest.success == statusRequest) {
-          if (response['status'] == "success") {
-            myServices.sharedPreferences
-                .setString("id", response['data']['id']);
-            myServices.sharedPreferences
-                .setString("firstName", response['data']['firstName']);
-            myServices.sharedPreferences
-                .setString("lastName", response['data']['lastName']);
-            myServices.sharedPreferences
-                .setString("email", response['data']['email']);
-            myServices.sharedPreferences.setString("step", '2');
-            Get.to(Home());
-          } else {
-            Get.defaultDialog(
-                title: "ُWarning", middleText: "Email Or Password Not Correct");
-            statusRequest = StatusRequest.failure;
-          }
+    if (formstate.currentState!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await loginData.postdata(email.text, password.text);
+      print("=============================== Controller $response ");
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
+          // myServices.sharedPreferences.setString("id", response['data']['id']);
+          // myServices.sharedPreferences
+          //     .setString("firstName", response['data']['firstName']);
+          // myServices.sharedPreferences
+          //     .setString("lastName", response['data']['lastName']);
+          // myServices.sharedPreferences
+          //     .setString("email", response['data']['email']);
+          myServices.sharedPreferences.setString("step",'2');
+          Get.offNamed(AppRout.homepage);
+        } else {
+          Get.defaultDialog(
+              title: "ُWarning", middleText: "Email Or Password Not Correct");
+          statusRequest = StatusRequest.failure;
         }
-        update();
-      } else {}
-    } catch (e) {
-      print(e);
-    }
+      }
+      update();
+    } else {}
   }
 
   @override
   goToSignUp() {
-    // Get.offNamed(AppRoute.signUp);
+    Get.offNamed(AppRout.signup);
   }
 
   @override
@@ -94,6 +91,6 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToForgetPassword() {
-    // Get.toNamed(AppRoute.forgetPassword);
+    // Get.toNamed(AppRout.forgetPassword);
   }
 }

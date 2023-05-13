@@ -1,5 +1,6 @@
 // import 'package:car/screens/home_screen.dart';
 import 'package:carrental/controller/authControllers/login_controller.dart';
+import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/functions/alertExitApp.dart';
 import 'package:carrental/view/screens/authScreens/reset_password.dart';
 import 'package:carrental/view/screens/home_screen.dart';
@@ -9,28 +10,14 @@ import 'registration.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 // import '../widgets/alertdialog.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends GetView<LoginControllerImp> {
   LoginScreen({Key? key}) : super(key: key);
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-// show ; Loading
-
-class _LoginScreenState extends State<LoginScreen> {
-  // form key
-  final _formKey = GlobalKey<FormState>();
-
-  // editing controller
-  // final TextEditingController emailController = new TextEditingController();
-  // final TextEditingController passwordController = new TextEditingController();
 
   String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
-    Get.put(LoginControllerImp());
+    Get.lazyPut(() => LoginControllerImp());
     //email field
     final emailField = GetBuilder<LoginControllerImp>(
         init: LoginControllerImp(),
@@ -88,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller.showpassword == true
                       ? Icons.visibility_off
                       : Icons.visibility,
-                  color: Colors.white,
+                  // color: Colors.white,
                 ),
                 onPressed: () {
                   controller.showPassword();
@@ -160,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text("Don't have an account? "),
                             GestureDetector(
                               onTap: () {
-                                Get.to(() => RegistrationScreen());
+                                Get.toNamed(AppRout.signup);
                               },
                               child: Text(
                                 "SignUp",
@@ -199,17 +186,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     ));
   }
-
-  // void login(String email, String password) async {
-  //   if (_formKey.currentState!.validate()) {
-  //     try {
-  //       /*
-  //        shwoDialog(context)
-  //        todo :  khassni ndir wahd l fonction lli katjib lin a data (email ou password ) mn  base de donne ou ndir eliha wa7d check ila rj3at li data khasni ndkhel ila marj3atch lia data khas ndir wa7d les error lli kaynin lte7t
-  //         */
-  //     } catch (e) {}
-  //   }
-  // }
 
 // login function
   // void signIn(String email, String password) async {

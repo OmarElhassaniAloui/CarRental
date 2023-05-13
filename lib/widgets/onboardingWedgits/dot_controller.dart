@@ -28,7 +28,7 @@ class CostumDotController extends GetView<OnboardingControllerImp> {
                     ),
                   ),
                   onTap: () {
-                    myServices.sharedPreferences.setString("onboarding", '1');
+                    myServices.sharedPreferences.setString("step", '1');
                     Get.toNamed(AppRout.login);
                   },
                 ),

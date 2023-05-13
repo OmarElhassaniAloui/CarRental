@@ -1,3 +1,4 @@
+import 'package:carrental/core/middelware/middelware.dart';
 import 'package:carrental/view/screens/Terms_and_conditions_page.dart';
 import 'package:carrental/view/screens/authScreens/registration.dart';
 import 'package:carrental/view/screens/booking_now.dart';
@@ -23,7 +24,7 @@ import 'view/screens/authScreens/login.dart';
 
 
 List<GetPage<dynamic>> routs =[ 
-  GetPage(name: "/", page: ()=> OnBoardingPage()),
+  GetPage(name: "/", page: ()=> OnBoardingPage() , middlewares: [MiddelWare()]),
   GetPage(name: AppRout.homepage, page:()=>  Home()) , 
   GetPage(name: AppRout.login, page:()=>  LoginScreen()) , 
   GetPage(name: AppRout.bookingNowPage, page:()=>  BookingNowPage()) , 

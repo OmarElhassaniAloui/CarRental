@@ -1,3 +1,4 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class LoginControllerImp extends LoginController {
   }
 
   //shared preferences
-  // MyServices myServices = Get.find();
+  MyServices myServices = Get.find();
 
   // status request
   StatusRequest statusRequest = StatusRequest.none;
@@ -45,11 +46,15 @@ class LoginControllerImp extends LoginController {
         statusRequest = handlingData(response);
         if (StatusRequest.success == statusRequest) {
           if (response['status'] == "success") {
-            // myServices.shared_Preferences.setString("id",response['data']['id'] ) ;
-            // myServices.shared_Preferences.setString("firstName",response['data']['firstName'] ) ;
-            // myServices.shared_Preferences.setString("lastName",response['data']['lastName'] ) ;
-            // myServices.shared_Preferences.setString("email", response['data']['email']) ;
-            // myServices.shared_Preferences.setString("step",'2') ;
+            myServices.sharedPreferences
+                .setString("id", response['data']['id']);
+            myServices.sharedPreferences
+                .setString("firstName", response['data']['firstName']);
+            myServices.sharedPreferences
+                .setString("lastName", response['data']['lastName']);
+            myServices.sharedPreferences
+                .setString("email", response['data']['email']);
+            myServices.sharedPreferences.setString("step", '2');
             Get.to(Home());
           } else {
             Get.defaultDialog(

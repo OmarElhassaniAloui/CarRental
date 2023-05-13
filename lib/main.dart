@@ -11,10 +11,10 @@ import 'view/screens/onboardingScreen.dart';
 import 'package:get/get.dart';
 
 bool? isLogin = false;
-void main() {
+void main() async {
   //todo : ila l utilisateur deja dar login ddih l'home page
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await initialServices();
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialServices();
   runApp(MyApp());
 }
 
@@ -27,12 +27,11 @@ class MyApp extends StatelessWidget {
     // final theme = MyTheme.dark;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Rental Car ',
+      title: 'Rental Car',
       // locale: controller.langInitial,
       translations: Translation(),
       initialBinding: InitialBinding(),
       theme: AppTheme.darkTheme,
-      home: isLogin == false ? OnBoardingPage() : Home(),
       getPages: routs,
     );
   }

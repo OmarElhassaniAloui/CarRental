@@ -1,4 +1,6 @@
 import 'package:carrental/controller/onboarding_controller.dart';
+import 'package:carrental/core/constants/app_routs.dart';
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../data/datasrc/static/static.dart';
@@ -9,15 +11,12 @@ class CostumDotController extends GetView<OnboardingControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    MyServices myServices = Get.find<MyServices>();
     return GetBuilder<OnboardingControllerImp>(
         builder: (controller) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    //todo navigator to page login
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>LoginScreen())); 
-                  },
                   child: Container(
                     padding: EdgeInsets.only(left: 15),
                     child: Text(
@@ -28,6 +27,10 @@ class CostumDotController extends GetView<OnboardingControllerImp> {
                           color: Colors.grey),
                     ),
                   ),
+                  onTap: () {
+                    myServices.sharedPreferences.setString("onboarding", '1');
+                    Get.toNamed(AppRout.login);
+                  },
                 ),
                 const Spacer(),
                 ...List.generate(
@@ -47,9 +50,7 @@ class CostumDotController extends GetView<OnboardingControllerImp> {
                 GestureDetector(
                   onTap: () {
                     controller.currentPage == onBoardingList.length - 1
-                        ? Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()))
+                        ? Get.toNamed(AppRout.login)
                         : controller.next();
                   },
                   child: Container(
@@ -58,7 +59,6 @@ class CostumDotController extends GetView<OnboardingControllerImp> {
                       controller.currentPage == onBoardingList.length - 1
                           ? "Login"
                           : "Next",
-                      
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

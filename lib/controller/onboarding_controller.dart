@@ -1,3 +1,5 @@
+import 'package:carrental/core/services/services.dart';
+import 'package:carrental/data/datasrc/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,11 +13,19 @@ class OnboardingControllerImp extends OnboardngController {
   late PageController pageController;
   int currentPage = 0;
 
+  MyServices myServices = Get.find();
+
   @override
-  next() { 
-    currentPage++ ; 
-    pageController.animateToPage(currentPage,
-        duration: Duration(milliseconds: 600), curve: Curves.easeInOut);
+  next() {
+    currentPage++;
+    pageController.animateToPage(
+      currentPage,
+      duration: Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+    if (currentPage >= onBoardingList.length - 1) {
+      myServices.sharedPreferences.setString("onboarding", '1');
+    }
   }
 
   @override
@@ -23,10 +33,10 @@ class OnboardingControllerImp extends OnboardngController {
     currentPage = index;
     update();
   }
-  
 
   @override
   skip() {}
+
   @override
   void onInit() {
     pageController = PageController();

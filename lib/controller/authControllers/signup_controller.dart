@@ -1,4 +1,5 @@
 import 'package:carrental/core/class/statusrequest.dart';
+import 'package:carrental/core/constants/app_routs.dart';
 
 import 'package:carrental/view/screens/home_screen.dart';
 import 'package:get/get.dart';
@@ -29,23 +30,20 @@ class SignUpControllerImp extends SignUpController {
   signUp() async {
     if (formstate.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
-      Get.delete<SignUpControllerImp>();  
       update();
-      var response = await signupData.postdata(firstName.text, lastName.text,
-          email.text, password.text, confirm_password.text);
+      var response = await signupData.postdata(
+        firstName.text,
+        lastName.text,
+        email.text,
+        password.text,
+        confirm_password.text,
+      );
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          /*
-           !replace  this code bellow with this code for resolve the problem of the duplcated form key   : 
-           todo:
-           Get.offNamed (AppRout.home, arguments: {
-            "email": email.text, 
-            }
-          */
-          
-          Get.off(Home(), arguments: {
+          data.addAll(response['data']);
+          Get.toNamed(AppRout.homepage, arguments: {
             "email": email.text,
           });
         } else {

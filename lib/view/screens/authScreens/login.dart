@@ -112,9 +112,9 @@ class _LoginScreenState extends State<LoginScreen> {
             onPressed: () {
               controller.login();
             },
-            child:  Text(
+            child: Text(
               "Login",
-              textAlign:  TextAlign.center,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
                 // color: Colors.white,
@@ -160,13 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text("Don't have an account? "),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Home(),
-                                    // builder: (context) => RegistrationScreen(),
-                                  ),
-                                );
+                                Get.to(() => RegistrationScreen());
                               },
                               child: Text(
                                 "SignUp",
@@ -181,11 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 8),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ResetPassword()),
-                          );
+                          Get.to(() => ResetPassword());
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

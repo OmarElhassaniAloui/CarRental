@@ -6,10 +6,9 @@ import 'package:get/get.dart';
 
 class ThemController extends GetxController { 
   //by me 
-  var switchVal = false.obs;
+  RxBool switchVal = false.obs;
   //by me 
   changeThem(bool value) { 
-
     switchVal = value.obs; 
     if (Get.isDarkMode) {
       Get.changeTheme(AppTheme.lightTheme);
@@ -17,7 +16,7 @@ class ThemController extends GetxController {
       Get.changeTheme(AppTheme.darkTheme);
     }
     update(); 
-
   } 
   //
+
 }

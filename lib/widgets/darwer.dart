@@ -1,4 +1,3 @@
-
 import 'package:carrental/controller/changeThemController.dart';
 import 'package:get/get.dart';
 import '../view/screens/Terms_and_conditions_page.dart';
@@ -13,15 +12,10 @@ import 'package:flutter/material.dart';
 import '../view/screens/authScreens/login.dart';
 import '../view/screens/my_prfile.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer extends StatelessWidget {
   MyDrawer({Key? key}) : super(key: key);
 
-  @override
-  State<MyDrawer> createState() => _MyDrawerState();
-}
-
-class _MyDrawerState extends State<MyDrawer> {
-  bool switchVal = false;
+  // bool switchVal = false;
   var themeController = Get.put(ThemController());
   // getUser() {
   //   var user = FirebaseAuth.instance.currentUser;
@@ -233,19 +227,21 @@ class _MyDrawerState extends State<MyDrawer> {
             SizedBox(
               height: 2,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ListTile(
-                leading: themeController.switchVal.value == true
-                    ? Icon(Icons.wb_sunny)
-                    : Icon(Icons.nightlight_round),
-                trailing: Switch(
-                  value: themeController.switchVal.value,
-                  onChanged: (value) {
-                    themeController.changeThem(value);
-                  },
+            GetBuilder<ThemController>(
+              builder: (controller) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: ListTile(
+                  leading: themeController.switchVal.value == true
+                      ? Icon(Icons.nightlight_round)
+                      : Icon(Icons.wb_sunny),
+                  trailing: Switch(
+                    value: themeController.switchVal.value,
+                    onChanged: (value) {
+                      themeController.changeThem(value);
+                    },
+                  ),
+                  title: Text('Change Theme'),
                 ),
-                title: Text('Change Theme'),
               ),
             ),
             SizedBox(

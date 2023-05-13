@@ -2,6 +2,7 @@ import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/services/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class MiddelWare extends GetMiddleware{
   @override

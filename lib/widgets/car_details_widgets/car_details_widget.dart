@@ -20,9 +20,9 @@ class CarDetailsWidget extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            height: 200,
-            width: 200,
-            color: Colors.white,
+            height: 210,
+            width: 210,
+            // color: Colors.white,
             foregroundDecoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(
@@ -31,333 +31,339 @@ class CarDetailsWidget extends StatelessWidget {
               ),
             ),
             padding: EdgeInsets.only(top: 5, left: 10, right: 10),
-            child: Row(
-              children: [
-                Container(
-                  height: 200,
-                  width: 200,
-                  child:
-                      Image.network('${AppLink.imageLink}/${carModel.photo1}'),
+            child: Card(
+              child: Container(
+                child: Row(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 200,
+                      child: Image.network(
+                          '${AppLink.imageLink}/${carModel.photo1}'),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 60,
+                            foregroundDecoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
+                              ),
+                            ),
+                            child: Image.network(
+                                '${AppLink.imageLink}/${carModel.photo1}'),
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            height: 60,
+                            width: 60,
+                            foregroundDecoration: BoxDecoration(
+                              border: Border.all(
+                                // color: Colors.black,
+                                width: 1,
+                              ),
+                            ),
+                            child: Image.network(
+                                '${AppLink.imageLink}/${carModel.photo1}'),
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            height: 60,
+                            width: 60,
+                            foregroundDecoration: BoxDecoration(
+                              border: Border.all(
+                                // color: Colors.black,
+                                width: 1,
+                              ),
+                            ),
+                            child: Image.network(
+                                '${AppLink.imageLink}/${carModel.photo1}'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Spacer(),
-                Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        foregroundDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        child: Image.network(
-                            '${AppLink.imageLink}/${carModel.photo1}'),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        foregroundDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        child: Image.network(
-                            '${AppLink.imageLink}/${carModel.photo1}'),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        foregroundDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        child: Image.network(
-                            '${AppLink.imageLink}/${carModel.photo1}'),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
           SizedBox(height: 10),
           // car spercification
-          Container(
-            padding: EdgeInsets.all(10),
-            color: Colors.white,
-            foregroundDecoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
+          Card(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              // color: Colors.white,
+              foregroundDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                  // color: Colors.black,
+                  width: 1,
+                ),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    children: [
-                      Text(
-                        "${carModel.brand}",
-                        // controller.cars[selectedCar!]["brand"],
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${carModel.brand}",
+                          // controller.cars[selectedCar!]["brand"],
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Text(
-                        "\$ ${carModel.pricePerDay}/day",
-                        // "\$ ${controller.cars[selectedCar!]["price_per_day"]}/day",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange,
+                        Spacer(),
+                        Text(
+                          "\$ ${carModel.pricePerDay}/day",
+                          // "\$ ${controller.cars[selectedCar!]["price_per_day"]}/day",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.deepOrange,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    children: [
-                      Text(
-                        "${carModel.model}",
-                        // controller.cars[selectedCar!]["model"],
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${carModel.model}",
+                          // controller.cars[selectedCar!]["model"],
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    children: [
-                      Text(
-                        "${carModel.rate}",
-                        // controller.cars[selectedCar!]["rate"].toString(),
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${carModel.rate}",
+                          // controller.cars[selectedCar!]["rate"].toString(),
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Icon(
-                        FontAwesome5.star,
-                        // Icons.star,
-                        color: Colors.yellow,
-                        size: 20,
-                      ),
-                    ],
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          FontAwesome5.star,
+                          // Icons.star,
+                          color: Colors.yellow,
+                          size: 20,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 
-                Divider(
-                  thickness: 1.5,
-                  height: 30,
-                ),
-                Container(
-                  child: Text(
-                    "car spercification",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                  Divider(
+                    thickness: 1.5,
+                    height: 30,
                   ),
-                ),
-                SizedBox(height: 20),
-                Row(children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.event_seat_sharp,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("data"),
-                        ],
+                  Container(
+                    child: Text(
+                      "car spercification",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        // color: Colors.black,
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    // flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.event_seat_sharp,
-                              color: Colors.black,
-                              size: 30,
+                  SizedBox(height: 20),
+                  Row(children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.event_seat_sharp,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
                             ),
-                          ),
-                          Text("data"),
-                        ],
+                            Text("data"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      // flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.event_seat_sharp,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("data"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                FontAwesome5.map_marked_alt,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("Conditioner"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Linecons.key,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("Keyless"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
+                  Row(children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                FontAwesome5.search_location,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("Navigation"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      // flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                FontAwesome5.plug,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("USB"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                // Icons.navigation_sharp,
+                                Typicons.temperatire,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("Auto Temp"),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.bluetooth_audio,
+                                // color: Colors.black,
+                                size: 30,
+                              ),
+                            ),
+                            Text("Bluetooth"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
+                  Divider(
+                    thickness: 1.5,
+                    height: 30,
+                  ),
+                  // car description
+                  Container(
+                    child: Text(
+                      "car description",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        // color: Colors.black,
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              FontAwesome5.map_marked_alt,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("Conditioner"),
-                        ],
+                  SizedBox(height: 10),
+                  Container(
+                    child: Text(
+                      "${carModel.description}",
+                      // controller.cars[selectedCar!]["description"],
+                      style: TextStyle(
+                        fontSize: 20,
+                        // color: Colors.black,
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Linecons.key,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("Keyless"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ]),
-                Row(children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              FontAwesome5.search_location,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("Navigation"),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    // flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              FontAwesome5.plug,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("USB"),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              // Icons.navigation_sharp,
-                              Typicons.temperatire,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("Auto Temp"),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.bluetooth_audio,
-                              color: Colors.black,
-                              size: 30,
-                            ),
-                          ),
-                          Text("Bluetooth"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ]),
-                Divider(
-                  thickness: 1.5,
-                  height: 30,
-                ),
-                // car description
-                Container(
-                  child: Text(
-                    "car description",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  child: Text(
-                    "${carModel.description}",
-                    // controller.cars[selectedCar!]["description"],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(height: 20),

@@ -8,5 +8,6 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.dark(),
     brightness: Brightness.dark,
+    
   );
 }

@@ -5,7 +5,7 @@ const kBackgroundColor = Color(0XFFE5E5E5);
 
 
 
-
+const Color kDarkBlue = Color(0xFF090943);
 const MainHeading = TextStyle(fontWeight: FontWeight.bold, fontSize: 30);
 
 const SubHeading = TextStyle(fontWeight: FontWeight.bold, fontSize: 20);

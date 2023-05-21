@@ -18,6 +18,7 @@ class _FAQsPageState extends State<FAQsPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Container(
           margin: EdgeInsets.all(15),
           child: Column(
@@ -140,7 +141,7 @@ class _FAQsPageState extends State<FAQsPage> {
                 ],
               ),
               ExpansionTile(
-                title:  Text(
+                title: Text(
                   "What happens if i return car late?",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -153,7 +154,7 @@ class _FAQsPageState extends State<FAQsPage> {
                 ],
               ),
               ExpansionTile(
-                title:  Text(
+                title: Text(
                   "What happens if i return car late?",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),

@@ -39,7 +39,9 @@ class Home extends GetView<HomeControllerImp> {
       drawer: MyDrawer(),
       body: Container(
         child: ListView.builder(
-          physics: ScrollPhysics(),
+          // physics: ScrollPhysics(),
+          physics: BouncingScrollPhysics(),
+
           itemCount: controller.cars.length,
           itemBuilder: (Context, i) {
             return CarCard(

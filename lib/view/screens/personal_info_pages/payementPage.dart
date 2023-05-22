@@ -1,4 +1,5 @@
 import 'package:carrental/core/constants/constants.dart';
+import 'package:carrental/view/screens/confirmationpage.dart';
 import 'package:carrental/widgets/payment/card_alert_dialog.dart';
 import 'package:carrental/widgets/payment/card_input_formatter.dart';
 import 'package:carrental/widgets/payment/master_card.dart';
@@ -8,6 +9,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -323,9 +325,11 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 onPressed: () {
                   Future.delayed(const Duration(milliseconds: 300), () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => const CardAlertDialog());
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) => const CardAlertDialog(),
+                    // );
+                    Get.to(() => ConfiramtionPage());
                     cardCvvController.clear();
                     cardExpiryDateController.clear();
                     cardHolderNameController.clear();
@@ -349,16 +353,6 @@ class _PaymentPageState extends State<PaymentPage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:carrental/view/screens/onboardingScreen.dart';
 // import 'package:carrental/widgets/textFormFields.dart';

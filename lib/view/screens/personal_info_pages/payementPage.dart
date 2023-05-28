@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../success_page.dart';
+
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
 
@@ -329,7 +331,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     //   context: context,
                     //   builder: (context) => const CardAlertDialog(),
                     // );
-                    Get.to(() => ConfiramtionPage());
+                    Get.to(() => SuccessPage());
                     cardCvvController.clear();
                     cardExpiryDateController.clear();
                     cardHolderNameController.clear();

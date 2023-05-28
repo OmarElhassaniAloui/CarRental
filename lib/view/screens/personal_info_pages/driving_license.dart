@@ -2,7 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 // import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
-
+import 'package:get/get.dart';
+import '../confirmationpage.dart';
 import 'payementPage.dart';
 
 class DrivingLicensecPage extends StatefulWidget {
@@ -32,12 +33,12 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
                 height: 20,
               ),
               Container(
-                // child: Lottie.network(
-                //   'https://assets4.lottiefiles.com/private_files/lf30_yo2zavgg.json',
-                //   height: 100,
-                //   width: 100,
-                // ),
-              ),
+                  // child: Lottie.network(
+                  //   'https://assets4.lottiefiles.com/private_files/lf30_yo2zavgg.json',
+                  //   height: 100,
+                  //   width: 100,
+                  // ),
+                  ),
               SizedBox(
                 height: 40,
               ),
@@ -157,9 +158,12 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
               ),
               OutlinedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return PaymentPage();
-                  }));
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (_) {
+                  //     return PaymentPage();
+                  //   }),
+                  // );
+                  Get.to(() => ConfiramtionPage());
                 },
                 child: Text(
                   'Continue',
@@ -176,7 +180,6 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                      
                 ),
               ),
             ],

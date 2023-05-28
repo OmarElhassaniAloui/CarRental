@@ -1,5 +1,7 @@
+import 'package:carrental/view/screens/personal_info_pages/payementPage.dart';
 import 'package:carrental/view/screens/success_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../widgets/confirmationWidget/confirmationCard1.dart';
 import '../../widgets/confirmationWidget/RentalFeesCard.dart';
 import '../../widgets/confirmationWidget/PickUpTimeCard.dart';
@@ -43,9 +45,12 @@ class ConfiramtionPage extends StatelessWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return SuccessPage();
-                    }));
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (_) {
+                    //     return SuccessPage();
+                    //   }),
+                    // );
+                    Get.to(() => PaymentPage());
                   },
                   child: Text(
                     'Continue',

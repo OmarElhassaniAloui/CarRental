@@ -44,7 +44,7 @@ class SignUpControllerImp extends SignUpController {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
           Get.offNamed(AppRout.homepage, arguments: {
-            "email": email.text,
+             "email": email.text,
           });
         } else {
           Get.defaultDialog(

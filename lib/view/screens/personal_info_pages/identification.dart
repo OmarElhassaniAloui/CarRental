@@ -23,7 +23,7 @@ class Identification extends StatefulWidget {
 class _IdentificationState extends State<Identification> {
   String? radioGroubItems;
 
-  File? file;
+  File? myFile;
   var _imageCinPassFront;
   var _imageCinPassUrl;
   //! hint value
@@ -33,6 +33,14 @@ class _IdentificationState extends State<Identification> {
 
   @override
   Widget build(BuildContext context) {
+    String? changeText() {
+      if (hintvalu == 'National ID' || hintvalu == null) {
+        return 'National ID';
+      } else if (hintvalu == 'Passport') {
+        return 'Passport';
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -89,7 +97,7 @@ class _IdentificationState extends State<Identification> {
                       onChanged: (val) {
                         setState(() {
                           hintvalu = val as String;
-                          radioGroubItems = val as String;
+                          radioGroubItems = val;
                         });
                       },
                     ),
@@ -125,7 +133,10 @@ class _IdentificationState extends State<Identification> {
               SizedBox(
                 height: 40,
               ),
-              Text('Upload your ID photo'),
+              Text(
+                "${changeText()}",
+                style: TextStyle(fontSize: 25),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -136,26 +147,37 @@ class _IdentificationState extends State<Identification> {
                     children: [
                       InkWell(
                         onTap: () async {
-                          // var picked = await ImagePicker()
-                          //     .pickImage(source: ImageSource.camera);
-
-                          // if (picked != null) {
-                          //   file = File(picked.path);
-                          //   var random = Random().nextInt(100000);
-
-                          //   _imageCinPassFront =
-                          //       "$random" + basename(picked.path);
-                          //   // var ref = await FirebaseStorage.instance
-                          //   //     .ref('/cin_passport_images')
-                          //   //     .child(_imageCinPassFront);
-
-                          //   await ref
-                          //     ..putFile(file!);
-                          //   _imageCinPassUrl = await ref.getDownloadURL();
-                          // } else {
-                          //   AwesomeDialog(context: context);
-                          // }
-                          // print('image picked ');
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Select Image'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    title: Text('Camera'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.camera);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Gallery'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.gallery);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
                         },
                         child: DottedBorder(
                           child: Container(
@@ -187,27 +209,38 @@ class _IdentificationState extends State<Identification> {
                   Column(
                     children: [
                       InkWell(
-                        onTap: () async {
-                          // var picked = await ImagePicker()
-                          //     .pickImage(source: ImageSource.camera);
-
-                          // if (picked != null) {
-                          //   file = File(picked.path);
-                          //   var random = Random().nextInt(100000);
-
-                          //   _imageCinPassFront =
-                          //       "$random" + basename(picked.path);
-                          //   var ref = await FirebaseStorage.instance
-                          //       .ref('cin_passport_images')
-                          //       .child(_imageCinPassFront);
-
-                          //   await ref
-                          //     ..putFile(file!);
-                          //   _imageCinPassUrl = await ref.getDownloadURL();
-                          // } else {
-                          //   AwesomeDialog(context: context);
-                          // }
-                          // print('image picked ');
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Select Image'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    title: Text('Camera'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.camera);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Gallery'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.gallery);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
                         },
                         child: DottedBorder(
                           child: Container(

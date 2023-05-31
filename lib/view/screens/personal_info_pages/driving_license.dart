@@ -1,10 +1,16 @@
+import 'dart:io';
+import 'dart:math';
+
+import 'package:carrental/view/screens/picktime.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 // import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import '../confirmationpage.dart';
-import 'payementPage.dart';
+import 'package:intl/intl.dart';
 
 class DrivingLicensecPage extends StatefulWidget {
   DrivingLicensecPage({Key? key}) : super(key: key);
@@ -15,6 +21,8 @@ class DrivingLicensecPage extends StatefulWidget {
 
 class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
   final _licenseIdController = TextEditingController();
+  final _expiryDateController = TextEditingController();
+  File? myFile;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +79,30 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
               TextFormField(
                 autofocus: false,
                 textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.datetime,
+                controller: _expiryDateController,
+                onTap: () async {
+                  DateTime? selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2025),
+                  );
+                  if (selectedDate != null) {
+                    setState(() {
+                      _expiryDateController.text =
+                          DateFormat('yyyy-MM-dd').format(selectedDate);
+                    });
+                  }
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return ('please Enter the expiry date');
+                  }
+                },
+                onSaved: (val) {
+                  _expiryDateController.text = val!;
+                },
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.calendar_month,
@@ -85,7 +117,10 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
               SizedBox(
                 height: 40,
               ),
-              Text('Upload your ID photo'),
+              Text(
+                'Upload your Driving license',
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -95,7 +130,40 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
                   Column(
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () async {
+                          // XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Select Image'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    title: Text('Camera'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.camera);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Gallery'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.gallery);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                         child: DottedBorder(
                           child: Container(
                             height: 80,
@@ -126,7 +194,39 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
                   Column(
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Select Image'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    title: Text('Camera'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.camera);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Gallery'),
+                                    onTap: () async {
+                                      XFile? pickedFile = await ImagePicker()
+                                          .pickImage(
+                                              source: ImageSource.gallery);
+                                      myFile = File(pickedFile!.path);
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                         child: DottedBorder(
                           child: Container(
                             height: 80,
@@ -158,11 +258,6 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
               ),
               OutlinedButton(
                 onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(builder: (_) {
-                  //     return PaymentPage();
-                  //   }),
-                  // );
                   Get.to(() => ConfiramtionPage());
                 },
                 child: Text(

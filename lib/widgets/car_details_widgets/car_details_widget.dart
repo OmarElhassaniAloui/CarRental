@@ -9,6 +9,8 @@ import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
 
+import '../costum_button.dart';
+
 class CarDetailsWidget extends StatelessWidget {
   final CarModel2 carModel;
 
@@ -370,20 +372,26 @@ class CarDetailsWidget extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Container(
-            child: TextButton(
+            // child: TextButton(
+            //   onPressed: () {
+            //     Get.toNamed(AppRout.pickTimePage);
+            //   },
+            //   child: Text("Book Now"),
+            //   style: TextButton.styleFrom(
+            //     backgroundColor: Colors.black,
+            //     // primary: Colors.white,
+            //     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            //     // textStyle: TextStyle(
+            //     //   fontSize: 20,
+            //     //   fontWeight: FontWeight.bold,
+            //     // ),
+            //   ),
+            // ),
+            child: CustomTextButton(
+              text: "Book Now",
               onPressed: () {
-                Get.toNamed(AppRout.pickTimePage); 
+                Get.toNamed(AppRout.pickTimePage);
               },
-              child: Text("Book Now"),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.black,
-                // primary: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                // textStyle: TextStyle(
-                //   fontSize: 20,
-                //   fontWeight: FontWeight.bold,
-                // ),
-              ),
             ),
           )
         ],

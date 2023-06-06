@@ -2,10 +2,11 @@ import 'package:carrental/core/class/statusrequest.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/constants/app_routs.dart';
-import '../../core/functions/handlingData.dart';
-import '../../core/services/services.dart';
-import '../../data/datasrc/remot/client_data/personal_info_data.dart';
+import '../../../core/constants/app_routs.dart';
+import '../../../core/functions/handlingData.dart';
+import '../../../core/services/services.dart';
+import '../../../data/datasrc/remot/client_data/personal_info_data.dart';
+
 abstract class PersonalInfoController extends GetxController {
   Future<void> postPersonalInfo();
   Future<void> getPersonalInfo();
@@ -28,7 +29,6 @@ class PersonalInfoControllerImp extends PersonalInfoController {
   // data
   List data = [];
 
-
   @override
   Future<void> getPersonalInfo() {
     throw UnimplementedError();
@@ -44,7 +44,7 @@ class PersonalInfoControllerImp extends PersonalInfoController {
         email.text,
         phone_number.text,
         address.text,
-      ); 
+      );
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
@@ -55,7 +55,6 @@ class PersonalInfoControllerImp extends PersonalInfoController {
             "fullName": fullName.text,
             "phone_number": phone_number.text,
             "address": address.text,
-            
           });
         } else {
           Get.defaultDialog(
@@ -72,5 +71,4 @@ class PersonalInfoControllerImp extends PersonalInfoController {
   Future<void> updatePersonalInfo() {
     throw UnimplementedError();
   }
-  
 }

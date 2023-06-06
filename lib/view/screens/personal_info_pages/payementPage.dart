@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/costum_button.dart';
 import '../success_page.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -315,38 +316,58 @@ class _PaymentPageState extends State<PaymentPage> {
                 ],
               ),
               const SizedBox(height: 20 * 3),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.deepPurpleAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  minimumSize:
-                      Size(MediaQuery.of(context).size.width / 1.12, 55),
-                ),
-                onPressed: () {
-                  Future.delayed(const Duration(milliseconds: 300), () {
-                    // showDialog(
-                    //   context: context,
-                    //   builder: (context) => const CardAlertDialog(),
-                    // );
-                    Get.to(() => SuccessPage());
-                    cardCvvController.clear();
-                    cardExpiryDateController.clear();
-                    cardHolderNameController.clear();
-                    cardNumberController.clear();
-                    flipCardController.toggleCard();
-                  });
-                },
-                child: Text(
-                  'Add Card'.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                child: CustomElevatedButton(
+                  text: 'Add Card',
+                  onPressed: () {
+                    Future.delayed(const Duration(milliseconds: 300), () {
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (context) => const CardAlertDialog(),
+                      // );
+                      Get.to(() => SuccessPage());
+                      cardCvvController.clear();
+                      cardExpiryDateController.clear();
+                      cardHolderNameController.clear();
+                      cardNumberController.clear();
+                      flipCardController.toggleCard();
+                    });
+                  },
                 ),
               ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //     foregroundColor: Colors.white,
+              //     backgroundColor: Colors.deepPurpleAccent,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(15),
+              //     ),
+              //     minimumSize:
+              //         Size(MediaQuery.of(context).size.width / 1.12, 55),
+              //   ),
+              //   onPressed: () {
+              //     Future.delayed(const Duration(milliseconds: 300), () {
+              //       // showDialog(
+              //       //   context: context,
+              //       //   builder: (context) => const CardAlertDialog(),
+              //       // );
+              //       Get.to(() => SuccessPage());
+              //       cardCvvController.clear();
+              //       cardExpiryDateController.clear();
+              //       cardHolderNameController.clear();
+              //       cardNumberController.clear();
+              //       flipCardController.toggleCard();
+              //     });
+              //   },
+              //   child: Text(
+              //     'Add Card'.toUpperCase(),
+              //     style: const TextStyle(
+              //       fontSize: 15,
+              //       fontWeight: FontWeight.w500,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 20),
             ],
           ),

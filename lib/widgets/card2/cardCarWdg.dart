@@ -1,9 +1,7 @@
 import 'package:carrental/data/model/carModel/car_model2.dart';
-import 'package:carrental/view/screens/card_details.dart';
 import 'package:carrental/widgets/details_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
-import 'package:fluttericon/iconic_icons.dart';
 import 'package:fluttericon/maki_icons.dart';
 import 'package:carrental/core/constants/link_api.dart';
 
@@ -190,7 +188,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${carModel.pricePerDay}",
+                              "\DH ${carModel.pricePerDay}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -209,7 +207,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${carModel.pricePerDay}",
+                              "\DH ${carModel.pricePerDay}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),

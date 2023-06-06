@@ -91,7 +91,7 @@ class LoginScreen extends GetView<LoginControllerImp> {
     final loginButton = Material(
         elevation: 5,
         borderRadius: BorderRadius.circular(30),
-        color: Colors.redAccent,
+        color: Color(0xFF001253),
         child: GetBuilder<LoginControllerImp>(
           builder: (controller) => MaterialButton(
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -104,7 +104,7 @@ class LoginScreen extends GetView<LoginControllerImp> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
-                // color: Colors.white,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

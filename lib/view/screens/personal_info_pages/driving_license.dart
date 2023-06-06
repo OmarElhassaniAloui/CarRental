@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../widgets/costum_button.dart';
 import '../confirmationpage.dart';
 import 'package:intl/intl.dart';
 
@@ -29,7 +30,7 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Driving License'),
-        backgroundColor: Colors.redAccent,
+        // backgroundColor: Colors.redAccent,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -256,27 +257,13 @@ class _DrivingLicensecPageState extends State<DrivingLicensecPage> {
               SizedBox(
                 height: 20,
               ),
-              OutlinedButton(
+              CustomElevatedButton(
+                text: 'Continue',
                 onPressed: () {
                   Get.to(() => ConfiramtionPage());
                 },
-                child: Text(
-                  'Continue',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  fixedSize: Size(370, 48),
-                  backgroundColor: Colors.redAccent,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
+              ), 
+              
             ],
           ),
         ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/confirmationWidget/RentalFeesCard.dart';
+import '../../widgets/costum_button.dart';
 import 'home_screen.dart';
 
 class SuccessPage extends StatelessWidget {
@@ -129,33 +131,39 @@ class SuccessPage extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                // padding:  EdgeInsets.symmetric(horizontal: 15),
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return Home();
-                    }));
-                  },
-                  child: Text(
-                    'Back To Home ',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
+                  // padding:  EdgeInsets.symmetric(horizontal: 15),
+                  width: double.infinity,
+                  child: CustomElevatedButton(
+                    text: 'Back To Home',
+                    onPressed: () {
+                      Get.to(() => Home());
+                    },
+                  )
+                  // OutlinedButton(
+                  //   onPressed: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                  //       return Home();
+                  //     }));
+                  //   },
+                  //   child: Text(
+                  //     'Back To Home ',
+                  //     style: TextStyle(
+                  //       color: Colors.white,
+                  //       fontSize: 20,
+                  //     ),
+                  //   ),
+                  //   style: OutlinedButton.styleFrom(
+                  //     fixedSize: Size(370, 48),
+                  //     backgroundColor: Colors.redAccent,
+                  //     padding: EdgeInsets.symmetric(
+                  //       horizontal: 20,
+                  //     ),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(10),
+                  //     ),
+                  //   ),
+                  // ),
                   ),
-                  style: OutlinedButton.styleFrom(
-                    fixedSize: Size(370, 48),
-                    backgroundColor: Colors.redAccent,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),

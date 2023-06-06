@@ -20,6 +20,8 @@ class HomeControllerImp extends HomeController {
   String? lang;
 
   List cars = [];
+  
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   initData() {

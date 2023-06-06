@@ -206,7 +206,7 @@ class CarDetailsWidget extends StatelessWidget {
                                 size: 30,
                               ),
                             ),
-                            Text("data"),
+                            Text("5 Seats"),
                           ],
                         ),
                       ),
@@ -219,12 +219,12 @@ class CarDetailsWidget extends StatelessWidget {
                           children: [
                             Container(
                               child: Icon(
-                                Icons.event_seat_sharp,
+                                FontAwesome5.sitemap,
                                 // color: Colors.black,
                                 size: 30,
                               ),
                             ),
-                            Text("data"),
+                            Text("Auto TX"),
                           ],
                         ),
                       ),
@@ -388,6 +388,8 @@ class CarDetailsWidget extends StatelessWidget {
             //   ),
             // ),
             child: CustomTextButton(
+              paddingH: 30,
+              paddingV: 20,
               text: "Book Now",
               onPressed: () {
                 Get.toNamed(AppRout.pickTimePage);

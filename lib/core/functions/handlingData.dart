@@ -7,3 +7,4 @@ handlingData(response) {
     return StatusRequest.success;
   }
 }
+

@@ -2,149 +2,176 @@ import 'package:carrental/view/screens/personal_info_pages/identification.dart';
 import 'package:carrental/view/screens/personal_info_pages/personal_info.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:get/get.dart';
 
-class dateAndTimePicker extends StatefulWidget {
-  dateAndTimePicker({Key? key}) : super(key: key);
+import '../../controller/reservation_controllers/date_time_picker_controller.dart';
+import '../../widgets/costum_button.dart';
 
-  @override
-  State<dateAndTimePicker> createState() => _dateAndTimePickerState();
-}
-
-class _dateAndTimePickerState extends State<dateAndTimePicker> {
-  GlobalKey _formkey = GlobalKey<FormState>();
-
-  final departTripTime = TextEditingController();
-  final ReturnDateAndTime = TextEditingController();
+class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
+  PickdateAndTime({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Get.put(DateTimePickerControllerImp());
     return Scaffold(
       appBar: AppBar(
         title: Text('Trip Date and Time'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'Departure Date and Time',
-                  style: TextStyle(fontSize: 20),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GetBuilder<DateTimePickerControllerImp>(
+            builder: (controller) => Form(
+              key: controller.formstate,
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        'Departure Date and Time',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: DateTimePicker(
+                      type: DateTimePickerType.dateTime,
+                      dateMask: 'dd-MM-yyyy HH:mm',
+                      initialValue: DateTime.now().toString(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                      icon: Icon(Icons.event),
+                      dateLabelText: 'Date',
+                      timeLabelText: "Hour",
+
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Date and Time',
+                        hintText: 'Enter the date and time of your trip',
+                        prefixIcon: Icon(Icons.event),
+                      ),
+                      // selectableDayPredicate: isSelectableDay,
+                      // onChanged: (val) {
+                      //   controller.departTripTime.text = val;
+                      // },
+                      onSaved: (val) {
+                        controller.departTripTime.text = val.toString();
+                        controller.calculateNumberOfDays();
+                        print(val);
+                      },
+                      validator: (val) {
+                        // validation of the date
+                        if (val!.isEmpty) {
+                          return 'Please enter the date of departure';
+                        }
+                      },
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        'Return Date and Time',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: DateTimePicker(
+                      type: DateTimePickerType.dateTime,
+                      dateMask: 'dd-MM-yyyy HH:mm',
+                      initialValue: DateTime.now().toString(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                      icon: Icon(Icons.event),
+                      dateLabelText: 'Date',
+                      timeLabelText: "Hour",
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Chous Date and Time',
+                        hintText: 'Enter the date of return',
+                        prefixIcon: Icon(Icons.event),
+                      ),
+                      // onChanged: (val) {
+                      //   controller.returnDateAndTime.text = val;
+                      // },
+                      onSaved: (val) {
+                        controller.returnDateAndTime.text = val.toString();
+                        controller.calculateNumberOfDays();
+                        print(val);
+                      },
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return 'Please enter the date of return';
+                        }
+                      },
+                    ),
+                  ),
+                  //sizebox
+                  SizedBox(height: 20),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: GetBuilder<DateTimePickerControllerImp>(
+                      builder: (controller) => Text(
+                        'Number of Days: ${controller.numberOfDays}',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  //save button
+                  Container(
+                    width: double.infinity,
+                    child: GetBuilder<DateTimePickerControllerImp>(
+                      builder: (controller) {
+                        return OutlinedButton(
+                          onPressed: () {
+                            // Save the date and time
+                            controller.saveData();
+                            // Calculate the number of days
+                            controller.calculateNumberOfDays();
+                            // Print the number of days
+                            print(controller.numberOfDays);
+                          },
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                              color: Colors.orange,
+                              fontSize: 20,
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Color(0xFF495EAB),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 20,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  SizedBox(height: 20),
+                  // button next
+                  CustomElevatedButton(
+                    text: 'Next',
+                    onPressed: () {
+                      controller.nextButton();
+                    },
+                  ),
+                ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: DateTimePicker(
-                  type: DateTimePickerType.dateTimeSeparate,
-                  dateMask: 'd MMM, yyyy',
-                  initialValue: DateTime.now().toString(),
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
-                  icon: Icon(Icons.event),
-                  dateLabelText: 'Date',
-                  timeLabelText: "Hour",
-                  selectableDayPredicate: (date) {
-                    // Disable weekend days to select from the calendar
-                    if (date.weekday == 6 || date.weekday == 7) {
-                      return false;
-                    }
-                    return true;
-                  },
-                  onChanged: (val) => print(val),
-                  validator: (val) {
-                    print(val);
-                    return null;
-                  },
-                  onSaved: (val) {
-                    departTripTime.text = val.toString();
-                    print(val);
-                  }),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'Return Date and Time',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: DateTimePicker(
-                type: DateTimePickerType.dateTimeSeparate,
-                dateMask: 'd MMM, yyyy',
-                initialValue: DateTime.now().toString(),
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2100),
-                icon: Icon(Icons.event),
-                dateLabelText: 'Date',
-                timeLabelText: "Hour",
-                selectableDayPredicate: (date) {
-                  // Disable weekend days to select from the calendar
-                  if (date.weekday == 6 || date.weekday == 7) {
-                    return false;
-                  }
-                  return true;
-                },
-                onChanged: (val) => print(val),
-                validator: (val) {
-                  print(val);
-                  return null;
-                },
-                onSaved: (val) => print(val),
-              ),
-            ),
-            //sizebox
-            SizedBox(height: 50),
-            //save button
-            OutlinedButton(
-              onPressed: () {},
-              child: Text(
-                'Save',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(color: Colors.black),
-                minimumSize: Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            // button next
-            OutlinedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => PersonalInfo(),
-                ));
-              },
-              child: Text(
-                'Next',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-              style: OutlinedButton.styleFrom(
-                backgroundColor: Colors.red,
-                minimumSize: Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

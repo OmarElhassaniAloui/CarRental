@@ -13,4 +13,6 @@ class AppLink {
   static const String carsLink = "$serverLink/carCart/car_cart.php";
   // personal info urls 
   static const String personalInfoLink = "$serverLink/personalInfo/personal_info.php";
+  // test data 
+  static const String test = "$serverLink/testdata/test_data.php";
 }

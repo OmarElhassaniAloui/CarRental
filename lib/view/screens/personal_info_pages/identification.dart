@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import '../../../widgets/costum_button.dart';
 import './driving_license.dart';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -271,34 +272,53 @@ class _IdentificationState extends State<Identification> {
               SizedBox(
                 height: 20,
               ),
-              OutlinedButton(
+              CustomElevatedButton(
+                text: 'Next',
                 onPressed: () {
-                  //todo : ila makant htta image dakhla -> msage error
-                  // if(){
-
-                  // }
-
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return DrivingLicensecPage();
-                  }));
+                  if (_cinPassController.text.isEmpty) {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.ERROR,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'Error',
+                      desc: 'Please Enter Your National ID',
+                      btnOkOnPress: () {},
+                    )..show();
+                  } else if (_cinPassController.text.isNotEmpty) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                      return DrivingLicensecPage();
+                    }));
+                  }
                 },
-                child: Text(
-                  'Next',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  fixedSize: Size(370, 48),
-                  backgroundColor: Colors.redAccent,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
+              ), 
+              // OutlinedButton(
+              //   onPressed: () {
+              //     //todo : ila makant htta image dakhla -> msage error
+              //     // if(){
+
+              //     // }
+
+              //     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              //       return DrivingLicensecPage();
+              //     }));
+              //   },
+              //   child: Text(
+              //     'Next',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 20,
+              //     ),
+              //   ),
+              //   style: OutlinedButton.styleFrom(
+              //     fixedSize: Size(370, 48),
+              //     backgroundColor: Colors.redAccent,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 20,
+              //     ),
+              //     shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(10)),
+              //   ),
+              // ),
             ],
           ),
         ),

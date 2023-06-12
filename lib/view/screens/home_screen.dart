@@ -9,13 +9,6 @@ import '../../core/constants/constants.dart';
 import '../../widgets/darwer.dart';
 import '../../widgets/search_bar.dart';
 
-// class Home extends StatefulWidget {
-//   const Home({Key? key}) : super(key: key);
-
-//   @override
-//   State<Home> createState() => _HomeState();
-// }
-
 class Home extends GetView<HomeControllerImp> {
   GlobalKey<ScaffoldState> scaffoldkey = new GlobalKey<ScaffoldState>();
 

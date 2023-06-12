@@ -34,7 +34,7 @@ class DateTimePickerControllerImp extends DateTimePickerController {
         numberOfDays = 0;
       }
     } catch (e) {
-      print("error parsing the date $e"); 
+      print("error parsing the date $e");
     }
 
     update();
@@ -76,7 +76,7 @@ class DateTimePickerControllerImp extends DateTimePickerController {
 
   void nextButton() {
     if (numberOfDays > 0) {
-      Get.toNamed(AppRout.identification);
+      Get.toNamed(AppRout.personalInfPage);
     } else {
       Get.dialog(
         AlertDialog(

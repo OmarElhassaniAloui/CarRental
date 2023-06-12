@@ -117,7 +117,6 @@ class CarDetailsWidget extends StatelessWidget {
                       children: [
                         Text(
                           "${carModel.brand}",
-                          // controller.cars[selectedCar!]["brand"],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -125,7 +124,7 @@ class CarDetailsWidget extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          "\$ ${carModel.pricePerDay}/day",
+                          "\DH ${carModel.pricePerDay}/day",
                           // "\$ ${controller.cars[selectedCar!]["price_per_day"]}/day",
                           style: TextStyle(
                             fontSize: 25,

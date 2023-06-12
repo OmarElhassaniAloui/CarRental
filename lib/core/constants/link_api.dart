@@ -12,7 +12,11 @@ class AppLink {
   // home urls
   static const String carsLink = "$serverLink/carCart/car_cart.php";
   // personal info urls 
-  static const String personalInfoLink = "$serverLink/personalInfo/personal_info.php";
+  static const String personalInfoLink = "$serverLink/personalInfo/personal_info.php"; 
+  // driving license urls
+  static const String drivingLicenseLink = "$serverLink/drivingLicense/driving_license.php";
   // test data 
-  static const String test = "$serverLink/testdata/test_data.php";
+  static const String test = "$serverLink/testdata/test_data.php"; 
+  // identification urls
+  static const String identificationLink = "$serverLink/identification/identification.php";
 }

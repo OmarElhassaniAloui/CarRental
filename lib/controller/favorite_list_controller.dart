@@ -14,9 +14,6 @@ class MyFavoriteController extends GetxController {
 
   MyServices myServices = Get.find();
 
-//  key => id items
-//  Value => 1 OR 0
-
   getData() async {
     data.clear();
     statusRequest = StatusRequest.loading;

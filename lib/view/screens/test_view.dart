@@ -1,7 +1,7 @@
 import 'package:carrental/data/model/test_Model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '';
+import 'package:lottie/lottie.dart';
 import '../../controller/test_controller.dart';
 import '../../core/class/handling_data_view.dart';
 import '../../widgets/testWgt.dart';
@@ -21,12 +21,6 @@ class testView extends GetView<TestController> {
               child: Column(
             children: [
               Text("${controller.data.length}"),
-              // TextButton(
-              //   onPressed: () async {
-              //     await controller.getData();
-              //   },
-              //   child: const Text('getData'),
-              // ),
               HandlingDataView(
                 statusRequest: controller.statusRequest,
                 widget: Expanded(

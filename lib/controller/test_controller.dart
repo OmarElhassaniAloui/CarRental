@@ -14,10 +14,10 @@ class TestController extends GetxController {
     //clear data
     data.clear();
 
-       statusRequest = StatusRequest.loading;
+    statusRequest = StatusRequest.loading;
     var response = await testData.getData();
     statusRequest = handlingData(response);
-    print("=============================== Controller $response ");
+  
 
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
@@ -28,9 +28,11 @@ class TestController extends GetxController {
       update();
     }
   }
+  
   @override
   void onInit() {
     getData();
     super.onInit();
-  }
+  } 
+
 }

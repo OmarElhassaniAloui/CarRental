@@ -18,7 +18,9 @@ class CardDetails extends GetView<CarDetailsControllerImp> {
   @override
   Widget build(BuildContext context) {
     Get.put(CarDetailsControllerImp());
-    var selectedCar = Get.arguments;
+    Map selectedCar = Get.arguments;
+    // final Map<String, dynamic> selectedCar = Get.arguments as Map<String, dynamic>;
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -28,7 +30,8 @@ class CardDetails extends GetView<CarDetailsControllerImp> {
         actions: [
           IconButton(
             onPressed: () {
-              print(selectedCar);
+              print(selectedCar['selectedCar']);
+
             },
             icon: Icon(
               Icons.favorite_border,
@@ -44,10 +47,20 @@ class CardDetails extends GetView<CarDetailsControllerImp> {
           ),
         ],
       ),
-      body: CarDetailsWidget(
-        carModel:
-            CarModel2.fromJson(controller.cars[selectedCar['selectedCar']]),
-      ),
+      body:
+      controller.cars.isNotEmpty
+          ? CarDetailsWidget(
+              
+              carModel:
+                  CarModel2.fromJson(
+                    controller.cars[selectedCar['selectedCar']] 
+                    ),
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            )
+          
+      
     );
   }
 }

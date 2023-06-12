@@ -10,11 +10,11 @@ abstract class CarDetailsController extends GetxController {
 }
 
 class CarDetailsControllerImp extends CarDetailsController {
-
   CarDetailsData carDetailsData = CarDetailsData(Get.find());
 
   int? selectedCar;
   List cars = [];
+  List? carId = [];
 
   @override
   getData() async {
@@ -27,29 +27,37 @@ class CarDetailsControllerImp extends CarDetailsController {
       if (response['status'] == "success") {
         //! hna kayn l'mochkil..👇
         cars.addAll(response['data']);
+        selectedCar = response['data']['car_id'];
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
     update();
-  }  
+  }
+  // int getSelectedCar(){
 
-  // getCarId()async{ 
+  //   return selectedCar!;
+
+  // }
+  // getCarId() async {
   //   var response = await carDetailsData.getCarDetails();
   //   print("=============================== Controller $response ");
   //   if (response['status'] == "success") {
   //     //! hna kayn l'mochkil..👇
-  //     selectedCar = response['data']['car_id'];
+  //     carId = response['data'];
+  //     // print("carId ======== ${carId['car_id']}");
+  //     print("carId ======== ${carId['car_id']}");
   //   } else {
-  //     selectedCar = 0;
+  //     print("error");
   //   }
-  //   update();
+  //   return carId;
   // }
 
   @override
   void onInit() {
     getData();
     initData();
+    // getCarId();
     super.onInit();
   }
 
@@ -58,9 +66,10 @@ class CarDetailsControllerImp extends CarDetailsController {
     selectedCar = Get.arguments['selectedCar'];
     update();
   }
-  changeValue(value){ 
+
+  changeValue(value) {
     selectedCar = value;
-    update();  
+    update();
   }
 
   @override

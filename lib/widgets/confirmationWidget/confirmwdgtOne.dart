@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../core/services/services.dart';
 
 class ConfirmationCardOne extends StatelessWidget {
   const ConfirmationCardOne({super.key});
 
   @override
   Widget build(BuildContext context) {
+    MyServices _services = Get.put(MyServices());
     return Card(
       child: Container(
         padding: EdgeInsets.all(15),
@@ -19,13 +23,13 @@ class ConfirmationCardOne extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Name",
+                    "Full name",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 6,
                   ),
-                  Text("Ronald Richard"),
+                  Text("${_services.sharedPreferences.getString("fullname")}"),
                   SizedBox(
                     height: 6,
                   ),
@@ -50,7 +54,8 @@ class ConfirmationCardOne extends StatelessWidget {
                   SizedBox(
                     height: 6,
                   ),
-                  Text("+212 652065282"),
+                  Text(
+                      "${_services.sharedPreferences.getString("phoneNumber")}"),
                   SizedBox(
                     height: 6,
                   ),
@@ -75,7 +80,7 @@ class ConfirmationCardOne extends StatelessWidget {
                   SizedBox(
                     height: 6,
                   ),
-                  Text("el.ell.elhassani@gmail.com"),
+                  Text("${_services.sharedPreferences.getString("email")}"),
                   SizedBox(
                     height: 6,
                   ),

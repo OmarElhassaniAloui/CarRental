@@ -32,7 +32,9 @@ class Home extends GetView<HomeControllerImp> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () { 
+             
+            },
             icon: Icon(Icons.notifications),
           ),
         ],
@@ -54,13 +56,14 @@ class Home extends GetView<HomeControllerImp> {
                 statusRequest: controller.statusRequest,
                 widget: Expanded(
                   child: ListView.builder(
-                    // physics: ScrollPhysics(),
                     physics: BouncingScrollPhysics(),
                     itemCount: controller.cars.length,
-                    itemBuilder: (Context, i) {
+                    itemBuilder: (Context, i) { 
                       return CarCard(
                         index: i,
-                        carModel: CarModel2.fromJson(controller.cars[i]),
+                        carModel: CarModel.fromJson(
+                          controller.cars[i] 
+                        ),
                       );
                     },
                   ),

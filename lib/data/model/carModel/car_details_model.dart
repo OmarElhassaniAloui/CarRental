@@ -1,4 +1,4 @@
-class CarModel {
+class CarDetailsModel {
   int? idVoiture;
   String? immatriculation;
   String? marque;
@@ -19,7 +19,7 @@ class CarModel {
   String? photo3;
   String? photo4;
 
-  CarModel(
+  CarDetailsModel(
       {this.idVoiture,
       this.immatriculation,
       this.marque,
@@ -40,7 +40,7 @@ class CarModel {
       this.photo3,
       this.photo4});
 
-  CarModel.fromJson(Map<String, dynamic> json) {
+  CarDetailsModel.fromJson(Map<String, dynamic> json) {
     idVoiture = json['idVoiture'];
     immatriculation = json['immatriculation'];
     marque = json['marque'];
@@ -86,7 +86,6 @@ class CarModel {
     return data;
   }
 }
-
 
 
 

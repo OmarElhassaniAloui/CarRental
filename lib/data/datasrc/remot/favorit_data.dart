@@ -9,8 +9,8 @@ class FavoritData {
     var dataResponse = await crud!.postData(
       AppLink.favoritlink,
        {
-        "id":userId ,  
-        "favorit_car_id":itemId ,  
+        "id":userId,  
+        "favorit_car_id":itemId,  
        }
        );  
        return dataResponse.fold((l) => l, (r) => r);

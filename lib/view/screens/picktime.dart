@@ -1,3 +1,4 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:carrental/view/screens/personal_info_pages/identification.dart';
 import 'package:carrental/view/screens/personal_info_pages/personal_info.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
   @override
   Widget build(BuildContext context) {
     Get.put(DateTimePickerControllerImp());
+    MyServices myServices = Get.find();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Trip Date and Time'),
@@ -47,17 +50,12 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
                       icon: Icon(Icons.event),
                       dateLabelText: 'Date',
                       timeLabelText: "Hour",
-
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Date and Time',
                         hintText: 'Enter the date and time of your trip',
                         prefixIcon: Icon(Icons.event),
                       ),
-                      // selectableDayPredicate: isSelectableDay,
-                      // onChanged: (val) {
-                      //   controller.departTripTime.text = val;
-                      // },
                       onSaved: (val) {
                         controller.departTripTime.text = val.toString();
                         controller.calculateNumberOfDays();
@@ -138,8 +136,11 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
                             controller.saveData();
                             // Calculate the number of days
                             controller.calculateNumberOfDays();
+
                             // Print the number of days
                             print(controller.numberOfDays);
+                            print("prixTotal =${controller.calculePrixTotal()}");
+                            myServices.sharedPreferences.setDouble("prixTotal", controller.calculePrixTotal()) ; 
                           },
                           child: Text(
                             'Save',

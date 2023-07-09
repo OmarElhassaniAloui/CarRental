@@ -10,6 +10,9 @@ import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
 
+import '../../core/middelware/middelware.dart';
+import '../../core/services/services.dart';
+
 class CardDetails extends GetView<CarDetailsControllerImp> {
   //! la valeur de selectedCar doit etre recuperer depuis la page home
 
@@ -18,49 +21,46 @@ class CardDetails extends GetView<CarDetailsControllerImp> {
   @override
   Widget build(BuildContext context) {
     Get.put(CarDetailsControllerImp());
-    Map selectedCar = Get.arguments;
-    // final Map<String, dynamic> selectedCar = Get.arguments as Map<String, dynamic>;
-    
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Details',
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              print(selectedCar['selectedCar']);
+    var selectedCar = Get.arguments;
+    MyServices myServices = Get.find();
 
-            },
-            icon: Icon(
-              Icons.favorite_border,
-              size: 25,
-              color: Color.fromARGB(255, 255, 255, 255),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Details',
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                // print(selectedCar['selectedCar'] + 1);
+                myServices.sharedPreferences
+                    .setInt("idVoiture", selectedCar['selectedCar'] + 1);
+                print(myServices.sharedPreferences.getInt('idVoiture'));
+              },
+              icon: Icon(
+                Icons.favorite_border,
+                size: 25,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
             ),
-          ),
-          IconButton(
-            onPressed: () {
-              //todo :  share function
-            },
-            icon: Icon(Icons.share, size: 25),
-          ),
-        ],
-      ),
-      body:
-      controller.cars.isNotEmpty
-          ? CarDetailsWidget(
-              
-              carModel:
-                  CarModel2.fromJson(
-                    controller.cars[selectedCar['selectedCar']] 
-                    ),
-            )
-          : Center(
-              child: CircularProgressIndicator(),
-            )
-          
-      
-    );
+            IconButton(
+              onPressed: () {
+                // print("client id is : ${myServices.sharedPreferences.getInt("idClient")}");
+                print("prixTotal  is : ${myServices.sharedPreferences.getDouble("prixTotal")}");
+                // print(myServices.sharedPreferences.getInt("idVoiture"));
+              },
+              icon: Icon(Icons.share, size: 25),
+            ),
+          ],
+        ),
+        body: controller.cars.isNotEmpty
+            ? CarDetailsWidget(
+                carModel: CarModel.fromJson(
+                    controller.cars[selectedCar['selectedCar']]),
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ));
   }
 }

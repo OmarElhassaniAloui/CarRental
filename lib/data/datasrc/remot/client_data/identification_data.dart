@@ -6,9 +6,11 @@ class IdentificationData {
 
   Crud crud; 
   IdentificationData(this.crud);
-  postIdentification(int idClient,String nationalId  ,String photoNationalIdFront , String photoNationalIdBack     )async { 
+  postIdentification(
+    // int idClient,
+    String nationalId ,String photoNationalIdFront , String photoNationalIdBack     )async { 
     var response = await crud.postData(AppLink.identificationLink, {  
-      "id_client":idClient,  
+      // "id_client":idClient,  
       "national_id":nationalId, 
       "photoFront":photoNationalIdFront,
       "photoBack":photoNationalIdBack,

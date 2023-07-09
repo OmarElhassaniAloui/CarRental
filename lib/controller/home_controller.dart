@@ -4,6 +4,8 @@ import 'package:carrental/core/functions/handlingData.dart';
 import 'package:carrental/data/datasrc/remot/home_data.dart';
 import 'package:get/get.dart';
 
+import '../core/services/services.dart';
+
 abstract class HomeController extends GetxController {
   initData();
   getData();
@@ -11,31 +13,32 @@ abstract class HomeController extends GetxController {
 }
 
 class HomeControllerImp extends HomeController {
-  // MyServices myServices = Get.find();
+  MyServices myServices = Get.find();
 
   HomeData homeData = HomeData(Get.find());
 
   String? username;
   String? id;
   String? lang;
+  // List? carId;
 
   List cars = [];
-  
+
   StatusRequest statusRequest = StatusRequest.none;
 
   @override
   initData() {
-    // username = myServices.shared_Preferences.getString("username");
-    // id = myServices.shared_Preferences.getString("id");
-    // lang = myServices.shared_Preferences.getString("lang");
-    // update();
+    username = myServices.sharedPreferences.getString("username");
+    id = myServices.sharedPreferences.getString("id");
+    // lang = myServices.sharedPreferences.getString("lang");
+    update();
   }
   @override
   getData() async {
     cars.clear();
     var statusRequest = StatusRequest.loading;
     var response = await homeData.getAllCars();
-    print("=============================== Controller $response ");
+    print("=============================== home Controller $response");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
@@ -48,6 +51,11 @@ class HomeControllerImp extends HomeController {
     update();
   }
 
+  int? getCarId(i) {
+    var carId = cars[i]['idVoiture'];
+    return carId;
+  }
+
   @override
   void onInit() {
     getData();
@@ -55,13 +63,12 @@ class HomeControllerImp extends HomeController {
   }
 
   @override
-  goToCarDetails(selectedCar) {
+  goToCarDetails(selectedCar){
     Get.toNamed(
       AppRout.carDetails,
       arguments: {
         'selectedCar': selectedCar,
-        },
+      },
     );
-  } 
-  
+  }
 }

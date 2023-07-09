@@ -2,7 +2,7 @@ import 'package:carrental/core/middelware/middelware.dart';
 import 'package:carrental/view/screens/Terms_and_conditions_page.dart';
 import 'package:carrental/view/screens/authScreens/registration.dart';
 import 'package:carrental/view/screens/booking_now.dart';
-import 'package:carrental/view/screens/car_details.dart';
+// import 'package:carrental/view/screens/car_details.dart';
 import 'package:carrental/view/screens/card_details.dart';
 import 'package:carrental/view/screens/confirmationpage.dart';
 import 'package:carrental/view/screens/home_screen.dart';

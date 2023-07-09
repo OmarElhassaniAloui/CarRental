@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:carrental/core/constants/app_routs.dart';
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +17,11 @@ class DateTimePickerControllerImp extends DateTimePickerController {
   late TextEditingController departTripTime;
   late TextEditingController returnDateAndTime;
 
+  MyServices myServices = Get.find();
+
   int numberOfDays = 0;
   Color buttonColor = Color(0xFF001253);
-
+  double prixTotal = 0.0;
   void calculateNumberOfDays() {
     try {
       DateTime departureDate = DateTime.parse(departTripTime.text);
@@ -39,14 +42,34 @@ class DateTimePickerControllerImp extends DateTimePickerController {
 
     update();
   }
-
+  // calcule prix total
+  double calculePrixTotal(){ 
+    if (numberOfDays > 0) {
+      prixTotal = numberOfDays * 400; 
+    }
+    return prixTotal;
+  }
   // validation
   void saveData() {
     if (formstate.currentState!.validate()) {
       formstate.currentState!.save();
 
       print('Data saved!');
-      print('Number of Days: ${this.numberOfDays}');
+      print('Number of Days: ${this.numberOfDays}'); 
+
+      myServices.sharedPreferences.setString(
+        "departTripTime",
+        departTripTime.text,
+      ); 
+      myServices.sharedPreferences.setString(
+        "returnDateAndTime",
+        returnDateAndTime.text,
+      ); 
+      myServices.sharedPreferences.setInt(
+        "numberOfDays",
+        numberOfDays,
+      ); 
+
 
       Get.showSnackbar(
         GetSnackBar(
@@ -144,5 +167,16 @@ class DateTimePickerControllerImp extends DateTimePickerController {
     departTripTime.dispose();
     returnDateAndTime.dispose();
     super.onClose();
+  } 
+  goToPersonalInfo(){ 
+    Get.toNamed( 
+      AppRout.personalInfPage  , 
+      arguments: { 
+        "departTripTime": departTripTime.text,
+        "returnDateAndTime": returnDateAndTime.text,
+        "numberOfDays": numberOfDays,
+      }
+    );
+    
   }
 }

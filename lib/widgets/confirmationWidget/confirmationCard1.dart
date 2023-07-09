@@ -1,10 +1,16 @@
+import 'package:carrental/core/services/services.dart';
+import 'package:carrental/data/model/carModel/car_model2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ConfirmationCard1 extends StatelessWidget {
   const ConfirmationCard1({super.key});
 
   @override
   Widget build(BuildContext context) {
+    MyServices _services = Get.put(MyServices());
+    CarModel _carModel = Get.put(CarModel());
+    var myServices;
     return Card(
       // color: Colors.white,
       child: Container(
@@ -15,7 +21,7 @@ class ConfirmationCard1 extends StatelessWidget {
             Container(
               height: 80,
               width: 80,
-              child: Image.asset("assets/car_images/carpng.png"),
+              child: Image.asset("assets/car_images/photo1.png"),
             ),
             SizedBox(
               width: 6,
@@ -28,7 +34,7 @@ class ConfirmationCard1 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Mercedes",
+                      "${_services.sharedPreferences.getString("car_marque")}",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -36,7 +42,7 @@ class ConfirmationCard1 extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "Bens w176",
+                      "Fiesta",
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -52,7 +58,7 @@ class ConfirmationCard1 extends StatelessWidget {
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                      text: "\$200",
+                      text: "Dh 400",
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 18,

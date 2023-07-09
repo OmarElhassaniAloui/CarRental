@@ -1,4 +1,6 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RentalFeesCard extends StatelessWidget {
   double? elevation;
@@ -6,6 +8,7 @@ class RentalFeesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyServices myServices = Get.find();
     return Card(
       elevation: elevation,
       child: Container(
@@ -36,9 +39,9 @@ class RentalFeesCard extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Container(
-                      child: Text("\$200"),
+                      child: Text("Dh 400"),
                     ),
                   ),
                 ],
@@ -55,13 +58,14 @@ class RentalFeesCard extends StatelessWidget {
                     flex: 7,
                     child: Container(
                       //todo  hna khas dir variable ela hssab chhal mn nhar kra
-                      child: Text("Total of 3 days "),
+                      child: Text(
+                          "Total of ${myServices.sharedPreferences.getInt("numberOfDays")} days "),
                     ),
                   ),
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Container(
-                      child: Text("\$600"),
+                      child: Text("Dh 6000.0"),
                     ),
                   ),
                 ],
@@ -92,7 +96,7 @@ class RentalFeesCard extends StatelessWidget {
                 Expanded(
                   //todo calculer le total ?
                   child: Text(
-                    "\$600.00",
+                    "Dh ${myServices.sharedPreferences.getDouble("prixTotal")}",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

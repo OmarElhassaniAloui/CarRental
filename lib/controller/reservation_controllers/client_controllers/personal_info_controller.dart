@@ -15,8 +15,10 @@ abstract class PersonalInfoController extends GetxController {
 
 class PersonalInfoControllerImp extends PersonalInfoController {
   // text controllers
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  late TextEditingController fullName;
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  late TextEditingController firstName;
+  late TextEditingController lastName;
   late TextEditingController email;
   late TextEditingController phone_number;
   late TextEditingController address;
@@ -27,35 +29,44 @@ class PersonalInfoControllerImp extends PersonalInfoController {
   // personal info data
   PersonalInfoData personalInfoData = PersonalInfoData(Get.find());
   // data
-  List data = [];
+  List? data = [];
+  // int? lastClientId;
+  List? clientData = [];
 
   @override
-  Future<void> getPersonalInfo() {
-    throw UnimplementedError();
+  Future<void> getPersonalInfo() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await personalInfoData.getPersonalInfodata();
+    print("=============================== Controller $response");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      clientData!.addAll(response['data']);
+      myServices.sharedPreferences
+          .setInt("idClient", clientData![0]['idClient']);
+      update();
+    }
   }
 
   @override
   Future<void> postPersonalInfo() async {
-    if (formstate.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
       var response = await personalInfoData.postPersonalInfodata(
-        fullName.text,
+        lastName.text,
+        firstName.text,
         email.text,
         phone_number.text,
         address.text,
       );
-      print("=============================== Controller $response ");
+      print("=============================== Controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          data.addAll(response['data']);
-          Get.offNamed(AppRout.homepage, arguments: {
-            "email": email.text,
-            "fullName": fullName.text,
-            "phone_number": phone_number.text,
-            "address": address.text,
-          });
+          data!.addAll(response['data']);
+            
+          myServices.sharedPreferences.setString("address", address.text);
         } else {
           Get.defaultDialog(
               title: "ُWarning",
@@ -68,7 +79,39 @@ class PersonalInfoControllerImp extends PersonalInfoController {
   }
 
   @override
+  void onInit() {
+    firstName = TextEditingController();
+    lastName = TextEditingController();
+    email = TextEditingController();
+    phone_number = TextEditingController();
+    address = TextEditingController();
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    firstName.dispose();
+    lastName.dispose();
+    email.dispose();
+    phone_number.dispose();
+    address.dispose();
+    super.dispose();
+  }
+
+  @override
   Future<void> updatePersonalInfo() {
     throw UnimplementedError();
+  }
+
+  // pass data to another page
+  goToIdentifcationPage() {
+
+    Get.toNamed(AppRout.identification, arguments: {
+      "firstName": firstName.text,
+      "lastName": lastName.text,
+      "email": email.text,
+      "phone_number": phone_number.text,
+      "address": address.text,
+    });
   }
 }

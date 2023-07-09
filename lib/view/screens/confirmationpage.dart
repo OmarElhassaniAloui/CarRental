@@ -27,7 +27,7 @@ class ConfiramtionPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 15),
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Please Review your Requist and confirme",
+                  "Please Review your Request and confirme",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,

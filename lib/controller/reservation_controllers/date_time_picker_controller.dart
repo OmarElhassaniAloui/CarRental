@@ -26,7 +26,7 @@ class DateTimePickerControllerImp extends DateTimePickerController {
     try {
       DateTime departureDate = DateTime.parse(departTripTime.text);
       DateTime returnDate = DateTime.parse(returnDateAndTime.text);
-
+     
       print("the return dat is $returnDate days");
 
       Duration difference = returnDate.difference(departureDate);

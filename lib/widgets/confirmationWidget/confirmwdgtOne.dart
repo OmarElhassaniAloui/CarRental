@@ -105,7 +105,7 @@ class ConfirmationCardOne extends StatelessWidget {
                   SizedBox(
                     height: 6,
                   ),
-                  Text("U12*******"),
+                  Text("${_services.sharedPreferences.get("nationalId")}"),
                   SizedBox(
                     height: 6,
                   ),

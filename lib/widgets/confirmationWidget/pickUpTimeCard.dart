@@ -1,7 +1,10 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PickUpTimeCard extends StatelessWidget {
-  const PickUpTimeCard({super.key});
+  PickUpTimeCard({super.key});
+  MyServices _services = Get.find(); 
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,8 @@ class PickUpTimeCard extends StatelessWidget {
                 ),
               ],
             ),
-            Text("13 July, 22:46 pm-28 July, 22:46 pm"),
+            Text(
+                "${_services.sharedPreferences.get("departTripTime")}-${_services.sharedPreferences.get("returnDateAndTime")}"),
             SizedBox(
               height: 6,
             ),

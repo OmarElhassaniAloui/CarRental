@@ -60,6 +60,8 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
                         controller.departTripTime.text = val.toString();
                         controller.calculateNumberOfDays();
                         print(val);
+                        myServices.sharedPreferences.setString(
+                            "departTripTime", controller.departTripTime.text);
                       },
                       validator: (val) {
                         // validation of the date
@@ -103,8 +105,12 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
                       // },
                       onSaved: (val) {
                         controller.returnDateAndTime.text = val.toString();
+
                         controller.calculateNumberOfDays();
                         print(val);
+                        myServices.sharedPreferences.setString(
+                            "returnDateAndTime",
+                            controller.returnDateAndTime.text);
                       },
                       validator: (val) {
                         if (val!.isEmpty) {
@@ -139,8 +145,10 @@ class PickdateAndTime extends GetView<DateTimePickerControllerImp> {
 
                             // Print the number of days
                             print(controller.numberOfDays);
-                            print("prixTotal =${controller.calculePrixTotal()}");
-                            myServices.sharedPreferences.setDouble("prixTotal", controller.calculePrixTotal()) ; 
+                            print(
+                                "prixTotal =${controller.calculePrixTotal()}");
+                            myServices.sharedPreferences.setDouble(
+                                "prixTotal", controller.calculePrixTotal());
                           },
                           child: Text(
                             'Save',

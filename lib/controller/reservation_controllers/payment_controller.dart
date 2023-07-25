@@ -12,8 +12,8 @@ class PaymentController extends GetxController {
   MyServices myServices = Get.find();
   String? dateDebut;
   String? dateFin;
-  int? carId;
-  int? clientId;
+  dynamic  carId;
+  dynamic clientId;
   DateTime? dateReservation;
   double? prixTotal;
   StatusRequest statusRequest = StatusRequest.none;
@@ -33,7 +33,7 @@ class PaymentController extends GetxController {
   showinfo() {
     print("date de debut = $dateDebut");
     print("date de fin = $dateFin");
-    print("idVoitur= ${carId.runtimeType}");
+    print("idVoitur= ${carId}");
     print("idclient= $clientId");
     print("date de reserv = $dateReservation");
     print("le prix totol = $prixTotal");
@@ -45,8 +45,8 @@ class PaymentController extends GetxController {
     var response = await reservationData.creatReservation(
       dateDebut!,
       dateFin!,
-      carId!,
-      clientId!,
+      carId-1,
+      clientId,
       dateReservation!.toString(),
       prixTotal!,
     );

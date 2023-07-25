@@ -8,8 +8,8 @@ class ReservationData {
   creatReservation(
     String dateDebut ,  
     String dateFin ,  
-    int carId , 
-    int clientId  , 
+    dynamic carId , 
+    dynamic clientId  , 
     String dateReservation , 
     double prixTotal ,  
   ) async {

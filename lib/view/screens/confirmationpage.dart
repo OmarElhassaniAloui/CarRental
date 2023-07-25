@@ -53,33 +53,7 @@ class ConfiramtionPage extends StatelessWidget {
                     Get.to(() => PaymentPage());
                   },
                 ),
-                // OutlinedButton(
-                //   onPressed: () {
-                //     // Navigator.of(context).push(
-                //     //   MaterialPageRoute(builder: (_) {
-                //     //     return SuccessPage();
-                //     //   }),
-                //     // );
-                //     Get.to(() => PaymentPage());
-                //   },
-                //   child: Text(
-                //     'Continue',
-                //     style: TextStyle(
-                //       color: Colors.white,
-                //       fontSize: 20,
-                //     ),
-                //   ),
-                //   style: OutlinedButton.styleFrom(
-                //     fixedSize: Size(370, 48),
-                //     backgroundColor: Colors.redAccent,
-                //     padding: EdgeInsets.symmetric(
-                //       horizontal: 20,
-                //     ),
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(10),
-                //     ),
-                //   ),
-                // ),
+                
               ),
               SizedBox(
                 height: 20,

@@ -69,6 +69,9 @@ class CarDetailsWidget extends StatelessWidget {
                                   builder: (_) => Image.network(
                                       '${AppLink.imageLink}/${carModel.photo2}'),
                                 );
+                                // print("${AppLink.imageLink}/${carModel.photo2}") ; 
+                                myServices.sharedPreferences.setString("carImage",'${AppLink.imageLink}/${carModel.photo1}');
+                                
                               },
                               child: Image.network(
                                   '${AppLink.imageLink}/${carModel.photo2}'),
@@ -404,11 +407,12 @@ class CarDetailsWidget extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(AppRout.pickTimePage);
                 myServices.sharedPreferences.setInt("car_id", carId + 1);
-                print(
-                    "the car id is : ${myServices.sharedPreferences.get("car_id")}");
+                print("the car id is : ${myServices.sharedPreferences.get("car_id")}");
                 myServices.sharedPreferences
                     .setString("car_marque", carModel.marque.toString());
-                myServices.sharedPreferences.setString("car_model ", carModel.model.toString()); 
+                print("the car marque is : ${myServices.sharedPreferences.get("car_marque")}");  
+                myServices.sharedPreferences.setString("car_model", carModel.model.toString());
+                print("the car model is : ${myServices.sharedPreferences.get("car_model")}"); 
                 // myServices.sharedPreferences.setString(key, value)
                 myServices.sharedPreferences.setString("carImage",carModel.photo1.toString()); 
               },

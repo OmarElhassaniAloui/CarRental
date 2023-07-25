@@ -22,6 +22,7 @@ class ConfirmationCard1 extends StatelessWidget {
               height: 80,
               width: 80,
               child: Image.asset("assets/car_images/photo1.png"),
+              
             ),
             SizedBox(
               width: 6,
@@ -42,7 +43,7 @@ class ConfirmationCard1 extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "Fiesta",
+                      "${_services.sharedPreferences.get("car_model")}",
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,

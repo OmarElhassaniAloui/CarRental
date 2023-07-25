@@ -65,7 +65,7 @@ class RentalFeesCard extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Container(
-                      child: Text("Dh 6000.0"),
+                      child: Text("Dh ${myServices.sharedPreferences.getDouble("prixTotal")}"),
                     ),
                   ),
                 ],

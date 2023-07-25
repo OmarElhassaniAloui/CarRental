@@ -50,7 +50,7 @@ class SuccessPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(bottom: 15),
                       child: Text(
-                          "You've Booked ${myServices.sharedPreferences.getString("car_marque")} Fiesta Successfully\n Go to My Booking For More Booking Details"),
+                          "You've Booked ${myServices.sharedPreferences.getString("car_marque")} ${myServices.sharedPreferences.get("car_model")} Successfully\n Go to My Booking For More Booking Details"),
                     )
                   ],
                 ),
@@ -114,7 +114,7 @@ class SuccessPage extends StatelessWidget {
                             Text("Trip-Dates",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20)),
-                            Text("13 July, 22:46 pm-28 July, 22:46 pm ",
+                            Text("${myServices.sharedPreferences.get("departTripTime")}-${myServices.sharedPreferences.get("returnDateAndTime")}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18)),
                           ],

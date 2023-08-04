@@ -4,35 +4,10 @@
 
 ## Introduction
 
-Carental is a web-based application that allows users to rent cars online. Whether you're planning a trip, need a temporary replacement vehicle, or simply want to experience driving a different car, Carental has you covered. With a wide selection of cars from various categories, users can easily browse, book, and manage their car rentals through this platform.
+Carental is a Flutter-based mobile application that allows users to rent cars online. Whether you're planning a trip, need a temporary replacement vehicle, or simply want to experience driving a different car, Carental has you covered. With a wide selection of cars from various categories, users can easily browse, book, and manage their car rentals through this app.
 
 ## UI screens
 [UI Screenshot ](https://github.com/OmarElhassaniAloui/CarRental/tree/7b61c361da599423323bf14460596411b388f3ac/assets/ui)
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Features](#features)
-  - [User Registration and Authentication](#user-registration-and-authentication)
-  - [Car Browsing](#car-browsing)
-  - [Booking Management](#booking-management)
-  - [Car Availability and Calendar](#car-availability-and-calendar)
-  - [Pricing and Payment](#pricing-and-payment)
-  - [User Profile](#user-profile)
-  - [Admin Panel](#admin-panel)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Getting Started
-
-To get started with Carental, make sure you have the following prerequisites:
-
-- Node.js (version X.X.X)
-- MongoDB (version X.X.X)
-- Internet connection
-
 ## Features
 
 ### User Registration and Authentication
@@ -63,27 +38,29 @@ To get started with Carental, make sure you have the following prerequisites:
 
 - Transparent pricing with breakdowns of rental costs and additional services.
 - Secure payment options to handle transactions (e.g., credit/debit cards, PayPal).
-- Users receive email receipts and booking confirmations.
+- Users receive in-app notifications and booking confirmations.
 
 ### User Profile
 
 - Users can view and edit their profile information.
 - Booking history and status are available in the user profile.
-- Password reset and email preferences management.
+- Password reset and notification preferences management.
 
-### Admin Panel
+### State Management (GetX)
 
-- Admins have access to a dashboard to manage cars, users, and bookings.
-- Ability to add, update, and remove cars from the system.
-- View and update user information.
-- Review and manage booking details.
+- The project utilizes the GetX package for state management to efficiently manage app state and update UI components.
+
+### REST API Integration
+
+- The app interacts with a RESTful API to fetch car data, manage user bookings, and process payments.
+- API endpoints are used for user authentication, car retrieval, and booking management.
 
 ## Installation
 
-1. Clone the repository from [GitHub Repo URL](https://github.com/yourusername/carental.git).
-2. Install the required dependencies using `npm install`.
-3. Configure the environment variables for the application.
-4. Start the application using `npm start` or any other preferred method.
+1. Clone the repository from [GitHub Repo URL](https://github.com/yourusername/carental_flutter.git).
+2. Install Flutter and the required dependencies using `flutter pub get`.
+3. Configure the API base URL in the project to connect with the backend.
+4. Build and run the app on your desired platform (Android, iOS, or web).
 
 ## Contributing
 
@@ -95,6 +72,4 @@ The Carental project is licensed under the [MIT License](https://opensource.org/
 
 ---
 
-
-
-Please note that this is just a template and you should customize it according to your specific project details. Include information on how to run the project, any other technical details, and the project's purpose and goals in your actual README file.
+Note: The above README assumes that you already have a Flutter project with GetX set up and a REST API to handle the backend functionality. Please make sure to customize the content accordingly, especially the installation instructions and API integration details, based on your specific project setup.

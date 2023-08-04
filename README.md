@@ -6,6 +6,9 @@
 
 Carental is a web-based application that allows users to rent cars online. Whether you're planning a trip, need a temporary replacement vehicle, or simply want to experience driving a different car, Carental has you covered. With a wide selection of cars from various categories, users can easily browse, book, and manage their car rentals through this platform.
 
+## ui
+[UI Screenshot ](https://github.com/OmarElhassaniAloui/CarRental/tree/7b61c361da599423323bf14460596411b388f3ac/assets/ui)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -91,8 +94,7 @@ We welcome contributions to improve Carental. Feel free to submit bug reports, f
 The Carental project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
-## ui
-[UI Screenshot ](https://github.com/OmarElhassaniAloui/CarRental/tree/7b61c361da599423323bf14460596411b388f3ac/assets/ui)
+
 
 
 Please note that this is just a template and you should customize it according to your specific project details. Include information on how to run the project, any other technical details, and the project's purpose and goals in your actual README file.

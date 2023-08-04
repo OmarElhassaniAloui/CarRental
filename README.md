@@ -91,6 +91,8 @@ We welcome contributions to improve Carental. Feel free to submit bug reports, f
 The Carental project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
+## ui
+[UI Screenshot ](https://github.com/OmarElhassaniAloui/CarRental/tree/7b61c361da599423323bf14460596411b388f3ac/assets/ui)
 
 
 Please note that this is just a template and you should customize it according to your specific project details. Include information on how to run the project, any other technical details, and the project's purpose and goals in your actual README file.

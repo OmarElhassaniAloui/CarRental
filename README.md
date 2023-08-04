@@ -6,6 +6,8 @@
 
 Carental is a Flutter-based mobile application that allows users to rent cars online. Whether you're planning a trip, need a temporary replacement vehicle, or simply want to experience driving a different car, Carental has you covered. With a wide selection of cars from various categories, users can easily browse, book, and manage their car rentals through this app.
 
+## UI screens
+[UI Screenshot ](https://github.com/OmarElhassaniAloui/CarRental/tree/7b61c361da599423323bf14460596411b388f3ac/assets/ui)
 ## Features
 
 ### User Registration and Authentication

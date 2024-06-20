@@ -2,7 +2,7 @@ import 'package:carrental/core/middelware/middelware.dart';
 import 'package:carrental/view/screens/Terms_and_conditions_page.dart';
 import 'package:carrental/view/screens/authScreens/registration.dart';
 import 'package:carrental/view/screens/booking_now.dart';
-import 'package:carrental/view/screens/car_details.dart';
+// import 'package:carrental/view/screens/car_details.dart';
 import 'package:carrental/view/screens/card_details.dart';
 import 'package:carrental/view/screens/confirmationpage.dart';
 import 'package:carrental/view/screens/home_screen.dart';
@@ -20,31 +20,28 @@ import 'package:carrental/view/screens/support_page.dart';
 import 'package:get/get.dart';
 
 import 'core/constants/app_routs.dart';
-import 'view/screens/authScreens/login.dart'; 
+import 'view/screens/authScreens/login.dart';
 
-
-List<GetPage<dynamic>> routs =[ 
-  GetPage(name: "/", page: ()=> OnBoardingPage() , middlewares: [MiddelWare()]),
-  GetPage(name: AppRout.homepage, page:()=>  Home()) , 
-  GetPage(name: AppRout.login, page:()=>  LoginScreen()) , 
-  GetPage(name: AppRout.bookingNowPage, page:()=>  BookingNowPage()) , 
-  GetPage(name: AppRout.carDetails, page:()=>  CardDetails()) , 
-  GetPage(name: AppRout.confirmationPage, page:()=>  ConfiramtionPage()) , 
-  GetPage(name: AppRout.drivingLicensePage, page:()=>  DrivingLicensecPage()) , 
-  GetPage(name: AppRout.identification, page:()=>  Identification()) , 
-  GetPage(name: AppRout.myBookingPage, page:()=>  MyBookingPage()) , 
-  GetPage(name: AppRout.myProfilePage, page:()=>  ProfileScreen()) , 
-  GetPage(name: AppRout.notificationPage, page:()=>  NotificationsPage()) , 
-  GetPage(name: AppRout.onBoardingScreen, page:()=>  OnBoardingPage()) , 
-  GetPage(name: AppRout.paymentPage, page:()=>  PaymentPage()) , 
-  GetPage(name: AppRout.personalInfPage, page:()=>  PersonalInfo()) , 
-  GetPage(name: AppRout.pickTimePage, page:()=>  dateAndTimePicker()) , 
-  GetPage(name: AppRout.signup, page:()=>  RegistrationScreen()) , 
-  GetPage(name: AppRout.successPage, page:()=>  SuccessPage()) , 
-  GetPage(name: AppRout.successPage, page:()=>  Home()) , 
-  GetPage(name: AppRout.supportPage, page:()=>  SupportPage()) , 
-  GetPage(name: AppRout.termsAndConditionsPage, page:()=>  TermsAndConditions()) , 
-  
-
-
-] ;  
+List<GetPage<dynamic>> routs = [
+  GetPage(name: "/", page: () => OnBoardingPage(), middlewares: [MiddelWare()]),
+  GetPage(name: AppRout.homepage, page: () => Home()),
+  GetPage(name: AppRout.login, page: () => LoginScreen()),
+  GetPage(name: AppRout.bookingNowPage, page: () => BookingNowPage()),
+  GetPage(name: AppRout.carDetails, page: () => CardDetails()),
+  GetPage(name: AppRout.confirmationPage, page: () => ConfiramtionPage()),
+  GetPage(name: AppRout.drivingLicensePage, page: () => DrivingLicensecPage()),
+  GetPage(name: AppRout.identification, page: () => Identification()),
+  GetPage(name: AppRout.myBookingPage, page: () => MyBookingPage()),
+  GetPage(name: AppRout.myProfilePage, page: () => ProfileScreen()),
+  GetPage(name: AppRout.notificationPage, page: () => NotificationsPage()),
+  GetPage(name: AppRout.onBoardingScreen, page: () => OnBoardingPage()),
+  GetPage(name: AppRout.paymentPage, page: () => PaymentPage()),
+  GetPage(name: AppRout.personalInfPage, page: () => PersonalInfo()),
+  GetPage(name: AppRout.pickTimePage, page: () => PickdateAndTime()),
+  GetPage(name: AppRout.signup, page: () => RegistrationScreen()),
+  GetPage(name: AppRout.successPage, page: () => SuccessPage()),
+  // GetPage(name: AppRout.successPage, page:()=>  Home()) ,
+  GetPage(name: AppRout.supportPage, page: () => SupportPage()),
+  GetPage(
+      name: AppRout.termsAndConditionsPage, page: () => TermsAndConditions()),
+];

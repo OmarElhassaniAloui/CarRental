@@ -1,78 +1,92 @@
-class CarModel2 {
-  int? carId;
-  String? matricule;
+class CarModel {
+  int? idVoiture;
+  String? immatriculation;
+  String? marque;
   String? model;
-  String? brand;
-  int? year;
-  int? seats;
+  int? nombreplace;
+  int? puissanceFiscal;
+  int? kilometrage;
+  String? prixlocation;
   String? carburant;
-  int? pricePerDay;
-  String? description;
-  int? disponibilit;
+  String? etat;
+  String? descriptiom;
+  int? deletevoiture;
+  int? rate;
+  String? transmission;
+  int? idPhotovoiture;
   String? photo1;
   String? photo2;
   String? photo3;
   String? photo4;
-  String? auto;
-  int? rate;
 
-
-  CarModel2(
-      {this.carId,
-      this.matricule,
+  CarModel(
+      {this.idVoiture,
+      this.immatriculation,
+      this.marque,
       this.model,
-      this.brand,
-      this.year,
-      this.seats,
+      this.nombreplace,
+      this.puissanceFiscal,
+      this.kilometrage,
+      this.prixlocation,
       this.carburant,
-      this.pricePerDay,
-      this.description,
-      this.disponibilit,
+      this.etat,
+      this.descriptiom,
+      this.deletevoiture,
+      this.rate,
+      this.transmission,
+      this.idPhotovoiture,
       this.photo1,
       this.photo2,
       this.photo3,
-      this.photo4, 
-      this.auto,
-      this.rate
-      });
+      this.photo4});
 
-  CarModel2.fromJson(Map<String, dynamic> json) {
-    carId = json['car_id'];
-    matricule = json['matricule'];
+  CarModel.fromJson(Map<String, dynamic> json) {
+    idVoiture = json['idVoiture'];
+    immatriculation = json['immatriculation'];
+    marque = json['marque'];
     model = json['model'];
-    brand = json['brand'];
-    year = json['year'];
-    seats = json['seats'];
+    nombreplace = json['Nombreplace'];
+    puissanceFiscal = json['PuissanceFiscal'];
+    kilometrage = json['kilometrage'];
+    prixlocation = json['prixlocation'];
     carburant = json['carburant'];
-    pricePerDay = json['price_per_day'];
-    description = json['description'];
-    disponibilit = json['disponibilité'];
-    photo1 = json['photo1'];
-    photo2 = json['photo2'];
-    photo3 = json['photo3'];
-    photo4 = json['photo4'];
-    auto = json['auto'];
+    etat = json['etat'];
+    descriptiom = json['descriptiom'];
+    deletevoiture = json['deletevoiture'];
     rate = json['rate'];
+    transmission = json['transmission'];
+    idPhotovoiture = json['idPhotovoiture'];
+    photo1 = json['Photo1'];
+    photo2 = json['Photo2'];
+    photo3 = json['Photo3'];
+    photo4 = json['Photo4'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['car_id'] = this.carId;
-    data['matricule'] = this.matricule;
+    data['idVoiture'] = this.idVoiture;
+    data['immatriculation'] = this.immatriculation;
+    data['marque'] = this.marque;
     data['model'] = this.model;
-    data['brand'] = this.brand;
-    data['year'] = this.year;
-    data['seats'] = this.seats;
+    data['Nombreplace'] = this.nombreplace;
+    data['PuissanceFiscal'] = this.puissanceFiscal;
+    data['kilometrage'] = this.kilometrage;
+    data['prixlocation'] = this.prixlocation;
     data['carburant'] = this.carburant;
-    data['price_per_day'] = this.pricePerDay;
-    data['description'] = this.description;
-    data['disponibilité'] = this.disponibilit;
-    data['photo1'] = this.photo1;
-    data['photo2'] = this.photo2;
-    data['photo3'] = this.photo3;
-    data['photo4'] = this.photo4;
-    data['auto'] = this.auto;
+    data['etat'] = this.etat;
+    data['descriptiom'] = this.descriptiom;
+    data['deletevoiture'] = this.deletevoiture;
     data['rate'] = this.rate;
+    data['transmission'] = this.transmission;
+    data['idPhotovoiture'] = this.idPhotovoiture;
+    data['Photo1'] = this.photo1;
+    data['Photo2'] = this.photo2;
+    data['Photo3'] = this.photo3;
+    data['Photo4'] = this.photo4;
     return data;
   }
 }
+
+
+
+

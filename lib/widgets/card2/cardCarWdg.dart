@@ -1,15 +1,13 @@
 import 'package:carrental/data/model/carModel/car_model2.dart';
-import 'package:carrental/view/screens/card_details.dart';
 import 'package:carrental/widgets/details_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
-import 'package:fluttericon/iconic_icons.dart';
 import 'package:fluttericon/maki_icons.dart';
 import 'package:carrental/core/constants/link_api.dart';
 
 class CarCard extends StatelessWidget {
   int index;
-  final CarModel2 carModel;
+  final CarModel carModel;
 
   CarCard({
     super.key,
@@ -52,7 +50,7 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                '${carModel.seats}',
+                                '${carModel.nombreplace}',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
@@ -74,7 +72,7 @@ class CarCard extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                '${carModel.auto}',
+                                '${carModel.transmission}',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
@@ -148,7 +146,7 @@ class CarCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      '${carModel.brand}',
+                      '${carModel.marque}',
                       style: TextStyle(
                         fontSize: 25,
                       ),
@@ -171,7 +169,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\Dh ${carModel.pricePerDay}",
+                              "\Dh ${carModel.prixlocation}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -190,7 +188,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${carModel.pricePerDay}",
+                              "\DH ${carModel.prixlocation}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -209,7 +207,7 @@ class CarCard extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "\$${carModel.pricePerDay}",
+                              "\DH ${carModel.prixlocation}",
                               style: TextStyle(
                                 fontSize: 15,
                               ),
@@ -225,7 +223,7 @@ class CarCard extends StatelessWidget {
                       ],
                     ),
                     DetailButton(
-                      index: index,
+                      index: index-1,
                     ),
                   ],
                 ),

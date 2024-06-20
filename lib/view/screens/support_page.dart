@@ -44,7 +44,7 @@ class SupportPage extends StatelessWidget {
                             icon: Icon(Icons.call),
                             label: Text("Call us"),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red,
+                              backgroundColor: Color(0xFF001253),
                               fixedSize: Size(150, 40),
                             ),
                           ),
@@ -53,14 +53,15 @@ class SupportPage extends StatelessWidget {
                           ),
                           OutlinedButton.icon(
                             onPressed: () {},
-                            icon: Icon(Icons.mail_outline, color: Colors.red),
+                            icon: Icon(Icons.mail_outline,
+                                color: Color(0xFF001253)),
                             label: Text(
                               "Mail us",
-                              style: TextStyle(color: Colors.red),
+                              style: TextStyle(color: Color(0xFF001253)),
                             ),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
-                                color: Colors.red,
+                                color: Color(0xFF001253),
                               ),
                               fixedSize: Size(150, 40),
                             ),
@@ -182,13 +183,13 @@ class SupportPage extends StatelessWidget {
                               child: Text(
                                 'Send',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.orange,
                                   fontSize: 20,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                 fixedSize: Size(370, 48),
-                                backgroundColor: Colors.redAccent,
+                                backgroundColor: Color(0xFF001253),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 20,
                                 ),

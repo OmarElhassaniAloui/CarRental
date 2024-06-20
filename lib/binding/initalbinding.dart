@@ -6,4 +6,5 @@ class InitialBinding extends Bindings {
   void dependencies() {
     Get.put(Crud()); 
   }
-}
+} 
+

@@ -152,7 +152,7 @@ class RegistrationScreen extends StatelessWidget {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: Color(0xFF001253),
       child: GetBuilder<SignUpControllerImp>(
         builder: (controller) => MaterialButton(
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -165,7 +165,7 @@ class RegistrationScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20,
-                  // color: Colors.white,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold),
             )),
       ),

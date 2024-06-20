@@ -10,6 +10,7 @@ class MyFavoritData {
       AppLink.favoritlink, {"id": id}
     );
   } 
+  
   // deleteData(String id) async {
   //   var dataResponse = await crud.postData(AppLink.deletefromfavroite, {"id": id});
   //   return dataResponse.fold((l) => l, (r) => r);

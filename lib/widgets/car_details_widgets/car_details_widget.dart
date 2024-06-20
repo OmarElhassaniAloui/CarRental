@@ -9,15 +9,19 @@ import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
 
+import '../../core/services/services.dart';
 import '../costum_button.dart';
 
 class CarDetailsWidget extends StatelessWidget {
-  final CarModel2 carModel;
+  final CarModel carModel;
 
   CarDetailsWidget({super.key, required this.carModel});
 
   @override
   Widget build(BuildContext context) {
+    // var carId = carModel.idVoiture;
+    int carId = Get.arguments['selectedCar'];
+    MyServices myServices = Get.find();
     return Container(
       margin: EdgeInsets.all(15),
       width: double.infinity,
@@ -58,8 +62,20 @@ class CarDetailsWidget extends StatelessWidget {
                                 width: 1,
                               ),
                             ),
-                            child: Image.network(
-                                '${AppLink.imageLink}/${carModel.photo1}'),
+                            child: GestureDetector(
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => Image.network(
+                                      '${AppLink.imageLink}/${carModel.photo2}'),
+                                );
+                                // print("${AppLink.imageLink}/${carModel.photo2}") ; 
+                                myServices.sharedPreferences.setString("carImage",'${AppLink.imageLink}/${carModel.photo1}');
+                                
+                              },
+                              child: Image.network(
+                                  '${AppLink.imageLink}/${carModel.photo2}'),
+                            ),
                           ),
                           SizedBox(height: 5),
                           Container(
@@ -71,8 +87,17 @@ class CarDetailsWidget extends StatelessWidget {
                                 width: 1,
                               ),
                             ),
-                            child: Image.network(
-                                '${AppLink.imageLink}/${carModel.photo1}'),
+                            child: GestureDetector(
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => Image.network(
+                                      '${AppLink.imageLink}/${carModel.photo3}'),
+                                );
+                              },
+                              child: Image.network(
+                                  '${AppLink.imageLink}/${carModel.photo3}'),
+                            ),
                           ),
                           SizedBox(height: 5),
                           Container(
@@ -84,8 +109,16 @@ class CarDetailsWidget extends StatelessWidget {
                                 width: 1,
                               ),
                             ),
-                            child: Image.network(
-                                '${AppLink.imageLink}/${carModel.photo1}'),
+                            child: GestureDetector(
+                              onLongPress: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (_) => Image.network(
+                                        '${AppLink.imageLink}/${carModel.photo4}'));
+                              },
+                              child: Image.network(
+                                  '${AppLink.imageLink}/${carModel.photo4}'),
+                            ),
                           ),
                         ],
                       ),
@@ -116,8 +149,7 @@ class CarDetailsWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "${carModel.brand}",
-                          // controller.cars[selectedCar!]["brand"],
+                          "${carModel.marque}",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -125,8 +157,7 @@ class CarDetailsWidget extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          "\$ ${carModel.pricePerDay}/day",
-                          // "\$ ${controller.cars[selectedCar!]["price_per_day"]}/day",
+                          "\DH ${carModel.prixlocation}/day",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -142,7 +173,6 @@ class CarDetailsWidget extends StatelessWidget {
                       children: [
                         Text(
                           "${carModel.model}",
-                          // controller.cars[selectedCar!]["model"],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -158,7 +188,6 @@ class CarDetailsWidget extends StatelessWidget {
                       children: [
                         Text(
                           "${carModel.rate}",
-                          // controller.cars[selectedCar!]["rate"].toString(),
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -206,7 +235,7 @@ class CarDetailsWidget extends StatelessWidget {
                                 size: 30,
                               ),
                             ),
-                            Text("data"),
+                            Text("5 Seats"),
                           ],
                         ),
                       ),
@@ -219,12 +248,12 @@ class CarDetailsWidget extends StatelessWidget {
                           children: [
                             Container(
                               child: Icon(
-                                Icons.event_seat_sharp,
+                                FontAwesome5.sitemap,
                                 // color: Colors.black,
                                 size: 30,
                               ),
                             ),
-                            Text("data"),
+                            Text("Auto TX"),
                           ],
                         ),
                       ),
@@ -358,8 +387,7 @@ class CarDetailsWidget extends StatelessWidget {
                   SizedBox(height: 10),
                   Container(
                     child: Text(
-                      "${carModel.description}",
-                      // controller.cars[selectedCar!]["description"],
+                      "${carModel.descriptiom}",
                       style: TextStyle(
                         fontSize: 20,
                         // color: Colors.black,
@@ -372,25 +400,21 @@ class CarDetailsWidget extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Container(
-            // child: TextButton(
-            //   onPressed: () {
-            //     Get.toNamed(AppRout.pickTimePage);
-            //   },
-            //   child: Text("Book Now"),
-            //   style: TextButton.styleFrom(
-            //     backgroundColor: Colors.black,
-            //     // primary: Colors.white,
-            //     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-            //     // textStyle: TextStyle(
-            //     //   fontSize: 20,
-            //     //   fontWeight: FontWeight.bold,
-            //     // ),
-            //   ),
-            // ),
             child: CustomTextButton(
+              paddingH: 30,
+              paddingV: 20,
               text: "Book Now",
               onPressed: () {
                 Get.toNamed(AppRout.pickTimePage);
+                myServices.sharedPreferences.setInt("car_id", carId + 1);
+                print("the car id is : ${myServices.sharedPreferences.get("car_id")}");
+                myServices.sharedPreferences
+                    .setString("car_marque", carModel.marque.toString());
+                print("the car marque is : ${myServices.sharedPreferences.get("car_marque")}");  
+                myServices.sharedPreferences.setString("car_model", carModel.model.toString());
+                print("the car model is : ${myServices.sharedPreferences.get("car_model")}"); 
+                // myServices.sharedPreferences.setString(key, value)
+                myServices.sharedPreferences.setString("carImage",carModel.photo1.toString()); 
               },
             ),
           )

@@ -1,6 +1,11 @@
 import 'dart:math';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:carrental/core/services/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import '../../../controller/reservation_controllers/client_controllers/identification_controller.dart';
+import '../../../widgets/costum_button.dart';
 import './driving_license.dart';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -15,9 +20,8 @@ import 'package:path/path.dart';
 
 class Identification extends StatefulWidget {
   Identification({Key? key}) : super(key: key);
-
   @override
-  State<Identification> createState() => _IdentificationState();
+  _IdentificationState createState() => _IdentificationState();
 }
 
 class _IdentificationState extends State<Identification> {
@@ -33,6 +37,9 @@ class _IdentificationState extends State<Identification> {
 
   @override
   Widget build(BuildContext context) {
+    IdentificationControllerImp controller =
+        Get.put(IdentificationControllerImp());
+    MyServices _services = Get.find();
     String? changeText() {
       if (hintvalu == 'National ID' || hintvalu == null) {
         return 'National ID';
@@ -105,28 +112,37 @@ class _IdentificationState extends State<Identification> {
                   ],
                 ),
               ),
-              TextFormField(
-                autofocus: false,
-                textInputAction: TextInputAction.next,
-                controller: _cinPassController,
-                validator: (value) {
-                  if (value!.isEmpty && hintvalu == 'National ID') {
-                    return ('please Enter Your National ID');
-                  } else if (value.isEmpty && hintvalu == 'Passport') {
-                    return ('please Enter Your passport ID');
-                  }
-                },
-                onSaved: (val) {
-                  _cinPassController.text = val!;
-                },
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.perm_identity,
-                  ),
-                  contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  hintText: hintvalu,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+              GetBuilder<IdentificationControllerImp>(
+                init: IdentificationControllerImp(),
+                builder: (controller) => Form(
+                  key: controller.formstate,
+                  child: TextFormField(
+                    autofocus: false,
+                    textInputAction: TextInputAction.next,
+                    controller: controller.idNumber,
+                    validator: (value) {
+                      if (value!.isEmpty && hintvalu == 'National ID') {
+                        return ('please Enter Your National ID');
+                      } else if (value.isEmpty && hintvalu == 'Passport') {
+                        return ('please Enter Your passport ID');
+                      }
+                    },
+                    onSaved: (val) {
+                      // _cinPassController.text = val!;
+                      controller.idNumber.text = val!;
+                      
+                      
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.perm_identity,
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: hintvalu,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -271,34 +287,53 @@ class _IdentificationState extends State<Identification> {
               SizedBox(
                 height: 20,
               ),
-              OutlinedButton(
-                onPressed: () {
-                  //todo : ila makant htta image dakhla -> msage error
-                  // if(){
+              GetBuilder<IdentificationControllerImp>(
+                  builder: (controller) => CustomElevatedButton(
+                        text: 'Next',
+                        onPressed: () {
+                          if (controller.idNumber.text.isEmpty) {
+                            AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.ERROR,
+                              animType: AnimType.BOTTOMSLIDE,
+                              title: 'Error',
+                              desc: 'Please Enter Your National ID',
+                              btnOkOnPress: () {},
+                            )..show();
+                          } else if (controller.idNumber.text.isNotEmpty) {
+                            Get.to(() => DrivingLicensecPage());
+                            _services.sharedPreferences.setString("nationalId", controller.idNumber.text);
+                          }
+                        },
+                      )),
+              // OutlinedButton(
+              //   onPressed: () {
+              //     //todo : ila makant htta image dakhla -> msage error
+              //     // if(){
 
-                  // }
+              //     // }
 
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return DrivingLicensecPage();
-                  }));
-                },
-                child: Text(
-                  'Next',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  fixedSize: Size(370, 48),
-                  backgroundColor: Colors.redAccent,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
+              //     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              //       return DrivingLicensecPage();
+              //     }));
+              //   },
+              //   child: Text(
+              //     'Next',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 20,
+              //     ),
+              //   ),
+              //   style: OutlinedButton.styleFrom(
+              //     fixedSize: Size(370, 48),
+              //     backgroundColor: Colors.redAccent,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 20,
+              //     ),
+              //     shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(10)),
+              //   ),
+              // ),
             ],
           ),
         ),

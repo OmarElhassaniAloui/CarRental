@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String text;
+  double? paddingH;
+  double? paddingV;
   final void Function()? onPressed;
-  const CustomTextButton({Key? key, required this.text, this.onPressed})
-      : super(key: key);
+
+  CustomTextButton({
+    Key? key,
+    required this.text,
+    required this.paddingH,
+    required this.paddingV,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // margin: const EdgeInsets.only(top: 10, right: 20, left: 20),
+      width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
         child: Text(
@@ -19,8 +27,9 @@ class CustomTextButton extends StatelessWidget {
               TextStyle(color: Color.fromARGB(255, 243, 109, 0), fontSize: 20),
         ),
         style: TextButton.styleFrom(
-          backgroundColor: Colors.black,
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          backgroundColor: Color(0xFF001253) ,
+          padding:
+              EdgeInsets.symmetric(horizontal: paddingH!, vertical: paddingV!),
         ),
       ),
     );
@@ -37,6 +46,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
         child: Text(
@@ -45,8 +55,9 @@ class CustomElevatedButton extends StatelessWidget {
               TextStyle(color: Color.fromARGB(255, 243, 109, 0), fontSize: 20),
         ),
         style: TextButton.styleFrom(
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF001253),
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          // disabledBackgroundColor: Color();
         ),
       ),
     );

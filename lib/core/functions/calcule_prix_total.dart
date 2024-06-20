@@ -1,7 +1,11 @@
 class CalculePrixTotal {
-  int? numberOfDays;  
-  double? pricePerDay;
-  static double calculePrixTotal(double pricePerDay,int numberOfDays ) {
-    return pricePerDay * numberOfDays;
+  
+  static double calculePrixTotal(double prixParJour, int nomberDesJours) { 
+    double prixTotal = 0.0;
+    if (nomberDesJours > 0) {
+      prixTotal = nomberDesJours * prixParJour; 
+    }
+    return prixTotal;
   }
 }
+

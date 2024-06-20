@@ -73,6 +73,7 @@ flutter:
     - assets/car_images/car5.jpg
     - assets/car_images/car6.jpg
     - assets/car_images/carpng.png
+    - assets/car_images/photo1.png
     - assets/images/profile.png
     - assets/onboardingimgs/onBoarding1.png
     - assets/onboardingimgs/onBoarding2.png
@@ -81,6 +82,7 @@ flutter:
     - assets/icons/contact_less.png 
     - assets/images/chip.png
     - assets/logo/mastercard.png
+    - assets/lottie/
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

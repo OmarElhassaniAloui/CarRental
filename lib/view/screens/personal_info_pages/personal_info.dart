@@ -1,57 +1,49 @@
 // import 'package:car/screens/personal_info_pages/identification.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../controller/reservation_controllers/client_controllers/personal_info_controller.dart';
 import '../../../data/model/client/clientModel/clientModel.dart';
-// import '../../client/clientModel/clientModel.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
+import '../../../widgets/costum_button.dart';
 import 'identification.dart';
 
-class PersonalInfo extends StatefulWidget {
+class PersonalInfo extends GetView<PersonalInfoControllerImp> {
   PersonalInfo({Key? key}) : super(key: key);
 
   @override
-  State<PersonalInfo> createState() => _PersonalInfoState();
-}
-
-class _PersonalInfoState extends State<PersonalInfo> {
-  // final _auth = FirebaseAuth.instance;
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  final _fullNameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _mobilePhonController = TextEditingController();
-  final _adressController = TextEditingController();
-
-  String initialCountry = 'NG';
-  PhoneNumber number = PhoneNumber(isoCode: 'NG');
-
-  @override
   Widget build(BuildContext context) {
-    final nextButton = OutlinedButton(
-      onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return Identification();
-        }));
-      },
-      child: Text(
-        'Next',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      ),
-      style: OutlinedButton.styleFrom(
-        fixedSize: Size(370, 48),
-        backgroundColor: Colors.redAccent,
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      ),
-    );
+    Get.put(PersonalInfoControllerImp());
+
+    MyServices myServices = Get.find();
+    final nextButton = GetBuilder<PersonalInfoControllerImp>(
+        init: PersonalInfoControllerImp(),
+        builder: (controller) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CustomTextButton(
+              text: 'Next',
+              paddingH: 20,
+              paddingV: 15,
+              onPressed: () {
+                controller.postPersonalInfo();
+                controller.getPersonalInfo();
+                myServices.sharedPreferences.setString("fullname",
+                    controller.firstName.text +" "+ controller.lastName.text);
+                myServices.sharedPreferences
+                    .setString("phoneNumber", controller.phone_number.text);
+                myServices.sharedPreferences
+                    .setString("email", controller.email.text);
+                myServices.sharedPreferences
+                    .setString("address", controller.address.text); 
+                
+                Get.to(Identification());
+              },
+            )));
 
     return Scaffold(
       appBar: AppBar(
@@ -82,33 +74,64 @@ class _PersonalInfoState extends State<PersonalInfo> {
             height: 80,
           ),
           Form(
+            key: controller.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
                   //! full name field
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    autofocus: false,
-                    keyboardType: TextInputType.name,
-                    controller: _fullNameController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return ('please Enter your Full Name');
-                      }
-                      // if(){
-
-                      // }
-                    },
-                    onSaved: (value) {
-                      _fullNameController.text = value!;
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Full Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  child: GetBuilder<PersonalInfoControllerImp>(
+                    init: PersonalInfoControllerImp(),
+                    builder: (controller) => TextFormField(
+                      autofocus: false,
+                      keyboardType: TextInputType.name,
+                      controller: controller.firstName,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ('please Enter your FirstName');
+                        }
+                      },
+                      onSaved: (value) {
+                        controller.firstName.text = value!;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.person),
+                        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        hintText: "FirstName",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  //! full name field
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: GetBuilder<PersonalInfoControllerImp>(
+                    builder: (controller) => TextFormField(
+                      autofocus: false,
+                      keyboardType: TextInputType.name,
+                      controller: controller.lastName,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ('please Enter your FirstName');
+                        }
+                      },
+                      onSaved: (value) {
+                        controller.lastName.text = value!;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.person),
+                        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        hintText: "LasttName",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
@@ -119,31 +142,33 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   //! email field
-                  child: TextFormField(
-                    autofocus: false,
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return ("Please Enter Your Email");
-                      }
-                      //! reg expression for email validation
-                      if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                          .hasMatch(value)) {
-                        return ("Please Enter a valid email");
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _emailController.text = value!;
-                    },
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.mail),
-                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Email",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  child: GetBuilder<PersonalInfoControllerImp>(
+                    builder: (controller) => TextFormField(
+                      autofocus: false,
+                      controller: controller.email,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ("Please Enter Your Email");
+                        }
+                        //! reg expression for email validation
+                        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                            .hasMatch(value)) {
+                          return ("Please Enter a valid email");
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        controller.email.text = value!;
+                      },
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.mail),
+                        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        hintText: "Email",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
@@ -154,69 +179,36 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   //! email field
-                  child: TextFormField(
-                    autofocus: false,
-                    controller: _mobilePhonController,
-                    keyboardType: TextInputType.number,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return ("Please Enter Your Number");
-                      }
-                      //! reg expression for email validation
-                      if (!RegExp("^0[67][0-9]{8}]").hasMatch(value)) {
-                        return ("Please Enter a valid Number");
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _mobilePhonController.text = value!;
-                    },
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone),
-                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Phone Number",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  child: GetBuilder<PersonalInfoControllerImp>(
+                    builder: (controller) => TextFormField(
+                      autofocus: false,
+                      controller: controller.phone_number,
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ("Please Enter Your Number");
+                        }
+                        //! reg expression for email validation
+                        // if (!RegExp("^0[67][0-9]{8}]").hasMatch(value)) {
+                        //   return ("Please Enter a valid Number");
+                        // }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        controller.phone_number.text = value!;
+                      },
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.phone),
+                        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        hintText: "Phone Number",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                //   //! phone number field
-                //   child: InternationalPhoneNumberInput(
-                //     onInputChanged: (PhoneNumber number) {
-                //       print(number.phoneNumber);
-                //     },
-                //     onInputValidated: (bool value) {
-                //       print(value);
-                //     },
-                //     selectorConfig: SelectorConfig(
-                //       selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                //     ),
-                //     ignoreBlank: false,
-                //     autoValidateMode: AutovalidateMode.disabled,
-                //     selectorTextStyle: TextStyle(color: Colors.black),
-                //     initialValue: number,
-                //     textFieldController: _mobilePhonController,
-                //     formatInput: false,
-                //     validator: (val) {
-                //       if (val!.isEmpty) {
-                //         return ('please enter youre phone Number');
-                //       }
-                //     },
-                //     keyboardType: TextInputType.numberWithOptions(
-                //         signed: true, decimal: true),
-                //     inputBorder: OutlineInputBorder(
-                //       borderRadius: BorderRadius.circular(10),
-                //     ),
-                //     onSaved: (PhoneNumber number) {
-                //       _mobilePhonController.text = number as String;
-                //       print('On Saved: $number');
-                //     },
-                //   ),
-                // ),
                 SizedBox(
                   height: 10,
                 ),
@@ -224,23 +216,25 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   //! adress form field
 
-                  child: TextFormField(
-                    autofocus: false,
-                    controller: _adressController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return ('please Enter your Adress');
-                      }
-                    },
-                    onSaved: (value) {
-                      _adressController.text = value!;
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_on),
-                      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Adress",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  child: GetBuilder<PersonalInfoControllerImp>(
+                    builder: (controller) => TextFormField(
+                      autofocus: false,
+                      controller: controller.address,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ('please Enter your Adress');
+                        }
+                      },
+                      onSaved: (value) {
+                        controller.address.text = value!;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.location_on),
+                        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        hintText: "Adress",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
@@ -256,10 +250,4 @@ class _PersonalInfoState extends State<PersonalInfo> {
       ),
     );
   }
-
-  validatPersonalInfo() async {
-    return;
-  }
-
-  
 }

@@ -1,5 +1,6 @@
 import 'package:carrental/controller/changeThemController.dart';
 import 'package:get/get.dart';
+import '../core/constants/appThem.dart';
 import '../view/screens/Terms_and_conditions_page.dart';
 import '../view/screens/faq_page.dart';
 import '../view/screens/langage.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import '../view/screens/authScreens/login.dart';
 import '../view/screens/my_prfile.dart';
+import '../view/screens/test_view.dart';
 
 class MyDrawer extends StatelessWidget {
   MyDrawer({Key? key}) : super(key: key);
@@ -40,10 +42,10 @@ class MyDrawer extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: Color.fromARGB(255, 243, 109, 0),
               ),
               accountName: Text('Omar Elhassani Alaoui'),
-              accountEmail: Text('/{getUser()}'),
+              accountEmail: Text('el.ell.elhassani@gmail.com'),
               currentAccountPicture: InkWell(
                 child: Image.asset('assets/images/profile.png'),
                 onTap: () {
@@ -219,7 +221,8 @@ class MyDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Langages();
+                    return testView();
+                    // return Langages();
                   }));
                 },
               ),

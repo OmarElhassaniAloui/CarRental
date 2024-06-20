@@ -61,6 +61,7 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   goToSignIn() {}
+  
   @override
   void onInit() {
     firstName = TextEditingController();

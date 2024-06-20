@@ -1,5 +1,7 @@
 import 'package:carrental/core/class/statusrequest.dart';
+import 'package:carrental/core/constants/app_routs.dart';
 import 'package:carrental/core/functions/handlingData.dart';
+import 'package:carrental/core/services/services.dart';
 import 'package:get/get.dart';
 import 'package:carrental/data/datasrc/remot/car_details.dart';
 
@@ -10,11 +12,15 @@ abstract class CarDetailsController extends GetxController {
 }
 
 class CarDetailsControllerImp extends CarDetailsController {
+  CarDetailsData carDetailsData = CarDetailsData(Get.find()); 
+  MyServices myServices = Get.find();
+  StatusRequest statusRequest = StatusRequest.none;
 
-  CarDetailsData carDetailsData = CarDetailsData(Get.find());
 
   int? selectedCar;
   List cars = [];
+  // List? carId = [];
+  String? carId;
 
   @override
   getData() async {
@@ -25,26 +31,17 @@ class CarDetailsControllerImp extends CarDetailsController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        //! hna kayn l'mochkil..👇
+        
         cars.addAll(response['data']);
+        
+        var carsId = cars[0]['idVoiture'];
+        print("the selected car is :$carsId"); 
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
     update();
-  }  
-
-  // getCarId()async{ 
-  //   var response = await carDetailsData.getCarDetails();
-  //   print("=============================== Controller $response ");
-  //   if (response['status'] == "success") {
-  //     //! hna kayn l'mochkil..👇
-  //     selectedCar = response['data']['car_id'];
-  //   } else {
-  //     selectedCar = 0;
-  //   }
-  //   update();
-  // }
+  }
 
   @override
   void onInit() {
@@ -52,17 +49,27 @@ class CarDetailsControllerImp extends CarDetailsController {
     initData();
     super.onInit();
   }
-
+  
   @override
   initData() {
     selectedCar = Get.arguments['selectedCar'];
     update();
   }
-  changeValue(value){ 
+  
+  changeValue(value) {
     selectedCar = value;
-    update();  
+    update();
+  }
+
+  bookKnowButton() {
+
   }
 
   @override
-  goToBookingPage(int selectedCar) {}
+  goToBookingPage(int selectedCar) {
+    Get.toNamed(AppRout.bookingNowPage, arguments: {
+      'selectedCar': selectedCar,
+    }); 
+  } 
+  
 }

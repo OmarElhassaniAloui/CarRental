@@ -6,6 +6,7 @@ import '../../widgets/confirmationWidget/confirmationCard1.dart';
 import '../../widgets/confirmationWidget/RentalFeesCard.dart';
 import '../../widgets/confirmationWidget/PickUpTimeCard.dart';
 import '../../widgets/confirmationWidget/confirmwdgtOne.dart';
+import '../../widgets/costum_button.dart';
 
 class ConfiramtionPage extends StatelessWidget {
   const ConfiramtionPage({super.key});
@@ -26,7 +27,7 @@ class ConfiramtionPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 15),
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Please Review your Requist and confirme",
+                  "Please Review your Request and confirme",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
@@ -40,36 +41,19 @@ class ConfiramtionPage extends StatelessWidget {
               ConfirmationCardOne(),
               PickUpTimeCard(),
               RentalFeesCard(),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 // padding:  EdgeInsets.symmetric(horizontal: 15),
                 width: double.infinity,
-                child: OutlinedButton(
+                child: CustomElevatedButton(
+                  text: 'Continue',
                   onPressed: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(builder: (_) {
-                    //     return SuccessPage();
-                    //   }),
-                    // );
                     Get.to(() => PaymentPage());
                   },
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    fixedSize: Size(370, 48),
-                    backgroundColor: Colors.redAccent,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
                 ),
+                
               ),
               SizedBox(
                 height: 20,

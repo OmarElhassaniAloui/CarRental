@@ -2,6 +2,8 @@ import 'package:carrental/widgets/profile_widgets/profile_forme_fields.dart';
 import 'package:carrental/widgets/profile_widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/costum_button.dart';
+
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key? key}) : super(key: key);
 
@@ -47,17 +49,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onChanged: (about) {},
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                onPrimary: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-              ),
-              child: Text("text"),
+            CustomElevatedButton(
+              text: 'Save',
               onPressed: () {},
             )
+
+            // ElevatedButton(
+            //   style: ElevatedButton.styleFrom(
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //     onPrimary: Colors.white,
+            //     padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+            //   ),
+            //   child: Text("text"),
+            //   onPressed: () {},
+            // )
           ],
         ),
       ),

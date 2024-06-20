@@ -1,39 +1,42 @@
+import 'package:carrental/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PickUpTimeCard extends StatelessWidget {
-  const PickUpTimeCard({super.key});
+  PickUpTimeCard({super.key});
+  MyServices _services = Get.find(); 
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: 160,
+        height: 120,
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Expanded(
-                  flex: 4,
-                  child: Container(
-                    child: Text("Pick up and return ",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: TextButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.edit_square),
-                      label: Text("Change"),
-                    ),
-                  ),
-                ),
+                // Expanded(
+                //   flex: 4,
+                //   child: Container(
+                //     child: Text("Pick up and return ",
+                //         style: TextStyle(fontWeight: FontWeight.bold)),
+                //   ),
+                // ),
+                // Expanded(
+                //   flex: 2,
+                //   child: Container(
+                //     child: TextButton.icon(
+                //       onPressed: () {},
+                //       icon: Icon(Icons.edit_square),
+                //       label: Text("Change"),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
-            Text("Errachidia-arfoud"),
+            // Text("Errachidia-arfoud"),
             SizedBox(
               height: 6,
             ),
@@ -62,7 +65,8 @@ class PickUpTimeCard extends StatelessWidget {
                 ),
               ],
             ),
-            Text("15 April, 11:00 am-17 April, 6:00 pm"),
+            Text(
+                "${_services.sharedPreferences.get("departTripTime")}-${_services.sharedPreferences.get("returnDateAndTime")}"),
             SizedBox(
               height: 6,
             ),
